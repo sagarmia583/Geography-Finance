@@ -55,8 +55,8 @@ export function ChangePasswordDialog({ disabled = false }: { disabled?: boolean 
       showError("বর্তমান পাসওয়ার্ড লিখুন।");
       return;
     }
-    if (newPassword.length < 12 || newPassword.length > 1024) {
-      showError("নতুন পাসওয়ার্ড ১২ থেকে ১০২৪ অক্ষরের হতে হবে।");
+    if (newPassword.length < 6 || newPassword.length > 1024) {
+      showError("নতুন পাসওয়ার্ড ৬ থেকে ১০২৪ অক্ষরের হতে হবে।");
       return;
     }
     if (newPassword === currentPassword) {
@@ -143,14 +143,14 @@ export function ChangePasswordDialog({ disabled = false }: { disabled?: boolean 
                 type="password"
                 autoComplete="new-password"
                 required
-                minLength={12}
+                minLength={6}
                 maxLength={1024}
                 aria-describedby={`${id}-hint`}
                 value={newPassword}
                 onChange={(event) => setNewPassword(event.target.value)}
               />
               <p id={`${id}-hint`} className="text-xs leading-relaxed text-muted-foreground">
-                কমপক্ষে ১২ অক্ষরের পাসওয়ার্ড দিন।
+                কমপক্ষে ৬ অক্ষরের পাসওয়ার্ড দিন।
               </p>
             </div>
             <div className="space-y-2">
@@ -161,7 +161,7 @@ export function ChangePasswordDialog({ disabled = false }: { disabled?: boolean 
                 type="password"
                 autoComplete="new-password"
                 required
-                minLength={12}
+                minLength={6}
                 maxLength={1024}
                 value={confirmPassword}
                 onChange={(event) => setConfirmPassword(event.target.value)}

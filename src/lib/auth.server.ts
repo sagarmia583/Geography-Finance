@@ -128,8 +128,8 @@ export async function changeLoginPassword(input: {
     setResponseStatus(401);
     return { success: false, error: "সেশনের মেয়াদ শেষ হয়েছে। আবার লগইন করুন।" };
   }
-  if (input.newPassword.length < 12 || input.newPassword.length > 1024)
-    return { success: false, error: "নতুন পাসওয়ার্ড ১২ থেকে ১০২৪ অক্ষরের হতে হবে।" };
+  if (input.newPassword.length < 6 || input.newPassword.length > 1024)
+    return { success: false, error: "নতুন পাসওয়ার্ড ৬ থেকে ১০২৪ অক্ষরের হতে হবে।" };
   if (input.newPassword !== input.confirmPassword)
     return { success: false, error: "নতুন পাসওয়ার্ড দুটি মেলেনি।" };
   if (input.currentPassword === input.newPassword)

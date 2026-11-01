@@ -18,8 +18,8 @@ export function validPasswordHash(encoded: string): boolean {
 }
 
 export async function hashPassword(password: string): Promise<string> {
-  if (password.length < 12 || password.length > 1024) {
-    throw new Error("পাসওয়ার্ড ১২ থেকে ১০২৪ অক্ষরের হতে হবে।");
+  if (password.length < 6 || password.length > 1024) {
+    throw new Error("পাসওয়ার্ড ৬ থেকে ১০২৪ অক্ষরের হতে হবে।");
   }
   const salt = randomBytes(16).toString("hex");
   const key = await derive(password, salt);
