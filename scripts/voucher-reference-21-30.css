@@ -1,0 +1,172 @@
+/* Pages 21-30: differences verified against the original PDF at 216 dpi.
+   Font family and natural (unstretched) Kalpurush forms are intentional. */
+.voucher-native[data-template-page="page-21"] .fish .pill.line {
+  left: 150px !important;
+  width: 230px !important;
+  background: #eef4ed !important;
+  color: #498b60 !important;
+  border-color: #498b60 !important;
+}
+.voucher-native[data-template-page="page-24"] .fieldline > .tag {
+  color: #117352 !important;
+  background: #fff !important;
+  border-right: 1px solid #117352;
+}
+.voucher-native [data-key="p24.label.819"] {
+  left: 450px !important;
+  top: 570px !important;
+  width: 250px !important;
+  height: 22px !important;
+  font-size: 13px !important;
+  line-height: 1.15 !important;
+  color: #fff !important;
+  background: #117352 !important;
+  padding: 2px 5px !important;
+}
+.voucher-native [data-key="p24.label.820"] {
+  left: 855px !important;
+  top: 572px !important;
+  width: 118px !important;
+  height: 27px !important;
+  color: #117352 !important;
+}
+.voucher-native[data-template-page="page-26"] .deco .pill {
+  color: #fff !important;
+  background: #241744 !important;
+  height: 28px !important;
+  font-size: 18px !important;
+  line-height: 1.15 !important;
+}
+.voucher-native [data-key="p26.label.825"],
+.voucher-native [data-key="p26.label.826"],
+.voucher-native [data-key="p26.label.832"],
+.voucher-native [data-key="p26.label.833"] {
+  color: #cf286b !important;
+}
+.voucher-native[data-template-page="page-26"] .deco .bold {
+  color: #7e3b62 !important;
+}
+.voucher-native [data-key="p27.label.871"],
+.voucher-native [data-key="p27.label.885"] {
+  left: 101px !important;
+  width: 128px !important;
+  font-size: 11px !important;
+}
+.voucher-native [data-key="p27.label.872"],
+.voucher-native [data-key="p27.label.886"] {
+  width: 65px !important;
+  font-size: 10px !important;
+}
+.voucher-native [data-key="p27.label.873"] {
+  left: 356px !important;
+  top: 689px !important;
+  width: 69px !important;
+  height: 17px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  font-size: 11px !important;
+  font-style: italic;
+  font-weight: 700 !important;
+  z-index: 2;
+}
+.voucher-native [data-key="p27.label.887"] {
+  left: 796px !important;
+  top: 689px !important;
+  width: 69px !important;
+  height: 17px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  font-size: 11px !important;
+  font-style: italic;
+  font-weight: 700 !important;
+  z-index: 2;
+}
+.voucher-native .source-rangdhanu-footer {
+  position: absolute;
+  top: 649px;
+  width: 95px;
+  height: 58px;
+  background: #113bdc;
+  clip-path: polygon(34% 0, 100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+.voucher-native .source-rangdhanu-footer::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: 5px;
+  width: 63px;
+  height: 33px;
+  transform: skewX(-18deg);
+  background: #5bd8f0;
+  border: 7px solid #20b2ee;
+}
+.voucher-native .source-rangdhanu-condition {
+  color: #0f61f4;
+  font-size: 9px;
+  white-space: nowrap;
+  line-height: 1.1;
+  z-index: 1;
+}
+/* The source dates are split into three writable boxes. */
+.voucher-native:is([data-template-page="page-23"], [data-template-page="page-30"])
+  .fieldline:has(> .field[data-key$=".date"])
+  > .field {
+  background-image: linear-gradient(
+    to right,
+    transparent calc(33.333% - 0.5px),
+    var(--ink) calc(33.333% - 0.5px),
+    var(--ink) calc(33.333% + 0.5px),
+    transparent calc(33.333% + 0.5px),
+    transparent calc(66.666% - 0.5px),
+    var(--ink) calc(66.666% - 0.5px),
+    var(--ink) calc(66.666% + 0.5px),
+    transparent calc(66.666% + 0.5px)
+  );
+}
+/* Normal Kalpurush line boxes need more than the old compressed glyph height. */
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(3) {
+  height: 25px !important;
+  font-size: 21px !important;
+  line-height: 1.1 !important;
+}
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(4),
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(5),
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(6) {
+  height: 19px !important;
+  font-size: 14px !important;
+  line-height: 1.15 !important;
+}
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(7) {
+  height: 26px !important;
+  line-height: 1.15 !important;
+}
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(8) {
+  height: 21px !important;
+  font-size: 15px !important;
+  line-height: 1.15 !important;
+}
+.voucher-native .source-champion-return-note {
+  color: #173a91;
+  background: #fff;
+  border: 1px solid #173a91;
+  border-radius: 4px;
+  padding: 2px 3px;
+  font-size: 12px;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+/* Keep multiline copy inside its own row before the following printed label. */
+.voucher-native [data-key="p23.label.725"],
+.voucher-native [data-key="p23.label.731"] {
+  height: 20px !important;
+  line-height: 1.35 !important;
+}
+.voucher-native [data-key="p27.label.847"],
+.voucher-native [data-key="p27.label.857"] {
+  top: 94px !important;
+  height: 62px !important;
+  line-height: 1.35 !important;
+}

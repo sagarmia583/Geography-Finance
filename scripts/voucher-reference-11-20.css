@@ -1,0 +1,167 @@
+/* Source-verified details for pages 11–20. User-requested Kalpurush is retained. */
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.337"] {
+  white-space: pre-line;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"])
+  .source-signature-split
+  .native-text-content {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  white-space: nowrap;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"])
+  .source-signature-split
+  .native-text-content
+  > span {
+  flex: 0 0 auto;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) .canvas > .rule,
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .canvas > .rule {
+  background: none;
+  border-top: 1px dotted var(--ink);
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-field="p11.date"],
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-field="p11.copy0.words"],
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-field="p12.copy0.date"] {
+  border-bottom: 1px dotted var(--ink);
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-key="p12.label.347"] {
+  top: 1025px;
+}
+
+/* Chefat has flat pale pink printed side columns, not bright magenta gradients. */
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .brand-pink {
+  background: #f2e2e7 !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .table-block .th {
+  background: #f0dfe4 !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .watermark-seal {
+  left: 82px !important;
+  top: 94px !important;
+  width: 208px !important;
+  height: 218px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .fieldline [data-field$=".date"],
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .fieldline [data-field$=".date"] {
+  background-image: linear-gradient(
+    90deg,
+    transparent 33%,
+    var(--ink) 33%,
+    var(--ink) 33.5%,
+    transparent 33.5%,
+    transparent 66%,
+    var(--ink) 66%,
+    var(--ink) 66.5%,
+    transparent 66.5%
+  );
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .watermark-ring {
+  left: 90px !important;
+  top: 122px !important;
+  width: 160px !important;
+  height: 132px !important;
+}
+
+/* City's return condition is ordinary dark print between the signatures. */
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.506"] {
+  color: #333 !important;
+  background: transparent !important;
+  border-radius: 0;
+  font-style: italic;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.495"] {
+  width: 100px !important;
+  padding: 3px 5px;
+  color: #fff !important;
+  background: #333 !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .source-thanks-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777 !important;
+  background: #fff;
+  border: 1px solid #777;
+  font-weight: 700;
+  line-height: 1;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) [data-key="p17.label.512"],
+.voucher-native:is(#page-17, [data-template-page="page-17"]) [data-key="p17.label.518"] {
+  width: 62px !important;
+  background: #555 !important;
+  color: #fff !important;
+  text-align: center;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .source-date-cell {
+  border: 1px solid #777;
+  background: #fff !important;
+}
+
+/* The timber letterhead uses four distinct ink colors in the original. */
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.584"],
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.586"],
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.588"] {
+  color: #26266e !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.583"],
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.585"],
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.589"] {
+  color: #e11824 !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.587"] {
+  color: #1e692d !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) .canvas > .rule,
+.voucher-native:is(#page-18, [data-template-page="page-18"]) .timber > .rule {
+  background: #e11824 !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.590"],
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.591"] {
+  top: 350px !important;
+}
+
+/* Ma Stationery's black memo and total badges contain reversed white type. */
+.voucher-native:is(#page-19, [data-template-page="page-19"]) [data-key="p19.label.593"],
+.voucher-native:is(#page-19, [data-template-page="page-19"]) [data-key="p19.label.608"] {
+  color: #fff !important;
+  background: #111 !important;
+  border-radius: 16px;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) [data-key="p19.label.598"] {
+  left: 305px !important;
+  top: 10px !important;
+  width: 195px !important;
+  text-align: right;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) .source-thanks-watermark {
+  color: #aaa !important;
+  opacity: 0.28;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) .model [data-key="p20.label.616"] {
+  color: #378c6f !important;
+  background: #fff !important;
+  border: 1px solid #378c6f;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) .source-religious-note {
+  border: 1px dotted var(--ink);
+  text-align: center;
+  line-height: 1.2;
+  padding: 2px;
+}
+.voucher-native .source-dotted-rule {
+  position: absolute;
+  height: 1px;
+  border-top: 1px dotted var(--ink);
+  pointer-events: none;
+}
+.voucher-native .source-words-merged .field {
+  background: transparent !important;
+  z-index: 1;
+}
+.voucher-native .source-return-condition {
+  text-align: center;
+}

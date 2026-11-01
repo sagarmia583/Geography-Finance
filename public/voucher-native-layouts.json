@@ -1,0 +1,314 @@
+[
+  {
+    "id": 1,
+    "name": "আফ্রিদা ফটোস্ট্যাট এন্ড স্টেশনারী",
+    "pageId": "page-01",
+    "crop": {
+      "x": 274,
+      "y": 20,
+      "w": 695,
+      "h": 1095
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1413
+  },
+  {
+    "id": 2,
+    "name": "অঙ্গরূপা",
+    "pageId": "page-02",
+    "crop": {
+      "x": 0,
+      "y": 65,
+      "w": 660,
+      "h": 1330
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1414
+  },
+  {
+    "id": 3,
+    "name": "মেসার্স বাবুল স্টোর",
+    "pageId": "page-03",
+    "crop": {
+      "x": 27.5,
+      "y": 95,
+      "w": 481,
+      "h": 1287
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1413
+  },
+  {
+    "id": 4,
+    "name": "M.R BATTERY & IPS",
+    "pageId": "page-04",
+    "crop": {
+      "x": 90,
+      "y": 28,
+      "w": 820,
+      "h": 638
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1414
+  },
+  {
+    "id": 5,
+    "name": "গিফট সেন্টার",
+    "pageId": "page-05",
+    "crop": {
+      "x": 20,
+      "y": 0,
+      "w": 550,
+      "h": 1110
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1414
+  },
+  {
+    "id": 6,
+    "name": "ন্যাশনাল ইলেকট্রিক",
+    "pageId": "page-06",
+    "crop": {
+      "x": 40,
+      "y": 135,
+      "w": 880,
+      "h": 1260
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1414
+  },
+  {
+    "id": 7,
+    "name": "মোহাম্মদিয়া লাইব্রেরী",
+    "pageId": "page-07",
+    "crop": {
+      "x": 30,
+      "y": 18,
+      "w": 625,
+      "h": 975
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1414
+  },
+  {
+    "id": 8,
+    "name": "বারেক মাংস ঘর — রঙিন",
+    "pageId": "page-08",
+    "crop": {
+      "x": 15,
+      "y": 0,
+      "w": 445,
+      "h": 707
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 707
+  },
+  {
+    "id": 9,
+    "name": "M/S Mesbah Uddin & Brother’s",
+    "pageId": "page-09",
+    "crop": {
+      "x": 47,
+      "y": 18,
+      "w": 361,
+      "h": 670
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 707
+  },
+  {
+    "id": 11,
+    "name": "নিরালা ঘর — এক কপি",
+    "pageId": "page-11",
+    "crop": {
+      "x": 200,
+      "y": 20,
+      "w": 610,
+      "h": 1330
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1414
+  },
+  {
+    "id": 12,
+    "name": "নিউ রেখা গ্লাস হাউজ",
+    "pageId": "page-12",
+    "crop": {
+      "x": 0,
+      "y": 45,
+      "w": 660,
+      "h": 1350
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1414
+  },
+  {
+    "id": 13,
+    "name": "ছেফাত রেস্টুরেন্ট",
+    "pageId": "page-13",
+    "crop": {
+      "x": 15,
+      "y": 70,
+      "w": 360,
+      "h": 637
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 707
+  },
+  {
+    "id": 14,
+    "name": "সততা কম্পিউটারস",
+    "pageId": "page-14",
+    "crop": {
+      "x": 15,
+      "y": 0,
+      "w": 470,
+      "h": 707
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 707
+  },
+  {
+    "id": 16,
+    "name": "সিটি স্টেশনারী — এক কপি",
+    "pageId": "page-16",
+    "crop": {
+      "x": 115,
+      "y": 35,
+      "w": 785,
+      "h": 1210
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1414
+  },
+  {
+    "id": 17,
+    "name": "সুগন্ধা রেস্টুরেন্ট",
+    "pageId": "page-17",
+    "crop": {
+      "x": 101,
+      "y": 44,
+      "w": 370,
+      "h": 620
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 707
+  },
+  {
+    "id": 18,
+    "name": "মেসার্স স্বপন কুমার দে টিম্বার",
+    "pageId": "page-18",
+    "crop": {
+      "x": 0,
+      "y": 30,
+      "w": 900,
+      "h": 1365
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1414
+  },
+  {
+    "id": 19,
+    "name": "মা স্টেশনারী এন্ড পেপার হাউজ",
+    "pageId": "page-19",
+    "crop": {
+      "x": 30,
+      "y": 35,
+      "w": 633,
+      "h": 1020
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1413
+  },
+  {
+    "id": 20,
+    "name": "মাজেদা স্টেশনারী এন্ড পেপার হাউজ",
+    "pageId": "page-20",
+    "crop": {
+      "x": 25,
+      "y": 10,
+      "w": 633,
+      "h": 1025
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1413
+  },
+  {
+    "id": 21,
+    "name": "মেসার্স রিহাদ মৎস্য সাপ্লাই",
+    "pageId": "page-21",
+    "crop": {
+      "x": 29,
+      "y": 29,
+      "w": 632,
+      "h": 974
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1413
+  },
+  {
+    "id": 23,
+    "name": "মেসার্স শফিকুল এন্টারপ্রাইজ — রঙিন",
+    "pageId": "page-23",
+    "crop": {
+      "x": 25,
+      "y": 0,
+      "w": 395,
+      "h": 690
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 707
+  },
+  {
+    "id": 24,
+    "name": "আলিফ আর্ট এন্ড স্ক্রীন প্রিন্ট",
+    "pageId": "page-24",
+    "crop": {
+      "x": 195,
+      "y": 0,
+      "w": 805,
+      "h": 610
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 707
+  },
+  {
+    "id": 26,
+    "name": "সূচী ডেকোরেটর এন্ড ইভেন্ট পয়েন্ট",
+    "pageId": "page-26",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 490,
+      "h": 707
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 707
+  },
+  {
+    "id": 27,
+    "name": "রংধনু সাইন — Bill/Chalan",
+    "pageId": "page-27",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 435,
+      "h": 707
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 707
+  },
+  {
+    "id": 30,
+    "name": "চ্যাম্পিয়ন শপিং মল",
+    "pageId": "page-30",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 470,
+      "h": 1230
+    },
+    "sourceWidth": 1000,
+    "sourceHeight": 1413
+  }
+]

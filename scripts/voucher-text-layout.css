@@ -1,0 +1,60 @@
+/* Use each printed rectangle's INNER dimensions. The canvas geometry remains
+   unchanged; text fitting runs after Kalpurush and original logos are ready. */
+.voucher-native,
+.voucher-native * {
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+}
+.voucher-native .fieldline > .field {
+  left: var(--tag) !important;
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: auto !important;
+  height: auto !important;
+}
+.voucher-native .fieldline > .tag {
+  top: 0 !important;
+  bottom: 0 !important;
+  height: auto !important;
+}
+.voucher-native .native-text-box {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  padding: var(--text-inset-y) var(--text-inset-x) !important;
+  font-size: var(--text-font-size) !important;
+  line-height: var(--text-line-ratio) !important;
+  gap: 0;
+}
+.voucher-native .native-text-content {
+  display: block;
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
+  min-height: 1em;
+  font-size: var(--text-font-size) !important;
+  line-height: var(--text-line-ratio) !important;
+  text-align: inherit;
+  transform: none !important;
+}
+.voucher-native .native-text-content.fit-text {
+  width: max-content;
+  max-width: none;
+  white-space: nowrap;
+}
+.voucher-native .tag .native-text-content,
+.voucher-native .cell-label .native-text-content,
+.voucher-native .pill .native-text-content {
+  white-space: nowrap;
+}
+.voucher-native .th .native-text-content {
+  white-space: pre-line;
+}
+/* The MR logo's lower ring used to extend into the Name writing row. */
+.voucher-native:is(#page-04, [data-template-page="page-04"]) .mr .logo-mr {
+  top: 18px !important;
+  height: 56px !important;
+  width: 56px !important;
+}

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ভাউচার স্টুডিও — মূল PDF-এর ডিজাইন</title>
+    <link rel="preload" href="/fonts/kalpurush.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/voucher-templates.css" />
+    <link rel="stylesheet" href="/voucher-studio.css" />
+    <link rel="stylesheet" href="/voucher-studio-design.css" />
+    <script type="module" src="/voucher-studio.js"></script>
+  </head>
+  <body>
+    <div class="builder-shell">
+      <aside class="builder-panel">
+        <a class="back-link" href="/">← ড্যাশবোর্ড</a>
+        <h1>ভাউচার স্টুডিও</h1>
+        <p class="intro">
+          PDF-এর নকশা অনুযায়ী তৈরি ভাউচারের লেখা, ঘর ও টেবিল সরাসরি সম্পাদনা করুন।
+        </p>
+        <p id="sourceInfo" class="source-info">PDF-এর ডিজাইন লোড হচ্ছে…</p>
+        <label for="voucherDesign">দোকান / PDF-এর পেজ</label>
+        <select id="voucherDesign" disabled></select>
+        <label for="layoutMode">প্রিন্ট লেআউট</label>
+        <select id="layoutMode">
+          <option value="original">PDF-এর কপি বিন্যাস — bleed-সহ A4 পেজ</option>
+          <option value="custom">একটি ভাউচার — নিজে A4-এ সাজান</option>
+        </select>
+        <p id="modeHelp" class="help"></p>
+        <button
+          id="designModeBtn"
+          class="design-mode-toggle"
+          type="button"
+          aria-pressed="false"
+          aria-expanded="false"
+          aria-controls="designPanel"
+        >
+          <span class="design-mode-icon" aria-hidden="true">↗</span>
+          <span>ডিজাইন মোড</span>
+          <span class="design-mode-tag">সম্পাদনা</span>
+        </button>
+        <section id="designPanel" class="design-panel" aria-label="ভাউচার ডিজাইন টুলস" hidden>
+          <div class="design-panel-head">
+            <h2>ডিজাইন টুলস</h2>
+            <div class="design-history" role="group" aria-label="পরিবর্তনের ইতিহাস">
+              <button id="designUndo" type="button" title="আগের অবস্থায় (Ctrl+Z)" disabled>
+                ↶ <span>আগের</span>
+              </button>
+              <button id="designRedo" type="button" title="আবার করুন (Ctrl+Shift+Z)" disabled>
+                ↷ <span>আবার</span>
+              </button>
+            </div>
+          </div>
+          <p class="design-instructions">
+            লেখা, লোগো বা ঘর বেছে টেনে সরান। লেখা বদলাতে ডাবল ক্লিক করুন। তীর চিহ্নে সরান, Shift
+            চেপে বড় ধাপে সরান। Ctrl+Z-এ আগের অবস্থায় ফিরুন।
+          </p>
+          <p class="design-keyboard-note">
+            Alt ধরে ছোট অংশ বাছুন বা সূক্ষ্মভাবে সরান; Shift ধরে অনুপাত রাখুন।
+          </p>
+          <div class="design-add-tools" role="group" aria-label="নতুন উপাদান যোগ করুন">
+            <button id="designAddText" type="button"><span aria-hidden="true">T</span> লেখা</button>
+            <button id="designAddRect" type="button"><span aria-hidden="true">□</span> ঘর</button>
+            <button id="designAddEllipse" type="button">
+              <span aria-hidden="true">○</span> বৃত্ত
+            </button>
+            <button id="designAddLine" type="button"><span aria-hidden="true">╱</span> রেখা</button>
+            <button id="designAddImage" type="button"><span aria-hidden="true">▧</span> ছবি</button>
+            <input
+              id="designImageFile"
+              type="file"
+              accept="image/png,image/jpeg,image/webp"
+              hidden
+            />
+          </div>
+          <div class="design-selection-info">
+            <span class="design-selection-dot" aria-hidden="true"></span>
+            <p id="designObjectName" aria-live="polite">ভাউচারে একটি উপাদান বেছে নিন</p>
+          </div>
+          <fieldset class="design-properties">
+            <legend>অবস্থান ও মাপ</legend>
+            <div class="design-property-grid">
+              <label for="designX"
+                >X <span>mm</span><input id="designX" type="number" step="0.1"
+              /></label>
+              <label for="designY"
+                >Y <span>mm</span><input id="designY" type="number" step="0.1"
+              /></label>
+              <label for="designWidth"
+                >প্রস্থ <span>mm</span><input id="designWidth" type="number" min="0.1" step="0.1"
+              /></label>
+              <label for="designHeight"
+                >উচ্চতা <span>mm</span><input id="designHeight" type="number" min="0.1" step="0.1"
+              /></label>
+              <label for="designRotation"
+                >ঘোরান <span>°</span
+                ><input id="designRotation" type="number" min="-360" max="360" step="1"
+              /></label>
+              <label for="designOpacity"
+                >অস্বচ্ছতা <span>%</span
+                ><input id="designOpacity" type="number" min="0" max="100" step="1"
+              /></label>
+            </div>
+          </fieldset>
+          <details class="design-section" open>
+            <summary>লেখা ও রং</summary>
+            <div class="design-property-grid">
+              <label for="designFontSize"
+                >লেখার মাপ <span>pt</span
+                ><input id="designFontSize" type="number" min="1" max="200" step="0.5"
+              /></label>
+              <label for="designColor"
+                >লেখার রং<input id="designColor" type="color" value="#111111"
+              /></label>
+            </div>
+            <div class="design-format-row" role="group" aria-label="লেখার বিন্যাস">
+              <button id="designBold" type="button" aria-pressed="false" title="লেখা মোটা করুন">
+                <strong>B</strong><span>মোটা</span>
+              </button>
+              <div class="design-alignment" role="group" aria-label="লেখার দিক">
+                <button
+                  id="designAlignLeft"
+                  type="button"
+                  title="বামে সারিবদ্ধ"
+                  aria-label="বামে সারিবদ্ধ"
+                  aria-pressed="false"
+                >
+                  বাম
+                </button>
+                <button
+                  id="designAlignCenter"
+                  type="button"
+                  title="মাঝে সারিবদ্ধ"
+                  aria-label="মাঝে সারিবদ্ধ"
+                  aria-pressed="false"
+                >
+                  মাঝ
+                </button>
+                <button
+                  id="designAlignRight"
+                  type="button"
+                  title="ডানে সারিবদ্ধ"
+                  aria-label="ডানে সারিবদ্ধ"
+                  aria-pressed="false"
+                >
+                  ডান
+                </button>
+              </div>
+            </div>
+            <div class="design-property-grid design-paint-grid">
+              <label for="designFill"
+                >ভেতরের রং<input id="designFill" type="color" value="#ffffff"
+              /></label>
+              <label for="designStroke"
+                >রেখার রং<input id="designStroke" type="color" value="#111111"
+              /></label>
+              <label for="designStrokeWidth"
+                >রেখার মাপ <span>mm</span
+                ><input id="designStrokeWidth" type="number" min="0" max="10" step="0.1"
+              /></label>
+            </div>
+            <div class="design-action-grid design-paint-actions" role="group" aria-label="রং সরান">
+              <button id="designNoFill" type="button" aria-pressed="false">ভেতর ফাঁকা</button>
+              <button id="designNoStroke" type="button" aria-pressed="false">রেখা ছাড়া</button>
+            </div>
+          </details>
+          <details class="design-section">
+            <summary>স্তর ও সাজানো</summary>
+            <div class="design-action-grid">
+              <button id="designBringForward" type="button">↑ সামনে আনুন</button>
+              <button id="designSendBackward" type="button">↓ পেছনে নিন</button>
+              <button id="designCenterX" type="button">আড়াআড়ি মাঝে</button>
+              <button id="designCenterY" type="button">লম্বালম্বি মাঝে</button>
+              <button id="designDuplicate" type="button" title="একই উপাদান আরেকটি তৈরি করুন">
+                ＋ নকল করুন
+              </button>
+              <button id="designDelete" type="button" class="design-danger">মুছে ফেলুন</button>
+            </div>
+            <p class="design-layer-hint">উপাদানের নাম চেপেও বেছে নিতে পারবেন।</p>
+            <div
+              id="designLayers"
+              class="design-layers"
+              role="list"
+              aria-label="ভাউচারের উপাদান"
+            ></div>
+          </details>
+          <div class="design-reset-row">
+            <button id="designReset" type="button">বাছাই করা অংশ ফেরান</button>
+            <button id="designResetAll" type="button">এই ভাউচারের ডিজাইন ফেরান</button>
+          </div>
+          <p id="designSaveStatus" class="design-save-status" role="status" aria-live="polite">
+            পরিবর্তন এই ব্রাউজারে সেভ হবে
+          </p>
+        </section>
+        <div class="form-row">
+          <label for="pageCopies">কত পেজ প্রিন্ট করবেন</label>
+          <input id="pageCopies" type="number" min="1" max="20" step="1" value="1" />
+        </div>
+        <fieldset id="customControls" hidden>
+          <legend>একটি ভাউচারের মাপ ও অবস্থান</legend>
+          <div class="form-grid">
+            <div>
+              <label for="voucherWidth">প্রস্থ (mm)</label
+              ><input id="voucherWidth" type="number" min="1" max="210" step="0.01" value="90" />
+            </div>
+            <div>
+              <label for="voucherHeight">উচ্চতা (mm)</label
+              ><input id="voucherHeight" type="number" min="1" max="297" step="0.01" value="130" />
+            </div>
+            <div>
+              <label for="voucherCount">প্রতি পেজে কয়টি</label
+              ><input id="voucherCount" type="number" min="1" max="12" step="1" value="1" />
+            </div>
+            <div>
+              <label for="pageMargin">পেজের margin (mm)</label
+              ><input id="pageMargin" type="number" min="0" max="40" step="0.5" value="8" />
+            </div>
+            <div>
+              <label for="gapX">পাশের gap (mm)</label
+              ><input id="gapX" type="number" min="0" max="50" step="0.5" value="4" />
+            </div>
+            <div>
+              <label for="gapY">নিচের gap (mm)</label
+              ><input id="gapY" type="number" min="0" max="50" step="0.5" value="4" />
+            </div>
+          </div>
+          <div class="button-row">
+            <button id="nativeSizeBtn" type="button">PDF-এর আসল মাপ</button
+            ><button id="autoSizeBtn" type="button">A4-এ মানান</button>
+          </div>
+          <p class="help">মাপ বদলালেও ডিজাইনের অনুপাত একই থাকে।</p>
+          <div id="slotConfigs" class="slot-configs"></div>
+        </fieldset>
+        <div class="annotation-tools">
+          <button id="addTextBtn" type="button" aria-pressed="false">＋ লেখা যোগ করুন</button>
+          <label for="fontSize">লেখার মাপ (pt)</label>
+          <select id="fontSize">
+            <option>10</option>
+            <option selected>12</option>
+            <option>14</option>
+            <option>18</option>
+          </select>
+        </div>
+        <p class="help">
+          ভাউচারের ঘর বা লেখায় ক্লিক করে এডিট করুন। বাড়তি লেখা যোগ করতে বাটন চেপে ফাঁকা জায়গায় ক্লিক
+          করুন।
+        </p>
+        <div id="warning" class="warning" role="status" aria-live="polite" hidden></div>
+        <div class="button-row">
+          <button id="printBtn" type="button" class="primary" disabled>প্রিন্ট / PDF</button>
+          <button id="resetBtn" type="button">মূল লেআউট</button>
+        </div>
+        <a
+          id="sourcePdfLink"
+          class="source-link"
+          href="/voucher-assets/reference.pdf"
+          target="_blank"
+          rel="noopener"
+          >মূল ৩০ পেজের PDF দেখুন ↗</a
+        >
+        <p class="help print-help">
+          প্রিন্ট সেটিংস: A4, Scale 100%, Margins None এবং Headers/footers বন্ধ রাখুন। কাটার মার্কের
+          বাইরেও কাগজের ধারে ৫ মিমি খালি জায়গা রাখা হয়েছে।
+        </p>
+      </aside>
+      <main class="preview-wrap">
+        <header class="preview-head">
+          <h2>A4 প্রিভিউ</h2>
+          <p id="summary" aria-live="polite"></p>
+        </header>
+        <div class="preview-zoom" role="group" aria-label="ভাউচার জুম">
+          <span class="preview-zoom-label">জুম</span>
+          <button id="zoomOut" type="button" aria-label="ছোট করে দেখুন (Zoom Out)" title="Zoom Out">
+            −
+          </button>
+          <select id="previewZoom" aria-label="ভাউচার জুমের মাত্রা">
+            <option value="fit">পর্দায় মানান</option>
+            <option value="10">10%</option>
+            <option value="25">25%</option>
+            <option value="33">33%</option>
+            <option value="50">50%</option>
+            <option value="67">67%</option>
+            <option value="75">75%</option>
+            <option value="90">90%</option>
+            <option value="100">100%</option>
+            <option value="125">125%</option>
+            <option value="150">150%</option>
+            <option value="175">175%</option>
+            <option value="200">200%</option>
+            <option value="250">250%</option>
+            <option value="300">300%</option>
+          </select>
+          <button id="zoomIn" type="button" aria-label="বড় করে দেখুন (Zoom In)" title="Zoom In">
+            +
+          </button>
+          <button id="zoomActual" type="button" title="আসল মাপে দেখুন">100%</button>
+          <button
+            id="zoomFit"
+            type="button"
+            aria-pressed="true"
+            title="পর্দার প্রস্থ অনুযায়ী দেখুন"
+          >
+            পর্দায় মানান
+          </button>
+        </div>
+        <div class="preview-scroll"><div id="previewStack" class="preview-stack"></div></div>
+      </main>
+    </div>
+  </body>
+</html>

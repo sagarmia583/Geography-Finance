@@ -1,0 +1,69 @@
+/* Reference PDF color corrections. Keep the original light/dark form styles
+   distinct; broad page-level ink rules must not recolor reversed white type. */
+
+/* National Electric (source pages 6 and 22 share this native template).
+   Its green wordmark band needs readable white type without a text outline. */
+.voucher-native:is(#page-06, [data-template-page="page-06"]) .national .pill:not(.line) {
+  color: #fff !important;
+  background: #07814a !important;
+}
+
+/* Mohammadia Library: the source reverses the column titles, owner badge,
+   cash-memo badge, and thank-you badge out of the blue printed fill. */
+.voucher-native:is(#page-07, [data-template-page="page-07"]) .table-block.dark-head .th,
+.voucher-native:is(#page-07, [data-template-page="page-07"]) .pill:not(.line) {
+  color: #fff !important;
+}
+
+/* Sotota Computers uses white type on the dark invoice/footer bars. The
+   address sits over the darker center of a purple band in the reference. */
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .fill,
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .table-block.dark-head .th {
+  color: #fff !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .computer .gradient {
+  color: #fff !important;
+  background: linear-gradient(90deg, #eeeaf5, #58538e 18%, #58538e 82%, #eeeaf5) !important;
+}
+
+/* Sugandha: the Bill badge is reversed white on charcoal, while its column
+   headings remain charcoal on a light gray band. */
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .fill {
+  color: #fff !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .table-block.light-head .th {
+  color: #444 !important;
+  background: #d5d5d5 !important;
+}
+
+/* Rihad's source has green type on white, including its column headings and
+   the outlined owner badge. These are not reversed dark header cells. */
+.voucher-native:is(#page-21, [data-template-page="page-21"]) .table-block.light-head .th,
+.voucher-native:is(#page-21, [data-template-page="page-21"]) .pill.line {
+  color: #4b8a60 !important;
+  background: #fff !important;
+}
+
+/* Rangdhanu's Sign and Memo labels are white inside the navy artwork. Its
+   table headings retain blue ink on white in the source. */
+.voucher-native:is(#page-27, [data-template-page="page-27"]) .rangdhanu .white-ink {
+  color: #fff !important;
+}
+.voucher-native:is(#page-27, [data-template-page="page-27"]) .table-block.light-head .th {
+  color: #0f61f4 !important;
+  background: #fff !important;
+}
+
+/* Champion Shopping Mall has white column titles on blue, pale blue writable
+   strips, and a reversed blue total cell. Keep the central description white. */
+.voucher-native:is(#page-30, [data-template-page="page-30"]) .table-block.dark-head .th {
+  color: #fff !important;
+}
+.voucher-native:is(#page-30, [data-template-page="page-30"]) .fieldline,
+.voucher-native:is(#page-30, [data-template-page="page-30"]) .table-shade {
+  background: #e8edf8 !important;
+}
+.voucher-native:is(#page-30, [data-template-page="page-30"]) .table-block > .piece.right.bold {
+  color: #fff !important;
+  background: var(--ink) !important;
+}

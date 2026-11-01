@@ -1,0 +1,84 @@
+/* Source-verified visual details from the first ten PDF pages. */
+.voucher-native:is(#page-08, [data-template-page="page-08"]) .barek > .latin {
+  /* Compact numeric leading preserves the source's paired phone lines while
+     Bengali labels retain their normal Kalpurush line spacing. */
+  --source-line-ratio: 0.9;
+  padding: 0 !important;
+}
+.voucher-native:is(#page-03, [data-template-page="page-03"]) [data-key="p3.label.75"] {
+  background: #fff !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--ink);
+}
+.voucher-native:is(#page-03, [data-template-page="page-03"]) .signature,
+.voucher-native:is(#page-07, [data-template-page="page-07"]) .signature,
+.voucher-native:is(#page-08, [data-template-page="page-08"]) .signature,
+.voucher-native:is(#page-09, [data-template-page="page-09"]) .signature {
+  border-top: 0;
+}
+.voucher-native:is(#page-05, [data-template-page="page-05"]) .source-plain-date {
+  border: 0 !important;
+  background: transparent !important;
+}
+.voucher-native:is(#page-05, [data-template-page="page-05"]) .source-plain-date .tag {
+  background: transparent !important;
+  color: var(--ink) !important;
+}
+.voucher-native:is(#page-07, [data-template-page="page-07"]) [data-key="p7.label.148"] {
+  border-radius: 0;
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+}
+.voucher-native .source-writing-rule {
+  position: absolute;
+  height: 0 !important;
+  background: transparent !important;
+  border-bottom: 0.7px dotted var(--ink);
+  pointer-events: none;
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"]) .fieldline {
+  background: linear-gradient(0deg, #f3d8ed, #fff 52%, #f3d8ed) !important;
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"]) .table-block {
+  --voucher-column-gradient: linear-gradient(90deg, #edc1df, #fff 52%, #edc1df);
+}
+.voucher-native.native-monochrome:is(#page-08, [data-template-page="page-08"]) .table-block {
+  --voucher-column-gradient: linear-gradient(90deg, #d7d7d7, #fff 52%, #d7d7d7);
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"])
+  .table-block
+  > :is(.brand-pink, .source-quantity-shade) {
+  background: var(--voucher-column-gradient) !important;
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"]) .source-quantity-shade {
+  position: absolute;
+  pointer-events: none;
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"]) .source-thankyou {
+  position: absolute;
+  color: #9b70cd;
+  opacity: 0.75;
+  transform: rotate(-20deg);
+  transform-origin: 0 50%;
+  white-space: nowrap;
+  line-height: 1.25;
+  z-index: 1;
+}
+/* Mesbah uses charcoal type on a light grey header, including in grayscale mode. */
+.voucher-native:is(#page-09, [data-template-page="page-09"]) .table-block.light-head .th {
+  color: #444 !important;
+  background: #f2f2f2 !important;
+}
+.voucher-native:is(#page-09, [data-template-page="page-09"]) .source-words-shade {
+  position: absolute;
+  background: #f2f2f2;
+  pointer-events: none;
+}
+.voucher-native:is(#page-09, [data-template-page="page-09"]) .logo-mesbah {
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+.voucher-native:is(#page-09, [data-template-page="page-09"]) .canvas > .rule {
+  height: 0 !important;
+  background: transparent !important;
+  border-bottom: 0.6px dotted var(--ink);
+}

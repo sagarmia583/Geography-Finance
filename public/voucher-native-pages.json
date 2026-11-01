@@ -1,0 +1,632 @@
+{
+  "version": 1,
+  "pages": [
+    {
+      "id": 1,
+      "templateId": 1,
+      "name": "আফ্রিদা ফটোস্ট্যাট এন্ড স্টেশনারী",
+      "variant": "এক কপি",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 57.554,
+          "topMm": 4.7389,
+          "widthMm": 145.747,
+          "heightMm": 227.9727,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "templateId": 2,
+      "name": "অঙ্গরূপা",
+      "variant": "মূল্য লেখার খালি অংশ",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 0.0,
+          "topMm": 14.0542,
+          "widthMm": 138.7592,
+          "heightMm": 279.898,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "templateId": 3,
+      "name": "মেসার্স বাবুল স্টোর",
+      "variant": "এক কপি",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 5.9247,
+          "topMm": 19.9709,
+          "widthMm": 101.058,
+          "heightMm": 270.2839,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "templateId": 4,
+      "name": "M.R BATTERY & IPS",
+      "variant": "দুই কপি; নিচের কপিতে অতিরিক্ত লোগো",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 18.2756,
+          "topMm": 7.1117,
+          "widthMm": 171.7568,
+          "heightMm": 129.1967,
+          "rotation": 0
+        },
+        {
+          "leftMm": 18.2756,
+          "topMm": 145.2828,
+          "widthMm": 171.7568,
+          "heightMm": 129.1967,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "templateId": 5,
+      "name": "গিফট সেন্টার",
+      "variant": "এক কপি",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 4.7381,
+          "topMm": 0.0,
+          "widthMm": 115.2378,
+          "heightMm": 232.825,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "templateId": 6,
+      "name": "ন্যাশনাল ইলেকট্রিক",
+      "variant": "এক কপি; খালি মূল অংশ",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 10.6608,
+          "topMm": 10.4983,
+          "widthMm": 173.9566,
+          "heightMm": 282.2686,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "templateId": 7,
+      "name": "মোহাম্মদিয়া লাইব্রেরী",
+      "variant": "এক কপি",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 5.9226,
+          "topMm": 5.9265,
+          "widthMm": 132.8365,
+          "heightMm": 202.1768,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "templateId": 8,
+      "name": "বারেক মাংস ঘর",
+      "variant": "রঙিন; দুই কপি",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 5.9247,
+          "topMm": 4.7389,
+          "widthMm": 202.1161,
+          "heightMm": 132.8572,
+          "rotation": 90
+        },
+        {
+          "leftMm": 1.0157,
+          "topMm": 160.4441,
+          "widthMm": 202.1161,
+          "heightMm": 132.8572,
+          "rotation": 90
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "templateId": 9,
+      "name": "M/S Mesbah Uddin & Brother's",
+      "variant": "সাদাকালো; দুই কপি",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 5.5842,
+          "topMm": 14.0542,
+          "widthMm": 198.8317,
+          "heightMm": 107.0149,
+          "rotation": 90
+        },
+        {
+          "leftMm": 5.0766,
+          "topMm": 156.4584,
+          "widthMm": 198.8317,
+          "heightMm": 107.0149,
+          "rotation": 90
+        }
+      ],
+      "grayscale": true
+    },
+    {
+      "id": 10,
+      "templateId": 11,
+      "name": "নিরালা ঘর",
+      "variant": "দুই কপি",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 3.5536,
+          "topMm": 4.7412,
+          "widthMm": 88.1628,
+          "heightMm": 199.8062,
+          "rotation": 0
+        },
+        {
+          "leftMm": 118.7914,
+          "topMm": 4.0639,
+          "widthMm": 88.1628,
+          "heightMm": 199.8062,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "templateId": 11,
+      "name": "নিরালা ঘর",
+      "variant": "বড় এক কপি",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 42.3046,
+          "topMm": 4.7412,
+          "widthMm": 127.0831,
+          "heightMm": 286.8405,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "templateId": 12,
+      "name": "নিউ রেখা গ্লাস হাউজ",
+      "variant": "এক কপি; নিচে ফেরতের শর্ত",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 2.3691,
+          "topMm": 7.1117,
+          "widthMm": 132.8365,
+          "heightMm": 286.8405,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "templateId": 13,
+      "name": "ছেফাত রেস্টুরেন্ট",
+      "variant": "রঙিন; দুই কপি",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 5.2458,
+          "topMm": 5.9265,
+          "widthMm": 182.9252,
+          "heightMm": 105.4909,
+          "rotation": 90
+        },
+        {
+          "leftMm": 8.1225,
+          "topMm": 149.3467,
+          "widthMm": 182.9252,
+          "heightMm": 105.4909,
+          "rotation": 90
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "templateId": 14,
+      "name": "সততা কম্পিউটারস",
+      "variant": "রঙিন; দুই কপি",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 1.1845,
+          "topMm": 4.7412,
+          "widthMm": 205.7697,
+          "heightMm": 138.6791,
+          "rotation": 270
+        },
+        {
+          "leftMm": 2.0306,
+          "topMm": 152.3946,
+          "widthMm": 205.7697,
+          "heightMm": 138.6791,
+          "rotation": 270
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "templateId": 16,
+      "name": "মেসার্স সিটি স্টেশনারী এন্ড পেপার হাউজ",
+      "variant": "দুই কপি",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 20.6447,
+          "topMm": 23.5365,
+          "widthMm": 176.8333,
+          "heightMm": 117.5131,
+          "rotation": 90
+        },
+        {
+          "leftMm": 18.2756,
+          "topMm": 160.5223,
+          "widthMm": 176.8333,
+          "heightMm": 117.5131,
+          "rotation": 90
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "templateId": 16,
+      "name": "মেসার্স সিটি স্টেশনারী এন্ড পেপার হাউজ",
+      "variant": "বড় এক কপি",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 23.5214,
+          "topMm": 14.0542,
+          "widthMm": 164.6496,
+          "heightMm": 253.991,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "templateId": 17,
+      "name": "সুগন্ধা রেস্টুরেন্ট",
+      "variant": "সাদাকালো; দুই কপি",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 14.0451,
+          "topMm": 18.7953,
+          "widthMm": 183.9405,
+          "heightMm": 110.0627,
+          "rotation": 270
+        },
+        {
+          "leftMm": 12.1837,
+          "topMm": 156.4584,
+          "widthMm": 183.9405,
+          "heightMm": 110.0627,
+          "rotation": 270
+        }
+      ],
+      "grayscale": true
+    },
+    {
+      "id": 18,
+      "templateId": 18,
+      "name": "মেসার্স স্বপন কুমার দে টিম্বার",
+      "variant": "এক কপি; খালি মূল অংশ",
+      "pageWidthMm": 210.0001,
+      "pageHeightMm": 297.0001,
+      "copies": [
+        {
+          "leftMm": 0.0,
+          "topMm": 9.4823,
+          "widthMm": 184.6174,
+          "heightMm": 283.2846,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "templateId": 19,
+      "name": "মা স্টেশনারী এন্ড পেপার হাউজ",
+      "variant": "এক কপি",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 6.6018,
+          "topMm": 11.6779,
+          "widthMm": 129.6657,
+          "heightMm": 208.1711,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "templateId": 20,
+      "name": "মাজেদা স্টেশনারী এন্ড পেপার হাউজ",
+      "variant": "রঙিন; এক কপি",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 5.2476,
+          "topMm": 7.1083,
+          "widthMm": 131.5278,
+          "heightMm": 211.556,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "templateId": 21,
+      "name": "মেসার্স রিহাদ মৎস্য সাপ্লাই",
+      "variant": "রঙিন; এক কপি",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 5.9247,
+          "topMm": 5.9236,
+          "widthMm": 133.8977,
+          "heightMm": 205.6324,
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "templateId": 6,
+      "name": "ন্যাশনাল ইলেকট্রিক",
+      "variant": "দুই কপি; খালি মূল অংশ",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 0.0,
+          "topMm": 0.0,
+          "widthMm": 166.9066,
+          "heightMm": 128.1183,
+          "rotation": 270,
+          "contentOffsetTopMm": 6.8
+        },
+        {
+          "leftMm": 0.0,
+          "topMm": 133.0264,
+          "widthMm": 166.9066,
+          "heightMm": 128.1183,
+          "rotation": 270
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "templateId": 23,
+      "name": "মেসার্স শফিকুল এন্টারপ্রাইজ",
+      "variant": "গোলাপি; দুই কপি",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 5.9247,
+          "topMm": 7.1083,
+          "widthMm": 202.1161,
+          "heightMm": 116.7789,
+          "rotation": 90
+        },
+        {
+          "leftMm": 4.0626,
+          "topMm": 133.0264,
+          "widthMm": 202.1161,
+          "heightMm": 116.7789,
+          "rotation": 90
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "templateId": 24,
+      "name": "আলিফ আর্ট এন্ড স্ক্রীন প্রিন্ট",
+      "variant": "এক কপি",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 0.0,
+          "topMm": 0.0,
+          "widthMm": 177.4017,
+          "heightMm": 237.4504,
+          "rotation": 270
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "templateId": 23,
+      "name": "মেসার্স শফিকুল এন্টারপ্রাইজ",
+      "variant": "সাদাকালো; দুই কপি",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 5.9247,
+          "topMm": 7.1083,
+          "widthMm": 202.1161,
+          "heightMm": 116.7789,
+          "rotation": 90
+        },
+        {
+          "leftMm": 4.0626,
+          "topMm": 133.0264,
+          "widthMm": 202.1161,
+          "heightMm": 116.7789,
+          "rotation": 90
+        }
+      ],
+      "grayscale": true
+    },
+    {
+      "id": 26,
+      "templateId": 26,
+      "name": "সূচী ডেকোরেটর এন্ড ইভেন্ট পয়েন্ট",
+      "variant": "দুই কপি; খালি মূল অংশ",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 0.0,
+          "topMm": 0.0,
+          "widthMm": 209.9028,
+          "heightMm": 148.0892,
+          "rotation": 90
+        },
+        {
+          "leftMm": 0.0,
+          "topMm": 149.2739,
+          "widthMm": 209.9028,
+          "heightMm": 147.4122,
+          "rotation": 90
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "templateId": 27,
+      "name": "রংধনু সাইন",
+      "variant": "Bill/Chalan; দুই কপি",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 2.3699,
+          "topMm": 1.8617,
+          "widthMm": 205.6709,
+          "heightMm": 126.4259,
+          "rotation": 90
+        },
+        {
+          "leftMm": 2.0313,
+          "topMm": 133.0264,
+          "widthMm": 205.6709,
+          "heightMm": 126.4259,
+          "rotation": 90
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "templateId": 16,
+      "name": "মেসার্স সিটি স্টেশনারী এন্ড পেপার হাউজ",
+      "variant": "দুই কপি; দ্বিতীয় স্ক্যান",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 20.6517,
+          "topMm": 12.8626,
+          "widthMm": 176.7246,
+          "heightMm": 116.4404,
+          "rotation": 90
+        },
+        {
+          "leftMm": 18.2819,
+          "topMm": 149.2739,
+          "widthMm": 176.7246,
+          "heightMm": 116.4404,
+          "rotation": 90
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "templateId": 8,
+      "name": "বারেক মাংস ঘর",
+      "variant": "সাদাকালো; দুই কপি",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 4.7397,
+          "topMm": 4.7389,
+          "widthMm": 203.301,
+          "heightMm": 134.0419,
+          "rotation": 90
+        },
+        {
+          "leftMm": 0.0,
+          "topMm": 144.1966,
+          "widthMm": 203.301,
+          "heightMm": 134.0419,
+          "rotation": 90
+        }
+      ],
+      "grayscale": true
+    },
+    {
+      "id": 30,
+      "templateId": 30,
+      "name": "চ্যাম্পিয়ন শপিং মল",
+      "variant": "রঙিন; পাশাপাশি দুই কপি",
+      "pageWidthMm": 209.9028,
+      "pageHeightMm": 296.6861,
+      "copies": [
+        {
+          "leftMm": 0.0,
+          "topMm": 0.0,
+          "widthMm": 98.6882,
+          "heightMm": 258.606,
+          "rotation": 0
+        },
+        {
+          "leftMm": 108.6755,
+          "topMm": 0.0,
+          "widthMm": 98.6882,
+          "heightMm": 258.606,
+          "rotation": 0
+        }
+      ]
+    }
+  ]
+}

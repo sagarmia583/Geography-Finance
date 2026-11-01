@@ -1,0 +1,1431 @@
+{
+  "version": 1,
+  "source": {
+    "file": "/voucher-assets/reference.pdf",
+    "sha256": "754887d927eae45ef9e49d95c9cfd2abc1c38157a263a73de675a4649bad7439",
+    "renderDpi": 150
+  },
+  "policy": "Only isolated original logos, decorative header emblems, printed watermark graphics and owner portraits. All voucher structure, headings, contact details, fields and tables are editable HTML/CSS.",
+  "assets": [
+    {
+      "id": "mr",
+      "src": "/voucher-assets/logos/mr.png",
+      "kind": "logo",
+      "sourcePage": 4,
+      "selector": ".logo-mr",
+      "targetPages": [
+        4
+      ],
+      "width": 121,
+      "height": 111,
+      "sha256": "2377235fadabdba470a6027767a7242a193012f7fc01179d4d69e60a35c78584",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          5,
+          47,
+          126,
+          158
+        ],
+        "sourceWidth": 1015,
+        "sourceHeight": 763
+      },
+      "sourcePageBoundsPixels": [
+        113,
+        89,
+        234,
+        200
+      ],
+      "sourcePageBoundsNormalized": [
+        0.0910556,
+        0.05074116,
+        0.18855761,
+        0.11402509
+      ]
+    },
+    {
+      "id": "national",
+      "src": "/voucher-assets/logos/national.png",
+      "kind": "logo",
+      "sourcePage": 6,
+      "selector": ".logo-national",
+      "targetPages": [
+        6,
+        22
+      ],
+      "width": 130,
+      "height": 147,
+      "sha256": "412e6a5dd6e4519139e27d445e5370ac46fc30b262c4f3119cd77da1d90c7fb7",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          28,
+          111,
+          158,
+          258
+        ],
+        "sourceWidth": 1028,
+        "sourceHeight": 1667
+      },
+      "sourcePageBoundsPixels": [
+        91,
+        173,
+        221,
+        320
+      ],
+      "sourcePageBoundsNormalized": [
+        0.07332796,
+        0.0986317,
+        0.17808219,
+        0.18244014
+      ]
+    },
+    {
+      "id": "library",
+      "src": "/voucher-assets/logos/library.png",
+      "kind": "logo",
+      "sourcePage": 7,
+      "selector": ".logo-library",
+      "targetPages": [
+        7
+      ],
+      "width": 101,
+      "height": 98,
+      "sha256": "5954db5d9a1e6d5fa9ddf8ee27e1367ea975dd2af861817087b392f3d959309d",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          25,
+          45,
+          126,
+          143
+        ],
+        "sourceWidth": 785,
+        "sourceHeight": 1194
+      },
+      "sourcePageBoundsPixels": [
+        60,
+        80,
+        161,
+        178
+      ],
+      "sourcePageBoundsNormalized": [
+        0.04834811,
+        0.04561003,
+        0.12973409,
+        0.10148233
+      ]
+    },
+    {
+      "id": "goat-blue",
+      "src": "/voucher-assets/logos/goat-blue.png",
+      "kind": "logo",
+      "sourcePage": 8,
+      "selector": ".logo-goat",
+      "targetPages": [
+        8
+      ],
+      "width": 133,
+      "height": 132,
+      "sha256": "470253d63af0b9239a3943588e2fd21fe153926c12e497ca60fdb261774437a3",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          43,
+          42,
+          176,
+          174
+        ],
+        "sourceWidth": 785,
+        "sourceHeight": 1194
+      },
+      "sourcePageBoundsPixels": [
+        1055,
+        71,
+        1187,
+        204
+      ],
+      "sourcePageBoundsNormalized": [
+        0.85080645,
+        0.040502,
+        0.95725806,
+        0.11637193
+      ]
+    },
+    {
+      "id": "barek-phone",
+      "src": "/voucher-assets/logos/barek-phone.png",
+      "kind": "icon",
+      "sourcePage": 8,
+      "selector": ".source-phone-icon",
+      "targetPages": [
+        8,
+        29
+      ],
+      "width": 38,
+      "height": 62,
+      "sha256": "00a7c19f8df09b7f75415603f13e4b2606d7da4f9f6e55ed868cd4bd7b233aaf",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          500,
+          9,
+          538,
+          71
+        ],
+        "sourceWidth": 785,
+        "sourceHeight": 1194
+      },
+      "sourcePageBoundsPixels": [
+        1158,
+        528,
+        1220,
+        566
+      ],
+      "sourcePageBoundsNormalized": [
+        0.93387097,
+        0.30119795,
+        0.98387097,
+        0.32287507
+      ]
+    },
+    {
+      "id": "mesbah-mb",
+      "src": "/voucher-assets/logos/mesbah-mb.png",
+      "kind": "logo",
+      "sourcePage": 9,
+      "selector": ".logo-mesbah",
+      "targetPages": [
+        9
+      ],
+      "width": 63,
+      "height": 64,
+      "sha256": "d3bd003e6119005c80c034a915269e5cb383377c053a3682ee5866dbe182ab80",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          49,
+          128,
+          112,
+          192
+        ],
+        "sourceWidth": 632,
+        "sourceHeight": 1175
+      },
+      "sourcePageBoundsPixels": [
+        1016,
+        132,
+        1080,
+        195
+      ],
+      "sourcePageBoundsNormalized": [
+        0.8186946,
+        0.07525656,
+        0.87026591,
+        0.11117446
+      ]
+    },
+    {
+      "id": "nirala",
+      "src": "/voucher-assets/logos/nirala.png",
+      "kind": "logo",
+      "sourcePage": 11,
+      "selector": ".logo-nirala",
+      "targetPages": [
+        10,
+        11
+      ],
+      "width": 96,
+      "height": 97,
+      "sha256": "3d05d608c022544d01ef79a2830e471fc8fc719dc96f1fa9fbfd2ce236c89105",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          16,
+          16,
+          112,
+          113
+        ],
+        "sourceWidth": 751,
+        "sourceHeight": 1694
+      },
+      "sourcePageBoundsPixels": [
+        266,
+        44,
+        362,
+        141
+      ],
+      "sourcePageBoundsNormalized": [
+        0.21434327,
+        0.02508552,
+        0.29170024,
+        0.08038769
+      ]
+    },
+    {
+      "id": "sotota",
+      "src": "/voucher-assets/logos/sotota.png",
+      "kind": "logo",
+      "sourcePage": 14,
+      "selector": ".logo-sc",
+      "targetPages": [
+        14
+      ],
+      "width": 101,
+      "height": 107,
+      "sha256": "59e366dfca42a296dc550662df31c56784988828c577fcef5dc9f89a81924086",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          64,
+          52,
+          165,
+          159
+        ],
+        "sourceWidth": 819,
+        "sourceHeight": 1216
+      },
+      "sourcePageBoundsPixels": [
+        59,
+        682,
+        166,
+        783
+      ],
+      "sourcePageBoundsNormalized": [
+        0.0475423,
+        0.38882554,
+        0.13376309,
+        0.44640821
+      ]
+    },
+    {
+      "id": "sugandha",
+      "src": "/voucher-assets/logos/sugandha.png",
+      "kind": "logo",
+      "sourcePage": 17,
+      "selector": ".logo-cutlery",
+      "targetPages": [
+        17
+      ],
+      "width": 73,
+      "height": 61,
+      "sha256": "6e0c00875ffe8accfee3f8b8fa5140f21edc9009758173f3a16adc6a7aca22c9",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          100,
+          120,
+          173,
+          181
+        ],
+        "sourceWidth": 650,
+        "sourceHeight": 1087
+      },
+      "sourcePageBoundsPixels": [
+        203,
+        588,
+        264,
+        661
+      ],
+      "sourcePageBoundsNormalized": [
+        0.16357776,
+        0.33523375,
+        0.21273167,
+        0.37685291
+      ]
+    },
+    {
+      "id": "timber",
+      "src": "/voucher-assets/logos/timber.png",
+      "kind": "logo",
+      "sourcePage": 18,
+      "selector": ".logo-timber",
+      "targetPages": [
+        18
+      ],
+      "width": 91,
+      "height": 92,
+      "sha256": "2d410b3ef4347ad4d48260a54c0d72f975b71bfb493eab2cff41905dd8011b5b",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          103,
+          66,
+          194,
+          158
+        ],
+        "sourceWidth": 1091,
+        "sourceHeight": 1673
+      },
+      "sourcePageBoundsPixels": [
+        103,
+        122,
+        194,
+        214
+      ],
+      "sourcePageBoundsNormalized": [
+        0.08299758,
+        0.0695553,
+        0.15632554,
+        0.12200684
+      ]
+    },
+    {
+      "id": "majeda-msp",
+      "src": "/voucher-assets/logos/majeda-msp.png",
+      "kind": "logo",
+      "sourcePage": 20,
+      "selector": ".logo-national",
+      "targetPages": [
+        20
+      ],
+      "width": 69,
+      "height": 61,
+      "sha256": "f486b2d277c9006dae3946df7adf08bd3af77bf284e41e9d371fac422488b9df",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          37,
+          74,
+          106,
+          135
+        ],
+        "sourceWidth": 777,
+        "sourceHeight": 1250
+      },
+      "sourcePageBoundsPixels": [
+        68,
+        116,
+        137,
+        177
+      ],
+      "sourcePageBoundsNormalized": [
+        0.05483871,
+        0.06617228,
+        0.11048387,
+        0.10096977
+      ]
+    },
+    {
+      "id": "majeda-bkash",
+      "src": "/voucher-assets/logos/majeda-bkash.png",
+      "kind": "logo",
+      "sourcePage": 20,
+      "selector": ".logo-bkash",
+      "targetPages": [
+        20
+      ],
+      "width": 66,
+      "height": 27,
+      "sha256": "ce662051eb5da5c58da01c7a8087186c48fffb1e06d00ff3cb53050b8c9d343e",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          525,
+          40,
+          591,
+          67
+        ],
+        "sourceWidth": 777,
+        "sourceHeight": 1250
+      },
+      "sourcePageBoundsPixels": [
+        556,
+        82,
+        622,
+        109
+      ],
+      "sourcePageBoundsNormalized": [
+        0.4483871,
+        0.04677695,
+        0.5016129,
+        0.06217912
+      ]
+    },
+    {
+      "id": "rihad-owner-left",
+      "src": "/voucher-assets/logos/rihad-owner-left.png",
+      "kind": "portrait",
+      "sourcePage": 21,
+      "selector": ".css-portrait",
+      "targetPages": [
+        21
+      ],
+      "width": 111,
+      "height": 125,
+      "sha256": "48a2e7af18511b8d0e6df700a27a6b708e221a7cd119bb87fbadab1e6128503a",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          18,
+          30,
+          129,
+          155
+        ],
+        "sourceWidth": 791,
+        "sourceHeight": 1215
+      },
+      "sourcePageBoundsPixels": [
+        53,
+        65,
+        164,
+        190
+      ],
+      "sourcePageBoundsNormalized": [
+        0.04274194,
+        0.03707929,
+        0.13225806,
+        0.10838562
+      ],
+      "occurrence": 0
+    },
+    {
+      "id": "rihad-owner-right",
+      "src": "/voucher-assets/logos/rihad-owner-right.png",
+      "kind": "portrait",
+      "sourcePage": 21,
+      "selector": ".css-portrait",
+      "targetPages": [
+        21
+      ],
+      "width": 110,
+      "height": 136,
+      "sha256": "8f29e038bec2e9548862ff695c145cc228d6655f0aad332c7a00a5512e2be046",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          666,
+          18,
+          776,
+          154
+        ],
+        "sourceWidth": 791,
+        "sourceHeight": 1215
+      },
+      "sourcePageBoundsPixels": [
+        701,
+        53,
+        811,
+        189
+      ],
+      "sourcePageBoundsNormalized": [
+        0.56532258,
+        0.03023388,
+        0.65403226,
+        0.10781517
+      ],
+      "occurrence": 1
+    },
+    {
+      "id": "chickens-pink-left",
+      "src": "/voucher-assets/logos/chickens-pink-left.png",
+      "kind": "logo",
+      "sourcePage": 23,
+      "selector": ".logo-chicken",
+      "targetPages": [
+        23
+      ],
+      "width": 145,
+      "height": 96,
+      "sha256": "9760ecf503d8f58528ba584bd0349c5920597bd2c078c12268e6162cced97c13",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          10,
+          98,
+          155,
+          194
+        ],
+        "sourceWidth": 690,
+        "sourceHeight": 1194
+      },
+      "sourcePageBoundsPixels": [
+        1035,
+        52,
+        1131,
+        197
+      ],
+      "sourcePageBoundsNormalized": [
+        0.83467742,
+        0.02966343,
+        0.91209677,
+        0.11237878
+      ],
+      "occurrence": 0
+    },
+    {
+      "id": "chickens-pink-right",
+      "src": "/voucher-assets/logos/chickens-pink-right.png",
+      "kind": "logo",
+      "sourcePage": 23,
+      "selector": ".logo-chicken",
+      "targetPages": [
+        23
+      ],
+      "width": 149,
+      "height": 97,
+      "sha256": "58b29d791a869f135e591d6bd285c72fc7d0d759752e9d53975cef7c16b55d7c",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          523,
+          97,
+          672,
+          194
+        ],
+        "sourceWidth": 690,
+        "sourceHeight": 1194
+      },
+      "sourcePageBoundsPixels": [
+        1035,
+        565,
+        1132,
+        714
+      ],
+      "sourcePageBoundsNormalized": [
+        0.83467742,
+        0.32230462,
+        0.91290323,
+        0.40730177
+      ],
+      "occurrence": 1
+    },
+    {
+      "id": "alif-phone",
+      "src": "/voucher-assets/logos/alif-phone.png",
+      "kind": "icon",
+      "sourcePage": 24,
+      "selector": ".logo-leaf",
+      "targetPages": [
+        24
+      ],
+      "width": 59,
+      "height": 57,
+      "sha256": "7b340db7e5a6071d0fbeb0b407ad11f5cad93d20e33087c557bdfd62dd5c8cad",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          1103,
+          157,
+          1162,
+          214
+        ],
+        "sourceWidth": 1403,
+        "sourceHeight": 1048
+      },
+      "sourcePageBoundsPixels": [
+        157,
+        241,
+        214,
+        300
+      ],
+      "sourcePageBoundsNormalized": [
+        0.1266129,
+        0.13747861,
+        0.17258065,
+        0.1711352
+      ],
+      "processing": "isolate-white-on-green"
+    },
+    {
+      "id": "chickens-black-left",
+      "src": "/voucher-assets/logos/chickens-black-left.png",
+      "kind": "logo",
+      "sourcePage": 25,
+      "selector": ".logo-chicken",
+      "targetPages": [
+        25
+      ],
+      "width": 145,
+      "height": 96,
+      "sha256": "7acc9d64de741dc5a38ee0d07ade28c8a269549f85c34e8d1b925c93f3bc0015",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          10,
+          98,
+          155,
+          194
+        ],
+        "sourceWidth": 690,
+        "sourceHeight": 1194
+      },
+      "sourcePageBoundsPixels": [
+        1035,
+        52,
+        1131,
+        197
+      ],
+      "sourcePageBoundsNormalized": [
+        0.83467742,
+        0.02966343,
+        0.91209677,
+        0.11237878
+      ],
+      "occurrence": 0
+    },
+    {
+      "id": "chickens-black-right",
+      "src": "/voucher-assets/logos/chickens-black-right.png",
+      "kind": "logo",
+      "sourcePage": 25,
+      "selector": ".logo-chicken",
+      "targetPages": [
+        25
+      ],
+      "width": 149,
+      "height": 97,
+      "sha256": "a54d446b4aa912189a3263ef26ad4bc36317d520a3975102d05b6b5711d097ab",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          523,
+          97,
+          672,
+          194
+        ],
+        "sourceWidth": 690,
+        "sourceHeight": 1194
+      },
+      "sourcePageBoundsPixels": [
+        1035,
+        565,
+        1132,
+        714
+      ],
+      "sourcePageBoundsNormalized": [
+        0.83467742,
+        0.32230462,
+        0.91290323,
+        0.40730177
+      ],
+      "occurrence": 1
+    },
+    {
+      "id": "suchi-entrance",
+      "src": "/voucher-assets/logos/suchi-entrance.png",
+      "kind": "illustration",
+      "sourcePage": 26,
+      "selector": ".logo-event",
+      "targetPages": [
+        26
+      ],
+      "width": 109,
+      "height": 102,
+      "sha256": "28f1d0b93fa01c623f0ea88f2c8d688ef01c42dcda233aaf0bb5d0cc3f724f92",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          34,
+          47,
+          143,
+          149
+        ],
+        "sourceWidth": 875,
+        "sourceHeight": 1240
+      },
+      "sourcePageBoundsPixels": [
+        1091,
+        34,
+        1193,
+        143
+      ],
+      "sourcePageBoundsNormalized": [
+        0.87983871,
+        0.01939532,
+        0.96209677,
+        0.08157444
+      ],
+      "occurrence": 0
+    },
+    {
+      "id": "suchi-stage",
+      "src": "/voucher-assets/logos/suchi-stage.png",
+      "kind": "illustration",
+      "sourcePage": 26,
+      "selector": ".logo-event",
+      "targetPages": [
+        26
+      ],
+      "width": 110,
+      "height": 87,
+      "sha256": "33e1c9400deca6c62a1253b40af2edf17718866a4c6bc542b62c3ed004f8b153",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          684,
+          55,
+          794,
+          142
+        ],
+        "sourceWidth": 875,
+        "sourceHeight": 1240
+      },
+      "sourcePageBoundsPixels": [
+        1098,
+        684,
+        1185,
+        794
+      ],
+      "sourcePageBoundsNormalized": [
+        0.88548387,
+        0.39018825,
+        0.95564516,
+        0.45293782
+      ],
+      "occurrence": 1
+    },
+    {
+      "id": "goat-black",
+      "src": "/voucher-assets/logos/goat-black.png",
+      "kind": "logo",
+      "sourcePage": 29,
+      "selector": ".logo-goat",
+      "targetPages": [
+        29
+      ],
+      "width": 133,
+      "height": 132,
+      "sha256": "5f69c8361685d02d30f3d2ba30d7cb13ef9a0d2e0ab4754237f8cbb4efbce8ec",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          43,
+          42,
+          176,
+          174
+        ],
+        "sourceWidth": 792,
+        "sourceHeight": 1201
+      },
+      "sourcePageBoundsPixels": [
+        1055,
+        71,
+        1187,
+        204
+      ],
+      "sourcePageBoundsNormalized": [
+        0.85080645,
+        0.040502,
+        0.95725806,
+        0.11637193
+      ]
+    },
+    {
+      "id": "volvo",
+      "src": "/voucher-assets/logos/volvo.png",
+      "kind": "logo",
+      "sourcePage": 4,
+      "selector": ".footer-brands",
+      "targetPages": [
+        4
+      ],
+      "width": 155,
+      "height": 55,
+      "sha256": "d78258fef4794c0e3f9526ca43440cf812eebb8e75b118002d70f6d79b34b276",
+      "crop": {
+        "space": "source-page",
+        "bounds": [
+          130,
+          1635,
+          285,
+          1690
+        ],
+        "sourceWidth": 1241,
+        "sourceHeight": 1754
+      },
+      "sourcePageBoundsPixels": [
+        130,
+        1635,
+        285,
+        1690
+      ],
+      "sourcePageBoundsNormalized": [
+        0.10475423,
+        0.93215507,
+        0.22965351,
+        0.96351197
+      ],
+      "group": "battery-footer"
+    },
+    {
+      "id": "utl-ips",
+      "src": "/voucher-assets/logos/utl-ips.png",
+      "kind": "logo",
+      "sourcePage": 4,
+      "selector": ".footer-brands",
+      "targetPages": [
+        4
+      ],
+      "width": 141,
+      "height": 81,
+      "sha256": "8679f0af5822019b7068079c5d2f216466f79f3bb90ef407a61b6060a00a087c",
+      "crop": {
+        "space": "source-page",
+        "bounds": [
+          285,
+          1624,
+          426,
+          1705
+        ],
+        "sourceWidth": 1241,
+        "sourceHeight": 1754
+      },
+      "sourcePageBoundsPixels": [
+        285,
+        1624,
+        426,
+        1705
+      ],
+      "sourcePageBoundsNormalized": [
+        0.22965351,
+        0.92588369,
+        0.34327156,
+        0.97206385
+      ],
+      "group": "battery-footer"
+    },
+    {
+      "id": "microtek",
+      "src": "/voucher-assets/logos/microtek.png",
+      "kind": "logo",
+      "sourcePage": 4,
+      "selector": ".footer-brands",
+      "targetPages": [
+        4
+      ],
+      "width": 156,
+      "height": 57,
+      "sha256": "a7b653c495543a11e1c6cc576195eb207a76827068faf955df8b8c087d2be17c",
+      "crop": {
+        "space": "source-page",
+        "bounds": [
+          426,
+          1633,
+          582,
+          1690
+        ],
+        "sourceWidth": 1241,
+        "sourceHeight": 1754
+      },
+      "sourcePageBoundsPixels": [
+        426,
+        1633,
+        582,
+        1690
+      ],
+      "sourcePageBoundsNormalized": [
+        0.34327156,
+        0.93101482,
+        0.46897663,
+        0.96351197
+      ],
+      "group": "battery-footer"
+    },
+    {
+      "id": "apollo",
+      "src": "/voucher-assets/logos/apollo.png",
+      "kind": "logo",
+      "sourcePage": 4,
+      "selector": ".footer-brands",
+      "targetPages": [
+        4
+      ],
+      "width": 143,
+      "height": 81,
+      "sha256": "af3475aa19f8a74feba95c34d05ab1d1dd3b96d72c6d1ed2f5d83fe7db58fe5e",
+      "crop": {
+        "space": "source-page",
+        "bounds": [
+          597,
+          1630,
+          740,
+          1711
+        ],
+        "sourceWidth": 1241,
+        "sourceHeight": 1754
+      },
+      "sourcePageBoundsPixels": [
+        597,
+        1630,
+        740,
+        1711
+      ],
+      "sourcePageBoundsNormalized": [
+        0.48106366,
+        0.92930445,
+        0.59629331,
+        0.97548461
+      ],
+      "group": "battery-footer"
+    },
+    {
+      "id": "saif",
+      "src": "/voucher-assets/logos/saif.png",
+      "kind": "logo",
+      "sourcePage": 4,
+      "selector": ".footer-brands",
+      "targetPages": [
+        4
+      ],
+      "width": 186,
+      "height": 49,
+      "sha256": "87778a127092ae431a8a1bafac3b0e8227203fcb3c9fbb27ce2ccd02471eea5e",
+      "crop": {
+        "space": "source-page",
+        "bounds": [
+          740,
+          1641,
+          926,
+          1690
+        ],
+        "sourceWidth": 1241,
+        "sourceHeight": 1754
+      },
+      "sourcePageBoundsPixels": [
+        740,
+        1641,
+        926,
+        1690
+      ],
+      "sourcePageBoundsNormalized": [
+        0.59629331,
+        0.93557583,
+        0.74617244,
+        0.96351197
+      ],
+      "group": "battery-footer"
+    },
+    {
+      "id": "expo",
+      "src": "/voucher-assets/logos/expo.png",
+      "kind": "logo",
+      "sourcePage": 4,
+      "selector": ".footer-brands",
+      "targetPages": [
+        4
+      ],
+      "width": 185,
+      "height": 80,
+      "sha256": "f73e1378f67148bdfe041b68a0b2d691da83bec99c421c027b0eafe14eecb0e9",
+      "crop": {
+        "space": "source-page",
+        "bounds": [
+          926,
+          1625,
+          1111,
+          1705
+        ],
+        "sourceWidth": 1241,
+        "sourceHeight": 1754
+      },
+      "sourcePageBoundsPixels": [
+        926,
+        1625,
+        1111,
+        1705
+      ],
+      "sourcePageBoundsNormalized": [
+        0.74617244,
+        0.92645382,
+        0.89524577,
+        0.97206385
+      ],
+      "group": "battery-footer"
+    },
+    {
+      "id": "sotota-watermark",
+      "src": "/voucher-assets/logos/sotota-watermark.png",
+      "kind": "watermark",
+      "sourcePage": 14,
+      "selector": ".watermark-sotota",
+      "targetPages": [
+        14
+      ],
+      "width": 462,
+      "height": 417,
+      "sha256": "6875f802cae60e14dfa5b5b27f6db7de4ed46ac8a5e8a0a1431137b5ded52666",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          174,
+          453,
+          636,
+          870
+        ],
+        "sourceWidth": 819,
+        "sourceHeight": 1216
+      },
+      "sourcePageBoundsPixels": [
+        460,
+        211,
+        877,
+        673
+      ],
+      "sourcePageBoundsNormalized": [
+        0.37066882,
+        0.12029647,
+        0.70668815,
+        0.38369441
+      ],
+      "processing": "isolate-pale-blue-ink"
+    },
+    {
+      "id": "library-watermark",
+      "src": "/voucher-assets/logos/library-watermark.png",
+      "kind": "watermark",
+      "sourcePage": 7,
+      "selector": ".watermark-seal",
+      "targetPages": [
+        7
+      ],
+      "width": 392,
+      "height": 367,
+      "sha256": "b6a45bc48882e2621ce2939379c0a50368554a9750a88fc97d4e49cc8b48f813",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          93,
+          500,
+          485,
+          867
+        ],
+        "sourceWidth": 785,
+        "sourceHeight": 1194
+      },
+      "sourcePageBoundsPixels": [
+        128,
+        535,
+        520,
+        902
+      ],
+      "sourcePageBoundsNormalized": [
+        0.10314263,
+        0.3050171,
+        0.41901692,
+        0.51425314
+      ],
+      "processing": "clean-printed-watermark",
+      "ink": "blue",
+      "ruleLimit": 150
+    },
+    {
+      "id": "chefat-watermark",
+      "src": "/voucher-assets/logos/chefat-watermark.png",
+      "kind": "watermark",
+      "sourcePage": 13,
+      "selector": ".watermark-seal",
+      "targetPages": [
+        13
+      ],
+      "width": 353,
+      "height": 369,
+      "sha256": "a5dba6b306ddece2e58a4ede1a36313007d487f6edd5a8595677de660bdf7265",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          158,
+          445,
+          511,
+          814
+        ],
+        "sourceWidth": 623,
+        "sourceHeight": 1081
+      },
+      "sourcePageBoundsPixels": [
+        298,
+        193,
+        667,
+        546
+      ],
+      "sourcePageBoundsNormalized": [
+        0.24012893,
+        0.11003421,
+        0.53746978,
+        0.31128848
+      ],
+      "processing": "clean-printed-watermark",
+      "ink": "rose",
+      "ruleLimit": 150
+    },
+    {
+      "id": "sugandha-watermark",
+      "src": "/voucher-assets/logos/sugandha-watermark.png",
+      "kind": "watermark",
+      "sourcePage": 17,
+      "selector": ".watermark-ring",
+      "targetPages": [
+        17
+      ],
+      "width": 282,
+      "height": 230,
+      "sha256": "e4dd8341560a6debb15641f0b422a0edf4be181ae65f5486f9dfdbcfdffe59f5",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          193,
+          526,
+          475,
+          756
+        ],
+        "sourceWidth": 650,
+        "sourceHeight": 1087
+      },
+      "sourcePageBoundsPixels": [
+        609,
+        286,
+        839,
+        568
+      ],
+      "sourcePageBoundsNormalized": [
+        0.49073328,
+        0.16305587,
+        0.67606769,
+        0.32383124
+      ],
+      "processing": "clean-printed-watermark",
+      "ink": "gray-seal",
+      "ruleLimit": 140
+    },
+    {
+      "id": "alif-watermark",
+      "src": "/voucher-assets/logos/alif-watermark.png",
+      "kind": "watermark",
+      "sourcePage": 24,
+      "selector": ".watermark-alif",
+      "targetPages": [
+        24
+      ],
+      "width": 485,
+      "height": 405,
+      "sha256": "1be3e22416e5039c72aed82758bfd59c4cd80fdafcf133b0f5c03726ce905b96",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          225,
+          465,
+          710,
+          870
+        ],
+        "sourceWidth": 1403,
+        "sourceHeight": 1048
+      },
+      "sourcePageBoundsPixels": [
+        465,
+        693,
+        870,
+        1178
+      ],
+      "sourcePageBoundsNormalized": [
+        0.375,
+        0.3953223,
+        0.7016129,
+        0.67199087
+      ],
+      "processing": "clean-printed-watermark",
+      "ink": "green",
+      "ruleLimit": 150
+    },
+    {
+      "id": "mesbah-watermark",
+      "src": "/voucher-assets/logos/mesbah-watermark.png",
+      "kind": "watermark",
+      "sourcePage": 9,
+      "selector": ".table-block .watermark",
+      "targetPages": [
+        9
+      ],
+      "width": 371,
+      "height": 466,
+      "sha256": "d994c4cec1184b16761d5755b1f8e83ff4f1a65284e8c23cc219bd4b421e129c",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          139,
+          452,
+          510,
+          918
+        ],
+        "sourceWidth": 632,
+        "sourceHeight": 1175
+      },
+      "sourcePageBoundsPixels": [
+        290,
+        222,
+        756,
+        593
+      ],
+      "sourcePageBoundsNormalized": [
+        0.23368251,
+        0.12656784,
+        0.60918614,
+        0.33808438
+      ],
+      "processing": "clean-printed-watermark",
+      "ink": "gray",
+      "ruleLimit": 150
+    },
+    {
+      "id": "ma-calculator-watermark",
+      "src": "/voucher-assets/logos/ma-calculator-watermark.png",
+      "kind": "watermark",
+      "sourcePage": 19,
+      "selector": ".watermark-calculator",
+      "targetPages": [
+        19
+      ],
+      "width": 168,
+      "height": 149,
+      "sha256": "e07d2fcacb73df73483a49d4dcfb7eac08f8c347b676a429825289614be5ba72",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          176,
+          605,
+          344,
+          754
+        ],
+        "sourceWidth": 766,
+        "sourceHeight": 1230
+      },
+      "sourcePageBoundsPixels": [
+        215,
+        674,
+        383,
+        823
+      ],
+      "sourcePageBoundsNormalized": [
+        0.1733871,
+        0.38448374,
+        0.30887097,
+        0.46948089
+      ],
+      "processing": "clean-printed-watermark",
+      "ink": "gray",
+      "ruleLimit": 120
+    },
+    {
+      "id": "rihad-fish-watermark",
+      "src": "/voucher-assets/logos/rihad-fish-watermark.png",
+      "kind": "watermark",
+      "sourcePage": 21,
+      "selector": ".watermark-fish",
+      "targetPages": [
+        21
+      ],
+      "width": 554,
+      "height": 541,
+      "sha256": "bbf379458b06cd32d000e3e08c637eb1ac56797d61a9002f6dff148d1452a79e",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          211,
+          511,
+          765,
+          1052
+        ],
+        "sourceWidth": 791,
+        "sourceHeight": 1215
+      },
+      "sourcePageBoundsPixels": [
+        246,
+        546,
+        800,
+        1087
+      ],
+      "sourcePageBoundsNormalized": [
+        0.1983871,
+        0.31146606,
+        0.64516129,
+        0.62007986
+      ],
+      "processing": "clean-printed-watermark",
+      "ink": "green",
+      "ruleLimit": 135
+    },
+    {
+      "id": "shafikul-chickens-pink-watermark",
+      "src": "/voucher-assets/logos/shafikul-chickens-pink-watermark.png",
+      "kind": "watermark",
+      "sourcePage": 23,
+      "selector": ".watermark-chicken",
+      "targetPages": [
+        23
+      ],
+      "width": 343,
+      "height": 236,
+      "sha256": "91eb2b7978c83a58b1a7984d57f0ccac6730a684cc770cfe1643c8b3103ca8fb",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          136,
+          632,
+          479,
+          868
+        ],
+        "sourceWidth": 690,
+        "sourceHeight": 1194
+      },
+      "sourcePageBoundsPixels": [
+        361,
+        178,
+        597,
+        521
+      ],
+      "sourcePageBoundsNormalized": [
+        0.29112903,
+        0.10154022,
+        0.48145161,
+        0.29720479
+      ],
+      "processing": "clean-printed-watermark",
+      "ink": "pink",
+      "ruleLimit": 170
+    },
+    {
+      "id": "shafikul-chickens-black-watermark",
+      "src": "/voucher-assets/logos/shafikul-chickens-black-watermark.png",
+      "kind": "watermark",
+      "sourcePage": 25,
+      "selector": ".watermark-chicken",
+      "targetPages": [
+        25
+      ],
+      "width": 343,
+      "height": 236,
+      "sha256": "f13aa5b3211c16c244b4ea75ce5b074011dc487af2d813b53178e0380617b843",
+      "crop": {
+        "space": "upright-voucher",
+        "bounds": [
+          136,
+          632,
+          479,
+          868
+        ],
+        "sourceWidth": 690,
+        "sourceHeight": 1194
+      },
+      "sourcePageBoundsPixels": [
+        361,
+        178,
+        597,
+        521
+      ],
+      "sourcePageBoundsNormalized": [
+        0.29112903,
+        0.10154022,
+        0.48145161,
+        0.29720479
+      ],
+      "processing": "clean-printed-watermark",
+      "ink": "gray",
+      "ruleLimit": 130
+    }
+  ],
+  "notes": [
+    "Rangdhanu's geometric banner and editable shop title are native HTML/CSS; no wide header image is exported.",
+    "Sotota watermark retains the pale printed artwork with dark scan table rules and paper omitted; narrow interruptions from overlapping original rules remain.",
+    "Other pale printed watermark artwork is isolated on transparency; narrow overlapping original table rules are removed using local pixel interpolation. No handwritten marks or signatures are exported.",
+    "All logo resolution is limited by the compressed source scan. PNG outputs retain its original pixels without inventing detail."
+  ]
+}

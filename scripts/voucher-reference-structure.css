@@ -1,0 +1,267 @@
+/* Source page 4: open words area under the grid; only the last two
+   columns continue into the total box. The PDF uses dotted writing rules. */
+.voucher-native[data-template-page="page-04"] .canvas > .rule {
+  background: transparent !important;
+  height: 1px !important;
+  border-top: 1px dotted #202020;
+}
+.voucher-native[data-template-page="page-04"] [data-key="p4.label.95"],
+.voucher-native[data-template-page="page-04"] [data-key="p4.label.109"] {
+  text-align: center;
+}
+.voucher-native[data-template-page="page-04"] .signature {
+  border-top: 0;
+  text-align: left;
+}
+.voucher-native[data-template-page="page-04"] [data-key="p4.label.96"]::after,
+.voucher-native[data-template-page="page-04"] [data-key="p4.label.110"]::after {
+  content: "";
+  position: absolute;
+  left: 96px;
+  right: 12px;
+  bottom: 11px;
+  border-bottom: 1px dotted #202020;
+  pointer-events: none;
+}
+.voucher-native[data-template-page="page-04"] [data-key="p4.label.97"],
+.voucher-native[data-template-page="page-04"] [data-key="p4.label.111"] {
+  text-align: right;
+}
+.voucher-native[data-template-page="page-04"] [data-key="p4.label.97"]::before,
+.voucher-native[data-template-page="page-04"] [data-key="p4.label.111"]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 36px;
+  bottom: 4px;
+  border-bottom: 1px dotted #202020;
+  pointer-events: none;
+}
+.voucher-native[data-template-page="page-04"] .table-block .th {
+  background: #720102 !important;
+}
+.voucher-native[data-template-page="page-04"] .brand-battery {
+  background: linear-gradient(
+    90deg,
+    #21b4d0 0 10%,
+    #d3c845 10% 15%,
+    #69c650 15% 90%,
+    #d3c845 90% 95%,
+    #7acb5d 95% 100%
+  ) !important;
+}
+.voucher-native[data-template-page="page-04"] .footer-brands {
+  top: 1310px !important;
+}
+.voucher-native[data-template-page="page-04"] [data-key="p4.label.114"] {
+  top: 1385px;
+}
+/* Match Majeda's measured table rectangle while retaining the independently
+   positioned header and signatures. The complete grid scales uniformly. */
+.voucher-native[data-template-page="page-20"] .table-block {
+  top: 344px !important;
+  transform: scale(1.02);
+  transform-origin: 0 0;
+}
+.voucher-native[data-template-page="page-19"] .table-block {
+  top: 377px !important;
+  transform: scale(1.027);
+  transform-origin: 0 0;
+}
+/* Prevent line wrapping/cropping in the reference's narrow label boxes. */
+.voucher-native [data-key="p4.label.87"],
+.voucher-native [data-key="p4.label.101"] {
+  font-size: 14px !important;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.voucher-native [data-key="p11.label.283"] {
+  font-size: 18px !important;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.voucher-native [data-key="p11.label.336"] {
+  font-size: 17px !important;
+  line-height: 1.2;
+}
+.voucher-native [data-key="p9.label.245"],
+.voucher-native [data-key="p9.label.246"],
+.voucher-native [data-key="p9.label.274"],
+.voucher-native [data-key="p9.label.275"] {
+  top: 656px !important;
+  height: 20px !important;
+  line-height: 1.2;
+}
+.voucher-native [data-key="p3.label.73"],
+.voucher-native [data-key="p3.label.74"] {
+  top: 1353px !important;
+}
+.voucher-native [data-key="p3.label.75"] {
+  top: 1351px !important;
+}
+.voucher-native [data-key="p8.label.184"],
+.voucher-native [data-key="p8.label.198"],
+.voucher-native [data-key="p8.label.184"] .native-text-content,
+.voucher-native [data-key="p8.label.198"] .native-text-content {
+  white-space: nowrap;
+}
+.voucher-native [data-key="p13.label.400"] {
+  font-size: 9px !important;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.voucher-native [data-key="p16.label.495"] {
+  font-size: 20px !important;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.voucher-native [data-key="p16.label.503"] {
+  font-size: 19px !important;
+  line-height: 1.2;
+}
+.voucher-native [data-key="p24.label.819"] {
+  top: 555px !important;
+  height: 19px !important;
+}
+.voucher-native [data-key="p24.label.820"] {
+  top: 550px !important;
+  height: 24px !important;
+}
+.voucher-native:is(#page-26, [data-template-page="page-26"]) .deco .piece.pill {
+  color: #fff !important;
+  background: #241744 !important;
+}
+.voucher-native:is(#page-26, [data-template-page="page-26"]) .deco [data-key="p26.label.825"],
+.voucher-native:is(#page-26, [data-template-page="page-26"]) .deco [data-key="p26.label.826"],
+.voucher-native:is(#page-26, [data-template-page="page-26"]) .deco [data-key="p26.label.832"],
+.voucher-native:is(#page-26, [data-template-page="page-26"]) .deco [data-key="p26.label.833"] {
+  color: #cf286b !important;
+}
+.voucher-native [data-key="p23.label.764"],
+.voucher-native [data-key="p23.label.797"] {
+  text-align: right !important;
+}
+.voucher-native [data-key="p19.label.593"] {
+  left: 195px !important;
+  width: 110px !important;
+}
+.voucher-native [data-key="p19.label.608"] {
+  left: 410px !important;
+  width: 50px !important;
+  text-align: center !important;
+  justify-content: center !important;
+}
+.voucher-native[data-template-page="page-19"] .fieldline:has(> [data-field="p19.copy0.name"]) {
+  top: 291px !important;
+  height: 38px !important;
+}
+.voucher-native[data-template-page="page-19"] .fieldline:has(> [data-field="p19.copy0.address"]) {
+  top: 334px !important;
+  height: 37px !important;
+}
+.voucher-native[data-template-page="page-19"] .fieldline:has(> [data-field="p19.copy0.date"]) {
+  top: 251px !important;
+  height: 36px !important;
+  --tag: 55px !important;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) [data-key="p19.label.598"] {
+  top: 25px !important;
+}
+.voucher-native[data-template-page="page-24"] .source-alif-serial-label {
+  color: #fff !important;
+}
+.voucher-native[data-template-page="page-19"] [data-key="p19.label.601"],
+.voucher-native[data-template-page="page-19"] [data-key="p19.copy0.serial"] {
+  top: 251px !important;
+}
+
+/* Keep the three phone lines above National's title instead of sharing its
+   first four pixels. The complete contact block remains inside the crop. */
+.voucher-native:is(#page-06, [data-template-page="page-06"]) [data-key="p6.label.137"] {
+  top: -4px !important;
+  height: 52px !important;
+}
+
+/* Printed footer captions must fit inside the cut area after centering text. */
+.voucher-native [data-key="p17.label.548"] {
+  top: 608px !important;
+  height: 20px !important;
+}
+.voucher-native [data-key="p17.copy0.words"] {
+  top: 607px !important;
+  height: 20px !important;
+}
+.voucher-native [data-key="p17.label.580"] {
+  top: 611px !important;
+  height: 20px !important;
+}
+.voucher-native [data-key="p17.copy1.words"] {
+  top: 610px !important;
+  height: 20px !important;
+}
+.voucher-native [data-key="p17.label.549"],
+.voucher-native [data-key="p17.label.550"] {
+  top: 638px !important;
+  height: 20px !important;
+}
+.voucher-native [data-key="p17.label.581"],
+.voucher-native [data-key="p17.label.582"] {
+  top: 641px !important;
+  height: 20px !important;
+}
+.voucher-native [data-key="p21.label.717"],
+.voucher-native [data-key="p21.label.718"] {
+  top: 976px !important;
+  height: 24px !important;
+}
+
+/* Three separate service/address lines and a separate phone/email stack. */
+.voucher-native:is(#page-24, [data-template-page="page-24"]) [data-key="p24.label.798"] {
+  top: 10px !important;
+  height: 18px !important;
+}
+.voucher-native:is(#page-24, [data-template-page="page-24"]) [data-key="p24.label.799"] {
+  top: 32px !important;
+  height: 50px !important;
+}
+.voucher-native:is(#page-24, [data-template-page="page-24"]) [data-key="p24.label.800"] {
+  top: 85px !important;
+  height: 18px !important;
+}
+.voucher-native:is(#page-24, [data-template-page="page-24"]) [data-key="p24.label.801"] {
+  top: 105px !important;
+  height: 18px !important;
+}
+.voucher-native:is(#page-24, [data-template-page="page-24"]) [data-key="p24.label.802"] {
+  top: 125px !important;
+  height: 18px !important;
+}
+.voucher-native:is(#page-24, [data-template-page="page-24"]) [data-key="p24.label.803"] {
+  top: 58px !important;
+  height: 21px !important;
+}
+.voucher-native:is(#page-24, [data-template-page="page-24"]) [data-key="p24.label.804"] {
+  top: 82px !important;
+  height: 43px !important;
+  font-size: 14px !important;
+}
+.voucher-native:is(#page-24, [data-template-page="page-24"]) [data-key="p24.label.805"] {
+  top: 129px !important;
+  height: 14px !important;
+}
+.voucher-native:is(#page-24, [data-template-page="page-24"]) .alif > .logo {
+  top: 86px !important;
+  height: 32px !important;
+}
+
+/* Leave a visible gap between the two words of Rangdhanu's printed title. */
+.voucher-native:is(#page-27, [data-template-page="page-27"]) .rangdhanu .headline {
+  top: 31px !important;
+  height: 56px !important;
+  font-size: 50px !important;
+}
+.voucher-native [data-key="p27.label.842"],
+.voucher-native [data-key="p27.label.852"] {
+  top: 92px !important;
+  height: 25px !important;
+}
