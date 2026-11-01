@@ -1,0 +1,338 @@
+@import "https://fonts.maateen.me/solaiman-lipi/font.css";
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: "SolaimanLipi", "Kalpurush", "Noto Serif Bengali", sans-serif;
+  --font-serif: "SolaimanLipi", "Kalpurush", "Noto Serif Bengali", serif;
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.985 0.006 106);
+  --foreground: oklch(0.22 0.03 155);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.03 155);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.03 155);
+  --primary: oklch(0.42 0.09 158);
+  --primary-foreground: oklch(0.98 0.01 150);
+  --secondary: oklch(0.945 0.02 150);
+  --secondary-foreground: oklch(0.28 0.05 158);
+  --muted: oklch(0.955 0.012 120);
+  --muted-foreground: oklch(0.48 0.02 150);
+  --accent: oklch(0.9 0.05 90);
+  --accent-foreground: oklch(0.28 0.05 90);
+  --destructive: oklch(0.55 0.19 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.88 0.015 150);
+  --input: oklch(0.88 0.015 150);
+  --ring: oklch(0.42 0.09 158);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  button:hover {
+    filter: brightness(0.92);
+  }
+  button:active {
+    transform: scale(0.96);
+    transition-duration: 0.1s;
+  }
+  button:disabled {
+    filter: none;
+    transform: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@font-face {
+  font-family: "SolaimanLipi";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 100 900;
+  src:
+    local("SolaimanLipi"),
+    local("Solaiman Lipi"),
+    url("https://fonts.maateen.me/solaiman-lipi/SolaimanLipi.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Kalpurush";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 100 900;
+  src:
+    local("Kalpurush"),
+    url("/fonts/kalpurush.woff2") format("woff2"),
+    url("/fonts/kalpurush.ttf") format("truetype"),
+    url("https://fonts.maateen.me/kalpurush/Kalpurush-v0.258.woff2") format("woff2");
+}
+
+@layer base {
+  html {
+    font-family: "SolaimanLipi", "Kalpurush", "Noto Serif Bengali", sans-serif;
+  }
+}
+
+@layer components {
+  .input {
+    border: 1px solid var(--color-input);
+    background: var(--color-card);
+    color: var(--color-foreground);
+    border-radius: var(--radius-md);
+    padding: 0.45rem 0.65rem;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+  .input:focus {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 1px;
+  }
+  .btn-primary,
+  .btn-ghost,
+  .btn-danger {
+    border-radius: var(--radius-md);
+    padding: 0.45rem 0.9rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+  .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+  .btn-ghost {
+    background: var(--color-card);
+    color: var(--color-foreground);
+    border: 1px solid var(--color-border);
+  }
+  .btn-danger {
+    background: transparent;
+    color: var(--color-destructive);
+    border: 1px solid var(--color-destructive);
+  }
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .btn-primary:hover,
+  .btn-ghost:hover,
+  .btn-danger:hover {
+    opacity: 0.85;
+  }
+
+  .voucher-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.935rem;
+    line-height: 1.45;
+  }
+  .voucher-caption {
+    caption-side: top;
+    text-align: left;
+    font-weight: 600;
+    padding-bottom: 0.4rem;
+  }
+  .voucher-table th {
+    border: 1px solid var(--color-foreground);
+    padding: 0.55rem 0.75rem;
+    vertical-align: middle;
+    font-weight: 700;
+  }
+  .voucher-table td {
+    border: 1px solid var(--color-foreground);
+    padding: 0.5rem 0.75rem;
+    vertical-align: middle;
+  }
+  .voucher-table thead th {
+    background: var(--color-secondary);
+    font-weight: 700;
+    text-align: center !important;
+  }
+  .voucher-table tfoot td {
+    background: var(--color-muted);
+  }
+  .voucher-table .num {
+    text-align: right !important;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    padding-right: 0.75rem !important;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 10mm;
+}
+
+@media print {
+  body, html {
+    font-family: "SolaimanLipi", "Kalpurush", "Noto Serif Bengali", sans-serif !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .print-page {
+    font-family: "SolaimanLipi", "Kalpurush", "Noto Serif Bengali", sans-serif !important;
+    page-break-after: always;
+    break-after: page;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .voucher-table th {
+    padding: 0.45rem 0.65rem !important;
+    font-size: 0.9rem !important;
+  }
+  .voucher-table thead th {
+    text-align: center !important;
+  }
+  .voucher-table td {
+    padding: 0.42rem 0.65rem !important;
+    font-size: 0.9rem !important;
+  }
+  .print-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+  .verified-watermark {
+    display: flex !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .hidden-on-print,
+  .print\:hidden,
+  .ratio,
+  .ratio-badge,
+  [data-ratio] {
+    display: none !important;
+  }
+}
+
+/* Hide Lovable logo/badge */
+[id^="lovable"] {
+  display: none !important;
+}
