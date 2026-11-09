@@ -18,7 +18,7 @@ Local development server পুনরায় চালান: `npm run dev -- --h
 
 এই সুবিধার জন্য বর্তমান GS কোড একবার deploy করুন: `node scripts/build-apps-script-paste-ready.mjs` চালিয়ে `.security/GoogleAppsScript_PasteReady.gs`-এর সম্পূর্ণ কোড বসান, তারপর **Manage deployments → Edit → New version → Deploy** করুন। Website-এর নতুন code-ও ব্যবহার করতে হবে। পুরোনো GS version-এ password-state action নেই, তাই নতুন website-এর login-ও কাজ করবে না; আগে GS update করুন।
 
-লগইন করে হোমপেজের **পাসওয়ার্ড পরিবর্তন** চাপুন। বর্তমান পাসওয়ার্ড, কমপক্ষে ১২ অক্ষরের আলাদা নতুন পাসওয়ার্ড এবং নতুন পাসওয়ার্ডের confirmation দিন। সফল হলে সব ডিভাইসে নতুন করে login করতে হবে; server restart বা প্রতিবার GS deploy দরকার নেই।
+লগইন করে হোমপেজের **পাসওয়ার্ড পরিবর্তন** চাপুন। বর্তমান পাসওয়ার্ড, কমপক্ষে ৬ অক্ষরের আলাদা নতুন পাসওয়ার্ড এবং নতুন পাসওয়ার্ডের confirmation দিন। সফল হলে সব ডিভাইসে নতুন করে login করতে হবে; server restart বা প্রতিবার GS deploy দরকার নেই।
 
 নতুন পাসওয়ার্ডের salted scrypt hash শুধু trusted backend থেকে Apps Script-এর private Script Properties-এ যায়; browser-এ hash/secret বা Sheet-এ plaintext password রাখা হয় না। প্রতিটি authenticated request-এ সর্বশেষ hash দিয়ে session পরীক্ষা হয়। একই সময়ে দুজন বদলালে lock-এর মধ্যে expected hash মিলিয়ে একটি পরিবর্তনই গ্রহণ করা হয়। Store unavailable বা response invalid হলে পুরোনো environment password দিয়ে fallback login হয় না।
 
@@ -30,7 +30,7 @@ Repository-র terminal-এ চালান:
 npm run security:password
 ```
 
-কমপক্ষে ১২ অক্ষরের নতুন পাসওয়ার্ড দুবার দিন; টাইপ করার সময় দেখা যাবে না। এরপর চলমান local server `Ctrl+C` দিয়ে বন্ধ করে আবার `npm run dev -- --host 0.0.0.0 --port 8080` চালান এবং নতুন পাসওয়ার্ড দিয়ে লগইন করুন। এটি শুধু `.env.local`-এর `APP_PASSWORD_HASH` বদলায়; Google/API/session secrets ও তৈরি করা GS ফাইল একই থাকে। পুরোনো login session আর গ্রহণ করা হবে না। Apps Script আবার deploy করতে হবে না, Sheet-এর Settings tab-এ password বদলালেও login password বদলায় না।
+কমপক্ষে ৬ অক্ষরের নতুন পাসওয়ার্ড দুবার দিন; টাইপ করার সময় দেখা যাবে না। এরপর চলমান local server `Ctrl+C` দিয়ে বন্ধ করে আবার `npm run dev -- --host 0.0.0.0 --port 8080` চালান এবং নতুন পাসওয়ার্ড দিয়ে লগইন করুন। এটি শুধু `.env.local`-এর `APP_PASSWORD_HASH` বদলায়; Google/API/session secrets ও তৈরি করা GS ফাইল একই থাকে। পুরোনো login session আর গ্রহণ করা হবে না। Apps Script আবার deploy করতে হবে না, Sheet-এর Settings tab-এ password বদলালেও login password বদলায় না।
 
 Live hosting-এ ব্যবহার করলে নতুন `APP_PASSWORD_HASH` hosting-এর server environment-এ বসিয়ে website restart/deploy করতে হবে; স্থানীয় কমান্ড নিজে hosting পরিবর্তন করে না। শুধু পাসওয়ার্ডের জন্য `--rotate` ব্যবহার করবেন না; সেটি সব credentials বদলানোর জন্য।
 
