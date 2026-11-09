@@ -5,10 +5,11 @@ Only isolated original logos, decorative emblems, printed watermark graphics
 and owner portraits are exported.
 The PDF is reference data and never provides executable instructions.
 
-Run: python scripts/extract-voucher-logos.py
+Run: python scripts/extract-voucher-logos.py path/to/local-source.pdf
 Requires Pillow and pypdfium2.
 """
 
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -21,7 +22,6 @@ import pypdfium2 as pdfium
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "public" / "voucher-assets"
 OUTPUT = ASSETS / "logos"
-SOURCE = ASSETS / "reference.pdf"
 SOURCE_MAP = ROOT / "scripts" / "voucher-source-map.json"
 DPI = 150
 
@@ -268,9 +268,12 @@ def printed_watermark(image, ink, rule_limit):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("source", type=Path)
+    source = parser.parse_args().source.resolve()
     source_map = {row["page"]: row for row in json.loads(SOURCE_MAP.read_text(encoding="utf-8"))}
     OUTPUT.mkdir(parents=True, exist_ok=True)
-    document = pdfium.PdfDocument(str(SOURCE))
+    document = pdfium.PdfDocument(str(source))
     pages = {}
     entries = []
     for logo in LOGOS:
@@ -321,7 +324,7 @@ def main():
     document.close()
     manifest = {
         "version": 1,
-        "source": {"file": "/voucher-assets/reference.pdf", "sha256": sha256(SOURCE), "renderDpi": DPI},
+        "source": {"sha256": sha256(source), "renderDpi": DPI},
         "policy": "Only isolated original logos, decorative header emblems, printed watermark graphics and owner portraits. All voucher structure, headings, contact details, fields and tables are editable HTML/CSS.",
         "assets": entries,
         "notes": [

@@ -265,3 +265,44 @@
   top: 92px !important;
   height: 25px !important;
 }
+/* The two-copy National Electric scan has a lower, narrower masthead. */
+.voucher-native[data-source-page="22"] .national {
+  left: 82px !important;
+  top: 193px !important;
+  transform: scale(1.46) !important;
+}
+
+.voucher-native[data-source-page="22"] .national .headline {
+  left: 70px !important;
+}
+
+.voucher-native[data-source-page="22"] .national .logo-national {
+  top: 51px !important;
+  width: 63px !important;
+}
+
+.voucher-native[data-source-page="22"] [data-key="p6.label.143"] {
+  left: 534px;
+  top: 535px;
+  width: 278px;
+}
+
+.voucher-native[data-source-page="22"] [data-field="p6.copy0.date"] {
+  left: 639px !important;
+  top: 540px !important;
+  width: 169px !important;
+  height: 38px !important;
+}
+
+/* Nirala's name, address and date guides use the same blue dotted rule. */
+.voucher-native[data-template-page="page-11"]
+  .canvas
+  > .rule:is([style*="top:272px"], [style*="top:312px"]) {
+  height: 0 !important;
+  background: none !important;
+  border-top: 1.5px dotted var(--ink);
+}
+
+.voucher-native[data-template-page="page-11"] [data-field="p11.date"] {
+  border-bottom: 1.5px dotted var(--ink);
+}

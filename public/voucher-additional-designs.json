@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "printSizes": [
+    {
+      "id": 20,
+      "widthMm": 142.24,
+      "heightMm": 210.82,
+      "label": "৫.৬ × ৮.৩ ইঞ্চি"
+    }
+  ],
+  "templates": [
+    {
+      "id": 31,
+      "page": 31,
+      "name": "ইসলাম কম্পিউটার্স",
+      "variant": "৫.৬ × ৮.৫ ইঞ্চি; এক কপি",
+      "copies": 1,
+      "rotation": 0,
+      "pageWidthMm": 210,
+      "pageHeightMm": 297,
+      "voucher": {
+        "widthMm": 142.24,
+        "heightMm": 215.9
+      },
+      "source": {
+        "kind": "image",
+        "file": "Islam Coputer.jpg",
+        "sha256": "8dd79e96c9d72fd8b4c0483e008170194df7a2eb3e50e8e048ceb018045058fd"
+      }
+    }
+  ],
+  "pages": [
+    {
+      "id": 31,
+      "templateId": 31,
+      "name": "ইসলাম কম্পিউটার্স",
+      "pageWidthMm": 210,
+      "pageHeightMm": 297,
+      "copies": [
+        {
+          "leftMm": 33.879999999999995,
+          "topMm": 40.55,
+          "widthMm": 142.24,
+          "heightMm": 215.9,
+          "rotation": 0
+        }
+      ]
+    }
+  ],
+  "logos": [
+    {
+      "id": "islam-computers",
+      "src": "/voucher-assets/logos/islam-computers.png",
+      "kind": "logo",
+      "selector": ".logo-islam-computers",
+      "targetPages": [
+        31
+      ],
+      "width": 135,
+      "height": 156,
+      "sha256": "0ec441153a5412c730bfd71315eaade9e4c98171e3e8f85099ff557163706d14",
+      "crop": {
+        "space": "source-image",
+        "bounds": [
+          87,
+          111,
+          222,
+          267
+        ],
+        "sourceWidth": 1686,
+        "sourceHeight": 2554
+      }
+    }
+  ]
+}

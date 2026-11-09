@@ -2,6 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { normalizePrintedText, printedDefaultMatches } from "../public/voucher-studio-content.js";
+import { islamComputersTemplate } from "./voucher-islam-computers.mjs";
+import { additionalDesigns } from "./voucher-additional-designs.mjs";
+import { majedaHorizontalScale, resizeMajedaMarkup } from "./voucher-majeda-size.mjs";
 
 // The calibrated native design grid is the source of truth for the editable
 // artwork. The reference PDF is used separately to extract small logos only.
@@ -62,7 +65,15 @@ function finishPrintedText(markup) {
     // Normalize text nodes, retaining source line breaks and semantic spans.
     const normalized = body
       .split(/(<[^>]*>)/g)
-      .map((part) => (part.startsWith("<") ? part : normalizePrintedText(part)))
+      .map((part, index, parts) => {
+        if (part.startsWith("<")) return part;
+        const text = normalizePrintedText(part);
+        // A separator after an inline label is part of the editable text.
+        // Normalizing each node alone would join the two words together.
+        const followsSpan = /^<\/span>/i.test(parts[index - 1] || "");
+        const followedByText = text || /^<span\b/i.test(parts[index + 1] || "");
+        return followsSpan && /^[ \t]/.test(part) && followedByText ? ` ${text}` : text;
+      })
       .join("");
     const text = plainText(normalized);
     const previous = previousDefaults.get(key);
@@ -126,6 +137,12 @@ const crops = {
   27: [0, 0, 435, 707],
   30: [0, 0, 470, 1230],
 };
+const majedaScale = majedaHorizontalScale(
+  { w: crops[20][2], h: crops[20][3] },
+  additionalDesigns.printSizes?.find((size) => size.id === 20),
+);
+crops[20][0] *= majedaScale;
+crops[20][2] *= majedaScale;
 
 function splitSelectors(value) {
   const result = [];
@@ -279,6 +296,7 @@ const sections = [...source.matchAll(/<section\b[^>]*>[\s\S]*?<\/section>/gi)].m
   }
   markup = correctReferenceText(markup);
   for (const transform of referenceTransforms) markup = transform(markup, page);
+  if (page === 20) markup = resizeMajedaMarkup(markup, majedaScale);
   markup = finishPrintedText(markup);
   return markup;
 });
@@ -369,6 +387,10 @@ css += `\n${fs.readFileSync(path.join(root, "scripts/voucher-text-layout.css"), 
 for (const group of [...referenceGroups, "structure"])
   if (fs.existsSync(path.join(root, `scripts/voucher-reference-${group}.css`)))
     css += `\n${fs.readFileSync(path.join(root, `scripts/voucher-reference-${group}.css`), "utf8")}\n`;
+for (const group of referenceGroups) {
+  const visualCorrections = path.join(root, `scripts/voucher-visual-${group}.css`);
+  if (fs.existsSync(visualCorrections)) css += `\n${fs.readFileSync(visualCorrections, "utf8")}\n`;
+}
 
 const layouts = templateData.map((template) => {
   const [x, y, w, h] = crops[template.id];
@@ -384,6 +406,10 @@ const layouts = templateData.map((template) => {
 
 if (sections.length !== 24 || layouts.length !== 24)
   throw new Error("The source must contain all 24 distinct native designs.");
+sections.push(finishPrintedText(islamComputersTemplate.html));
+const { id, pageId, name, crop, sourceWidth, sourceHeight } = islamComputersTemplate;
+layouts.push({ id, pageId, name, crop, sourceWidth, sourceHeight });
+css += `\n${islamComputersTemplate.css}\n`;
 const editableKeys = sections.flatMap((section) =>
   [...section.matchAll(/\bdata-key="([^"]+)"/g)].map((match) => match[1]),
 );
@@ -408,6 +434,10 @@ fs.writeFileSync(
 fs.writeFileSync(
   path.join(root, "public/voucher-native-layouts.json"),
   `${JSON.stringify(layouts, null, 2)}\n`,
+);
+fs.writeFileSync(
+  path.join(root, "public/voucher-additional-designs.json"),
+  `${JSON.stringify(additionalDesigns, null, 2)}\n`,
 );
 console.log(
   `Created ${sections.length} editable HTML/CSS templates and ${layouts.length} calibrated layouts.`,

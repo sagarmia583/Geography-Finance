@@ -78,7 +78,7 @@ try {
       throw new Error("stdin-এ পাসওয়ার্ড ও confirmation আলাদা দুই লাইনে দিন।");
   }
   const password =
-    supplied[0] ?? (await passwordPrompt("নতুন লগইন পাসওয়ার্ড (কমপক্ষে ১২ অক্ষর; দেখা যাবে না): "));
+    supplied[0] ?? (await passwordPrompt("নতুন লগইন পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর; দেখা যাবে না): "));
   const confirm = supplied[1] ?? (await passwordPrompt("আবার লিখুন: "));
   if (password !== confirm) throw new Error("দুটি পাসওয়ার্ড মেলেনি; কোনো ফাইল বদলানো হয়নি।");
   const passwordHash = await hashPassword(password);

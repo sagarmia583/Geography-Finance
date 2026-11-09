@@ -23,6 +23,15 @@ function editKey(markup, key, changes) {
     changeStyle(tag, changes),
   );
 }
+function separateSourceLine(markup, key, segments) {
+  return markup.replace(
+    new RegExp(`(<div\\b[^>]*\\bdata-key="${escape(key)}"[^>]*>)[\\s\\S]*?(<\\/div>)`),
+    (_line, open, close) =>
+      `${open}<span class="native-text-content source-separated-text">${segments
+        .map((text) => `<span class="source-segment">${text}</span>`)
+        .join(" ")}</span>${close}`,
+  );
+}
 function removeKey(markup, key) {
   return markup.replace(
     new RegExp(`<([a-z]+)\\b[^>]*\\bdata-key="${escape(key)}"[^>]*>[\\s\\S]*?<\\/\\1>`, "g"),
@@ -72,6 +81,11 @@ function appendCanvas(markup, addition) {
 
 export default function referenceStructure(markup, page) {
   if (page === 3) {
+    markup = separateSourceLine(markup, "p3.label.25", [
+      "আল্লাহ",
+      "বিসমিল্লাহির রাহমানির রাহিম",
+      "সর্বশক্তিমান",
+    ]);
     markup = removeKey(markup, "p3.label.72");
   }
   if (page === 5) {
@@ -154,6 +168,9 @@ export default function referenceStructure(markup, page) {
     }
   }
   if (page === 9) {
+    for (const key of ["p9.label.208", "p9.label.213"]) {
+      markup = separateSourceLine(markup, key, ["ক্যাশ মেমো/বিল", "ফোন-০৯২১-৬৩২৩৩, ৬২৬০৮"]);
+    }
     markup = markup.replace(/<div class="logo"/g, '<div class="logo logo-mesbah"');
     markup = tables(markup, (table) => {
       table = rules(table, (tag, box) =>

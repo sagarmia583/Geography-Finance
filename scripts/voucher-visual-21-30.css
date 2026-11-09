@@ -1,0 +1,637 @@
+/* Dimensions measured from the upright PDF copy at the native artwork scale.
+   Wordmark effects are painted on editable Kalpurush text. */
+
+/* 21 — Rihad Fish Supply */
+.voucher-native:is(#page-21, [data-template-page="page-21"]) .fish .headline {
+  left: 65px;
+  top: 12px;
+  width: 366px;
+  height: 50px;
+  font-size: 35px !important;
+  color: #24593a !important;
+  --source-line-ratio: 1.16;
+  --source-text-width: 310px;
+  --source-text-stroke: 1px #f9fcf8;
+  --source-text-shadow: 1.5px 1.5px #9db19d;
+}
+
+.voucher-native:is(#page-21, [data-template-page="page-21"]) .fish .pill.line {
+  left: 150px !important;
+  top: 57px;
+  width: 191px !important;
+  height: 25px;
+  border: 2px solid #306143;
+  background: #e7efe4 !important;
+  color: #285537 !important;
+  font-size: 20px;
+  --source-line-ratio: 1.08;
+  --source-text-width: 172px;
+}
+
+.voucher-native[data-template-page="page-21"] [data-key="p21.label.652"] {
+  top: 83px;
+  height: 23px;
+  font-size: 17px;
+  --source-line-ratio: 1.12;
+  --source-text-width: 258px;
+}
+
+.voucher-native[data-template-page="page-21"] .fish .css-portrait:first-child {
+  left: 5px !important;
+  width: 69px !important;
+  height: 84px !important;
+}
+
+.voucher-native[data-template-page="page-21"] .fish .css-portrait:nth-child(2) {
+  left: 421px !important;
+  top: 2px !important;
+  width: 70px !important;
+  height: 94px !important;
+}
+
+.voucher-native:is(#page-21, [data-template-page="page-21"]) .table-block.light-head .th {
+  color: #28573c !important;
+  font-size: 17px !important;
+  --source-line-ratio: 1.15;
+}
+
+.voucher-native[data-template-page="page-21"] .table-block .cell-label {
+  --source-line-ratio: 1.17;
+}
+
+.voucher-native:is(#page-21, [data-template-page="page-21"]) .table-block .rule {
+  background: #3b754f !important;
+}
+
+.voucher-native[data-template-page="page-21"] [data-key="p21.label.656"] {
+  left: 444px;
+}
+
+.voucher-native[data-template-page="page-21"] [data-key="p21.copy0.date"] {
+  left: 515px !important;
+  width: 143px !important;
+}
+
+.voucher-native:is(#page-21, [data-template-page="page-21"]) [data-key="p21.label.653"] + .rule,
+.voucher-native:is(#page-21, [data-template-page="page-21"]) [data-key="p21.label.654"] + .rule {
+  top: var(--fish-line-y) !important;
+  left: var(--fish-line-x) !important;
+  width: calc(658px - var(--fish-line-x)) !important;
+  height: 0 !important;
+  background: none !important;
+  border-top: 1px dotted #3c7450;
+}
+
+.voucher-native[data-template-page="page-21"] [data-key="p21.label.653"] + .rule {
+  --fish-line-x: 69px;
+  --fish-line-y: 196px;
+}
+
+.voucher-native[data-template-page="page-21"] [data-key="p21.label.654"] + .rule {
+  --fish-line-x: 87px;
+  --fish-line-y: 226px;
+}
+
+.voucher-native[data-template-page="page-21"] [data-key="p21.copy0.name"] {
+  left: 69px !important;
+  top: 177px !important;
+  width: 589px !important;
+  height: 19px !important;
+}
+
+.voucher-native[data-template-page="page-21"] [data-key="p21.copy0.address"] {
+  left: 87px !important;
+  top: 207px !important;
+  width: 571px !important;
+  height: 19px !important;
+}
+
+/* 23/25 — Shafikul, in rose and in black. */
+.voucher-native[data-template-page="page-23"] .poultry,
+.voucher-native[data-template-page="page-23"] .canvas {
+  --ink: #d62d73 !important;
+}
+
+.voucher-native[data-template-page="page-23"].native-monochrome .poultry,
+.voucher-native[data-template-page="page-23"].native-monochrome .canvas {
+  --ink: #121212 !important;
+}
+
+.voucher-native[data-template-page="page-23"] .poultry > .piece:first-child {
+  top: 9px;
+  height: 20px;
+  --source-text-width: 143px;
+}
+
+.voucher-native[data-template-page="page-23"] .poultry .headline {
+  top: 30px;
+  height: 55px;
+  font-size: 43px !important;
+  --source-line-ratio: 1.11;
+  --source-text-width: 392px;
+  --source-text-stroke: 1px #fff8fb;
+  --source-text-shadow: 1.5px 1.4px #edaccc;
+}
+
+.voucher-native[data-template-page="page-23"].native-monochrome .poultry .headline {
+  --source-text-shadow: 1.5px 1.4px #b8b8b8;
+}
+
+.voucher-native[data-template-page="page-23"] .poultry .pill {
+  left: 157px;
+  top: 85px;
+  width: 186px;
+  height: 27px;
+  font-size: 20px;
+  --source-line-ratio: 1.08;
+  --source-text-width: 168px;
+}
+
+.voucher-native[data-template-page="page-23"] .poultry > .logo:nth-child(3) {
+  left: -4px !important;
+}
+
+.voucher-native[data-template-page="page-23"] .poultry > .logo {
+  top: 78px !important;
+  width: 105px !important;
+  height: 76px !important;
+}
+
+.voucher-native[data-template-page="page-23"] .poultry > .logo + .logo {
+  left: 390px !important;
+}
+
+.voucher-native[data-template-page="page-23"]
+  :is([data-key="p23.label.723"], [data-key="p23.label.729"]) {
+  top: 115px;
+  height: 26px;
+  font-size: 22px;
+  --source-line-ratio: 1.12;
+  --source-text-width: 199px;
+}
+
+.voucher-native[data-template-page="page-23"]
+  :is([data-key="p23.label.724"], [data-key="p23.label.730"]) {
+  top: 141px;
+  height: 22px;
+  font-size: 17px;
+  --source-line-ratio: 1.11;
+  --source-text-width: 316px;
+}
+
+.voucher-native[data-template-page="page-23"]
+  :is([data-key="p23.label.725"], [data-key="p23.label.731"]) {
+  top: 164px;
+  height: 22px !important;
+  font-size: 15px;
+  --source-line-ratio: 1.1;
+  --source-text-width: 459px;
+}
+
+.voucher-native[data-template-page="page-23"] .fieldline {
+  background: linear-gradient(#f1b9d6, #fff 53%, #f3c0da);
+}
+
+.voucher-native[data-template-page="page-23"].native-monochrome .fieldline {
+  background: linear-gradient(#d8d8d8, #fff 53%, #ddd);
+}
+
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field$=".name"]) {
+  height: 23px !important;
+}
+
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field$=".address"]) {
+  height: 23px !important;
+}
+
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field="p23.copy0.name"]) {
+  top: 164px !important;
+}
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field="p23.copy1.name"]) {
+  top: 169px !important;
+}
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field="p23.copy0.address"]) {
+  top: 189px !important;
+}
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field="p23.copy1.address"]) {
+  top: 194px !important;
+}
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field="p23.copy0.date"]) {
+  top: 139px !important;
+  height: 23px !important;
+}
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field="p23.copy1.date"]) {
+  top: 144px !important;
+  height: 23px !important;
+}
+
+/* There is no printed serial caption to the left of the source date box. */
+.voucher-native[data-template-page="page-23"]
+  :is([data-key="p23.label.734"], [data-key="p23.label.767"]) {
+  display: none !important;
+}
+
+.voucher-native[data-template-page="page-23"] [data-key="p23.copy0.serial"] {
+  top: 140px !important;
+}
+.voucher-native[data-template-page="page-23"] [data-key="p23.copy1.serial"] {
+  top: 145px !important;
+}
+
+.voucher-native:is(#page-23, [data-template-page="page-23"]) .table-block .brand-chicken.pink {
+  background: linear-gradient(90deg, #ed91bd, #fff0f8 48%, #ed91bd);
+}
+
+/* 24 — Alif Art, white lettering across the green masthead. */
+.voucher-native:is(#page-24, [data-template-page="page-24"]) .green-frame {
+  background: #0e6b50;
+}
+
+.voucher-native:is(#page-24, [data-template-page="page-24"]) .alif [data-key="p24.label.799"] {
+  left: 101px !important;
+  top: 42px !important;
+  width: 510px !important;
+  height: 55px !important;
+  font-size: 45px !important;
+  --source-line-ratio: 1.12;
+  --source-text-width: 463px;
+}
+
+/* 26 — Suchi Decorator, outlined rose lettering and the two ink rules. */
+.voucher-native:is(#page-26, [data-template-page="page-26"]) .deco .soft-header {
+  height: 202px;
+  background: linear-gradient(100deg, #d5e8ef, #e7f3f8 52%, #d5e8f0) !important;
+}
+
+.voucher-native:is(#page-26, [data-template-page="page-26"]) .deco .headline {
+  left: 83px;
+  top: 32px;
+  width: 328px;
+  height: 51px;
+  font-size: 39px !important;
+  color: #c92061 !important;
+  --source-line-ratio: 1.1;
+  --source-text-width: 311px;
+  --source-text-stroke: 1.7px #fff8fb;
+}
+
+.voucher-native:is(#page-26, [data-template-page="page-26"]) .deco .piece:nth-child(2) {
+  left: 87px;
+  top: 12px;
+  height: 19px;
+  color: #252048 !important;
+  --source-text-width: 101px;
+}
+
+.voucher-native:is(#page-26, [data-template-page="page-26"]) .deco .piece.pill {
+  left: 128px;
+  top: 80px;
+  width: 240px;
+  height: 28px !important;
+  font-size: 20px !important;
+  --source-line-ratio: 1.1;
+  --source-text-width: 219px;
+}
+
+.voucher-native[data-template-page="page-26"] .deco .logo:nth-child(3) {
+  left: 19px !important;
+  width: 65px !important;
+}
+
+.voucher-native[data-template-page="page-26"] .deco .logo:nth-child(4) {
+  left: 406px !important;
+  width: 65px !important;
+}
+
+.voucher-native:is(#page-26, [data-template-page="page-26"])
+  .deco
+  :is([data-key="p26.label.825"], [data-key="p26.label.832"]) {
+  top: 112px;
+  height: 24px;
+  font-size: 15px;
+  --source-line-ratio: 1.15;
+  --source-text-width: 454px;
+}
+
+.voucher-native:is(#page-26, [data-template-page="page-26"])
+  .deco
+  :is([data-key="p26.label.826"], [data-key="p26.label.833"]) {
+  top: 133px;
+  height: 23px;
+  font-size: 15px;
+  --source-line-ratio: 1.15;
+  --source-text-width: 255px;
+}
+
+.voucher-native:is(#page-26, [data-template-page="page-26"])
+  .deco
+  :is([data-key="p26.label.828"], [data-key="p26.label.835"]) {
+  top: 176px;
+  height: 25px;
+  font-size: 17px;
+  --source-line-ratio: 1.1;
+  --source-text-width: 342px;
+}
+
+.voucher-native[data-template-page="page-26"] .deco > .rule {
+  top: 202px !important;
+  background: #c52262;
+  box-shadow: 0 2.5px #53adcb;
+}
+
+.voucher-native[data-template-page="page-26"]
+  :is(
+    [data-key="p26.label.836"],
+    [data-key="p26.label.837"],
+    [data-key="p26.label.838"],
+    [data-key="p26.label.839"]
+  ) {
+  top: 169px;
+  height: 22px;
+  font-size: 13px;
+  color: #287998;
+}
+
+.voucher-native[data-template-page="page-26"] [data-key="p26.label.836"] {
+  left: 21px;
+}
+.voucher-native[data-template-page="page-26"] [data-key="p26.label.837"] {
+  left: 312px;
+}
+.voucher-native[data-template-page="page-26"] [data-key="p26.label.838"] {
+  left: 551px;
+}
+.voucher-native[data-template-page="page-26"] [data-key="p26.label.839"] {
+  left: 842px;
+}
+
+.voucher-native[data-template-page="page-26"] :is([data-key$=".ref"], [data-key$=".date"]) {
+  top: 169px !important;
+  height: 21px !important;
+  color: #287998;
+}
+
+.voucher-native[data-template-page="page-26"] [data-key$=".date"] {
+  top: 166px !important;
+  height: 17px !important;
+  width: 106px !important;
+  border-bottom: 1px dotted #287998;
+}
+
+.voucher-native[data-template-page="page-26"] [data-key="p26.copy0.date"] {
+  left: 346px !important;
+}
+.voucher-native[data-template-page="page-26"] [data-key="p26.copy1.date"] {
+  left: 876px !important;
+}
+
+/* 27 — Rangdhanu Sign. Keep the banner, triangle and footer as CSS shapes. */
+.voucher-native:is(#page-27, [data-template-page="page-27"]) .rangdhanu .headline {
+  left: 66px;
+  top: 25px !important;
+  width: 182px;
+  height: 70px !important;
+  font-size: 65px !important;
+  --source-line-ratio: 1.04;
+  --source-text-width: 148px;
+  --source-text-stroke: 0.7px #fff;
+}
+
+.voucher-native:is(#page-27, [data-template-page="page-27"])
+  .rangdhanu
+  :is([data-key="p27.label.842"], [data-key="p27.label.852"]) {
+  left: 107px;
+  top: 92px !important;
+  height: 27px !important;
+  font-size: 26px;
+  --source-line-ratio: 1.04;
+  --source-text-width: 49px;
+}
+
+.voucher-native:is(#page-27, [data-template-page="page-27"])
+  .rangdhanu
+  :is([data-key="p27.label.843"], [data-key="p27.label.853"]) {
+  left: 94px;
+  top: 117px;
+  width: 159px;
+  font-size: 29px;
+  --source-line-ratio: 1.05;
+  --source-text-width: 133px;
+}
+
+.voucher-native:is(#page-27, [data-template-page="page-27"]) .rangdhanu .rainbow-accent {
+  left: -8px !important;
+  top: -2px !important;
+  height: 247px !important;
+  clip-path: polygon(0 0, 100% 0, 10% 100%, 0 100%);
+}
+
+.voucher-native:is(#page-27, [data-template-page="page-27"])
+  .rangdhanu
+  > .rainbow-panel:nth-child(2) {
+  left: -8px !important;
+  top: 22px !important;
+  width: 281px !important;
+  height: 96px !important;
+  background: linear-gradient(115deg, #0437b4, #102dc7 54%, #0031a9) !important;
+}
+
+.voucher-native:is(#page-27, [data-template-page="page-27"])
+  .rangdhanu
+  > .rainbow-panel:nth-child(3) {
+  left: -8px !important;
+  top: -2px !important;
+  height: 182px !important;
+}
+
+.voucher-native[data-template-page="page-27"]
+  .rangdhanu
+  :is([data-key="p27.label.846"], [data-key="p27.label.856"]) {
+  left: 314px;
+  top: 3px;
+  width: 194px;
+  height: 80px;
+  font-size: 10.5px;
+  font-weight: 400 !important;
+  --source-line-ratio: 1.22;
+  --source-text-width: 180px;
+}
+
+.voucher-native:is(#page-27, [data-template-page="page-27"])
+  .rangdhanu
+  :is([data-key="p27.label.847"], [data-key="p27.label.857"]) {
+  top: 84px !important;
+  width: 238px;
+  height: 55px !important;
+  text-align: left;
+  font-size: 10.5px;
+  --source-line-ratio: 1.25;
+  --source-text-width: 225px;
+}
+
+.voucher-native[data-template-page="page-27"]
+  .rangdhanu
+  :is([data-key="p27.label.848"], [data-key="p27.label.858"]) {
+  left: 249px;
+  top: 144px;
+  width: 251px;
+  height: 17px;
+  --source-line-ratio: 1.13;
+  --source-text-width: 246px;
+}
+
+.voucher-native[data-template-page="page-27"]
+  .rangdhanu
+  :is([data-key="p27.label.849"], [data-key="p27.label.859"]) {
+  left: 260px;
+  top: 161px;
+  width: 240px;
+  height: 20px;
+  --source-line-ratio: 1.15;
+  --source-text-width: 200px;
+}
+
+.voucher-native[data-template-page="page-27"] .table-block {
+  top: 209px !important;
+}
+
+.voucher-native:is(#page-27, [data-template-page="page-27"]) .table-block .rule {
+  background: #1656bf !important;
+}
+
+.voucher-native[data-template-page="page-27"] .table-block::before {
+  content: "";
+  position: absolute;
+  right: 1px;
+  bottom: 30px;
+  width: 35px;
+  height: 82px;
+  background: linear-gradient(100deg, #5cd5f1, #32b9e5);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+
+.voucher-native[data-template-page="page-27"] .source-rangdhanu-footer {
+  width: 80px;
+  margin-left: 15px;
+  clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.voucher-native[data-template-page="page-27"] .source-rangdhanu-footer::before {
+  left: 19px;
+  width: 54px;
+  height: 29px;
+}
+
+/* 30 — Champion. The quantity and amount tint extends through the total. */
+.voucher-native:is(#page-30, [data-template-page="page-30"]) .champion .headline {
+  left: 3.5px;
+  top: 25px;
+  height: 57px;
+  font-size: 49px !important;
+  color: #132d91 !important;
+  --source-line-ratio: 1.12;
+  --source-text-width: 404px;
+  --source-text-stroke: 1.5px #f6f8ff;
+  --source-text-shadow: 2px 2.2px #a5b4dc, 0.7px 0.7px #173788;
+}
+
+.voucher-native[data-template-page="page-30"] .champion > .piece:first-child {
+  top: 8px;
+  --source-line-ratio: 1.12;
+  --source-text-width: 84px;
+}
+
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(3) {
+  top: 76px;
+  height: 26px !important;
+  font-size: 24px !important;
+  --source-line-ratio: 1.06;
+  --source-text-width: 328px;
+}
+
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(4) {
+  --source-text-width: 434px;
+}
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(5) {
+  --source-text-width: 416px;
+}
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(6) {
+  --source-text-width: 205px;
+}
+
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(7) {
+  top: 157px;
+  height: 28px !important;
+  font-size: 24px !important;
+  --source-line-ratio: 1.12;
+  --source-text-width: 350px;
+}
+
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(8) {
+  top: 185px;
+  --source-text-width: 163px;
+}
+
+.voucher-native:is(#page-30, [data-template-page="page-30"])
+  :is(.fieldline, .table-block .table-shade) {
+  background: #dfe7f7 !important;
+}
+
+.voucher-native[data-template-page="page-30"] .table-block .table-shade {
+  height: calc(var(--h) + 31px);
+}
+
+.voucher-native:is(#page-30, [data-template-page="page-30"])
+  :is(.table-block.dark-head .th, .table-block > .piece.right.bold, .fieldline .tag) {
+  background: #172d88 !important;
+}
+
+.voucher-native[data-template-page="page-30"] .fieldline:has(> [data-field$=".date"]) {
+  top: 186px !important;
+  height: 31px !important;
+  --tag: 52px !important;
+}
+
+.voucher-native[data-template-page="page-30"] .fieldline:has(> [data-field="p30.copy0.date"]) {
+  left: 293px !important;
+  width: 165px !important;
+}
+.voucher-native[data-template-page="page-30"] .fieldline:has(> [data-field="p30.copy1.date"]) {
+  left: 813px !important;
+  width: 165px !important;
+}
+
+/* Two separate backgrounds keep both rules visible at fractional print scales. */
+.voucher-native:is([data-template-page="page-23"], [data-template-page="page-30"])
+  .fieldline
+  > .field[data-key$=".date"] {
+  background-image:
+    linear-gradient(var(--ink), var(--ink)), linear-gradient(var(--ink), var(--ink));
+  background-position:
+    33.333% 0,
+    66.666% 0;
+  background-repeat: no-repeat;
+  background-size: 1.4px 100%;
+}
+
+.voucher-native[data-template-page="page-30"] [data-key$=".words"] {
+  top: 1144px !important;
+  width: 398px !important;
+  height: 14px !important;
+  border-bottom: 1px dotted #274593;
+}
+
+.voucher-native[data-template-page="page-30"] [data-key="p30.copy0.words"] {
+  left: 60px !important;
+}
+.voucher-native[data-template-page="page-30"] [data-key="p30.copy1.words"] {
+  left: 580px !important;
+}
+
+.voucher-native[data-template-page="page-30"] .source-champion-return-note {
+  top: 1180px;
+  height: 23px;
+  font-size: 14px;
+  --source-line-ratio: 1.1;
+}

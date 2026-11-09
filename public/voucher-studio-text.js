@@ -68,7 +68,6 @@ function contentWrapper(element) {
     }
     content.classList.add("native-text-content");
   }
-  content.style.transform = "none";
   return content;
 }
 
@@ -99,6 +98,15 @@ function fitLabel(element) {
   const height =
     element.clientHeight - parseFloat(applied.paddingTop) - parseFloat(applied.paddingBottom);
   if (width <= 0 || height <= 0) return;
+  const sourceWidth = applied.getPropertyValue("--source-text-width").trim();
+  const sourceMeasure = parseFloat(sourceWidth);
+  const targetWidth =
+    sourceMeasure > 0
+      ? Math.min(width, sourceWidth.endsWith("%") ? (width * sourceMeasure) / 100 : sourceMeasure)
+      : 0;
+  content.classList.toggle("native-source-text", targetWidth > 0);
+  content.style.removeProperty("--text-transform");
+  if (targetWidth) content.style.whiteSpace = explicitBreak ? "pre" : "nowrap";
   // Numeric source contact blocks can specify their own compact line rhythm.
   // Other labels and all writing fields retain the Bengali glyph metrics.
   const ratio = lineRatio(style, style.getPropertyValue("--source-line-ratio"));
@@ -109,7 +117,10 @@ function fitLabel(element) {
     // scrollWidth/scrollHeight round fractional native coordinates to whole
     // pixels. Compare with rounded inner bounds, rather than shrinking a
     // full-width wrapper forever over a subpixel rounding difference.
-    return textFitsBox(content.scrollWidth, content.scrollHeight, width, height);
+    // Calibrated titles have separate height and width measurements. Allow
+    // moderate horizontal compression before lowering their vertical size.
+    const measuredWidth = targetWidth ? content.scrollWidth * 0.7 : content.scrollWidth;
+    return textFitsBox(measuredWidth, content.scrollHeight, targetWidth || width, height);
   };
   const size = fittingFontSize(Math.min(base, height / ratio), fits);
   setSize(size);
@@ -118,6 +129,12 @@ function fitLabel(element) {
   const alignment = style.textAlign;
   content.style.alignSelf =
     alignment === "center" ? "center" : alignment === "right" ? "flex-end" : "flex-start";
+  if (targetWidth && content.scrollWidth > 0) {
+    const scale = Math.min(4, targetWidth / content.scrollWidth);
+    content.style.setProperty("--text-transform", `scaleX(${scale})`);
+    content.style.transformOrigin =
+      alignment === "center" ? "center" : alignment === "right" ? "right" : "left";
+  }
 }
 
 function fitField(element) {
@@ -137,18 +154,21 @@ function fitField(element) {
     return element.scrollHeight <= height + 0.5 && element.scrollWidth <= width + 0.5;
   };
   const maximum = Math.min(base, (height - 2 * inset.y) / ratio);
-  const size = fittingFontSize(maximum, fits);
+  const empty = !element.hasChildNodes();
+  const size = empty ? maximum : fittingFontSize(maximum, fits);
   setSize(size);
   // A short single line is centered within its actual inner box. Multiline
   // bodies keep normal block editing and start at the top of the writing area.
-  if (!body && !element.innerText.includes("\n") && fontMeasure) {
+  if (body) return;
+  if (!empty) {
+    const text = element.innerText;
+    if (!fontMeasure || text.includes("\n")) return;
     fontMeasure.font = `${style.fontWeight} ${size}px ${style.fontFamily}`;
-    if (fontMeasure.measureText(element.innerText).width <= width - inset.x * 2) {
-      const space = Math.max(inset.y, (height - size * ratio) / 2);
-      element.style.paddingTop = `${space}px`;
-      element.style.paddingBottom = `${space}px`;
-    }
+    if (fontMeasure.measureText(text).width > width - inset.x * 2) return;
   }
+  const space = Math.max(inset.y, (height - size * ratio) / 2);
+  element.style.paddingTop = `${space}px`;
+  element.style.paddingBottom = `${space}px`;
 }
 
 const labels = "[data-fit],.tag[data-key],.th[data-key],.cell-label[data-key],.piece[data-key]";

@@ -1,0 +1,682 @@
+/* Print lettering calibrated against upright 500px-wide crops of the PDF.
+   Widths below are local to each header; the original canvas scaling remains. */
+
+/* Nirala: secondary print, form guides and footer in both placements. */
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.277"] {
+  --x: 9px !important;
+  --y: 69px !important;
+  --source-text-width: 447px;
+  --source-line-ratio: 1.15;
+  font-size: 15px !important;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.278"] {
+  --x: 7px !important;
+  --y: 91px !important;
+  --source-text-width: 384px;
+  --source-line-ratio: 1.12;
+  font-size: 19px !important;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.279"] {
+  --x: 8px !important;
+  --y: 121px !important;
+  --source-text-width: 194px;
+  --source-line-ratio: 1.08;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.280"] {
+  --x: 226px !important;
+  --y: 149px !important;
+  --w: 70px !important;
+  --h: 34px !important;
+  --source-line-ratio: 1.08;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.281"] {
+  --x: 319px !important;
+  --y: 156px !important;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-field="p11.date"] {
+  left: 373px !important;
+  top: 156px !important;
+  width: 126px !important;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) .canvas > .rule[style*="top:272px"] {
+  left: 267px !important;
+  top: 267px !important;
+  width: 526px !important;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) .canvas > .rule[style*="top:312px"] {
+  top: 302px !important;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.337"] {
+  --x: 225px !important;
+  --y: 1276px !important;
+  --w: 504px !important;
+  --h: 70px !important;
+  --source-line-ratio: 1.08;
+  font-size: 23px !important;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.338"] {
+  --y: 1324px !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 22px !important;
+}
+
+/* Glass House: outlined display title and the compact letterhead register. */
+.voucher-native:is(#page-12, [data-template-page="page-12"]) .glass .headline {
+  --y: 10px !important;
+  --h: 55px !important;
+  --source-text-width: 450px;
+  --source-line-ratio: 1.02;
+  --source-text-stroke: 2px #ecf0f8;
+  --source-text-filter: drop-shadow(0 0 0.8px #29436d);
+  color: #2d4d81 !important;
+  font-size: 46px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"])
+  :is([data-key="p12.label.340"], [data-key="p12.label.341"], [data-key="p12.label.343"]) {
+  --source-text-width: 435px;
+  --source-line-ratio: 1.06;
+  font-size: 13px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-key="p12.label.342"] {
+  --source-text-width: 251px;
+  --source-line-ratio: 1.06;
+  font-size: 14px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-key="p12.label.343"] {
+  --y: 105px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-key="p12.label.344"] {
+  --y: 120px !important;
+  --h: 18px !important;
+  --source-text-width: 188px;
+  --source-line-ratio: 1.04;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) .glass > .rule {
+  top: 140px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"])
+  :is([data-key="p12.label.345"], [data-key="p12.label.346"]) {
+  --y: 235px !important;
+  --h: 22px !important;
+  font-size: 15px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-key="p12.label.345"] {
+  --x: 53px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-key="p12.label.346"] {
+  --x: 430px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-field="p12.copy0.date"] {
+  left: 484px !important;
+  top: 228px !important;
+  width: 161px !important;
+  height: 20px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-key="p12.label.347"] {
+  --x: 80px !important;
+  --source-text-width: 298px;
+  --source-line-ratio: 1.1;
+  font-size: 19px !important;
+}
+
+/* Chefat: double outline, tight register, date divisions and menu leaders. */
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .shefat .headline {
+  --y: 24px !important;
+  --h: 65px !important;
+  --source-text-width: 416px;
+  --source-line-ratio: 1.01;
+  --source-text-stroke: 2.4px #fff4f3;
+  --source-text-filter: drop-shadow(0 0 0.8px #873e41);
+  color: #873e41 !important;
+  font-size: 57px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .shefat .box {
+  --x: 72px !important;
+  --y: 88px !important;
+  --w: 352px !important;
+  --source-text-width: 332px;
+  --source-line-ratio: 1.06;
+  background: #f1dde3;
+  border: 1.5px solid #8f4148;
+  color: #873e41 !important;
+  font-size: 23px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"])
+  :is([data-key="p13.label.351"], [data-key="p13.label.356"]) {
+  --y: 117px !important;
+  --h: 24px !important;
+  --source-text-width: 338px;
+  --source-line-ratio: 1.08;
+  font-size: 20px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"])
+  :is([data-key="p13.label.352"], [data-key="p13.label.357"]) {
+  --y: 141px !important;
+  --source-text-width: 367px;
+  --source-line-ratio: 1.08;
+  font-size: 22px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"])
+  :is([data-key="p13.label.353"], [data-key="p13.label.358"]) {
+  --y: 166px !important;
+  --h: 23px !important;
+  --source-text-width: 393px;
+  --source-line-ratio: 1.06;
+  font-size: 21px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"])
+  .fieldline:has(> [data-field$=".date"]) {
+  --tag: 36px !important;
+  width: 122px !important;
+  height: 23px !important;
+  background:
+    linear-gradient(
+        90deg,
+        transparent 32.5%,
+        #a55a6c 33% 34%,
+        transparent 34.5% 65.5%,
+        #a55a6c 66% 67%,
+        transparent 67.5%
+      )
+      right top / calc(100% - var(--tag)) 100% no-repeat,
+    #f2dfe5;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"])
+  .fieldline:has(> [data-field="p13.copy0.date"]) {
+  left: 242px !important;
+  top: 213px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"])
+  .fieldline:has(> [data-field="p13.copy1.date"]) {
+  left: 728px !important;
+  top: 204px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .fieldline [data-field$=".date"] {
+  background-image: none;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) [data-key="p13.label.359"] {
+  --y: 218px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) [data-key="p13.label.401"] {
+  --y: 209px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .table-block .brand-pink {
+  height: calc(100% - 19px) !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .table-block .cell-label {
+  height: 11.5px !important;
+  --source-line-ratio: 1.03;
+  font-size: 9.1px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .table-block .cell-label::after {
+  content: "-";
+  position: absolute;
+  right: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) [data-field$=".words"] {
+  border-bottom: 1px dotted var(--ink);
+  height: 22px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .signature {
+  border-top: 0;
+}
+
+/* Sotota: bilingual wordmark, blue bands and the printed writing rules. */
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .computer .fill {
+  --h: 31px !important;
+  background: #172d79 !important;
+  color: #fff !important;
+  --source-line-ratio: 1.03;
+  font-size: 13px !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .computer .headline {
+  --x: 104px !important;
+  --y: 41px !important;
+  --w: 287px !important;
+  --h: 43px !important;
+  --source-text-width: 274px;
+  --source-line-ratio: 1.01;
+  font-size: 42px !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .computer .headline::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(96%, 274px);
+  height: 1.5px;
+  background: currentColor;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"])
+  :is([data-key="p14.label.445"], [data-key="p14.label.455"]) {
+  --x: 101px !important;
+  --y: 84px !important;
+  --w: 292px !important;
+  --h: 29px !important;
+  --source-text-width: 276px;
+  --source-line-ratio: 1.05;
+  font-family: "Trebuchet MS", Arial, sans-serif !important;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 25px !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .computer .gradient {
+  --source-text-width: 205px;
+  --source-line-ratio: 1.08;
+  background: linear-gradient(90deg, #fff, #152b78 30% 72%, #fff) !important;
+  color: #fff !important;
+  font-size: 16px !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"])
+  :is([data-key="p14.label.447"], [data-key="p14.label.457"]) {
+  --x: 14px !important;
+  --w: 419px !important;
+  --source-text-width: 383px;
+  --source-line-ratio: 1.05;
+  font-size: 14px !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .computer .logo-sc {
+  top: 30px !important;
+  height: 78px !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"])
+  .computer
+  > .rule:is([style*="top:221px"], [style*="top:246px"]) {
+  background: none !important;
+  border-top: 1px dotted #1f2d7f;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .table-block .th {
+  --source-line-ratio: 1.03;
+  font-family: "Times New Roman", serif !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .source-signature-split {
+  --w: 450px !important;
+  padding-inline: 34px !important;
+  background: #172d79 !important;
+  color: #fff !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) [data-key="p14.label.474"] {
+  --x: 25px !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) [data-key="p14.label.486"] {
+  --x: 524px !important;
+}
+
+/* City: one master serves PDF pages 15, 16 and 28. */
+.voucher-native:is(#page-16, [data-template-page="page-16"]) .city .pill {
+  --x: 197px !important;
+  --y: 5px !important;
+  --w: 106px !important;
+  --source-line-ratio: 1.04;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) .city .headline {
+  --y: 26px !important;
+  --h: 40px !important;
+  --source-text-width: 452px;
+  --source-line-ratio: 1.02;
+  font-size: 36px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.489"] {
+  --y: 54px !important;
+  --h: 30px !important;
+  --source-text-width: 448px;
+  --source-line-ratio: 1.04;
+  font-family: "Times New Roman", serif !important;
+  font-size: 28px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.490"] {
+  --y: 80px !important;
+  --source-text-width: 457px;
+  --source-line-ratio: 1.08;
+  font-size: 16px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.491"] {
+  --y: 99px !important;
+  --source-text-width: 364px;
+  --source-line-ratio: 1.08;
+  font-size: 16px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.492"] {
+  --y: 116px !important;
+  --source-text-width: 445px;
+  --source-line-ratio: 1.05;
+  font-size: 14px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.495"] {
+  --y: 254px !important;
+  width: 91px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"])
+  .fieldline:has(> [data-field="p16.copy0.date"]) {
+  top: 254px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"])
+  .fieldline:has(> [data-field="p16.copy0.name"]) {
+  top: 303px !important;
+  --tag: 60px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"])
+  .fieldline:has(> [data-field="p16.copy0.address"]) {
+  top: 345px !important;
+  --tag: 80px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) .table-block {
+  top: 390px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) .source-column-shade {
+  background: linear-gradient(90deg, #ebebeb, #fafafa 49% 66%, #ededed) !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.503"] {
+  --y: 1138px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-field="p16.copy0.words"] {
+  top: 1136px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) .signature {
+  --y: 1200px !important;
+  border-top: 0;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.506"] {
+  --y: 1190px !important;
+  --h: 25px !important;
+  --source-text-width: 270px;
+  --source-line-ratio: 1.06;
+  font-size: 21px !important;
+}
+
+/* Sugandha: keep the leading blank space and let the logo lead the wordmark. */
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .sugandha .headline {
+  --x: 64px !important;
+  --y: 44px !important;
+  --w: 426px !important;
+  --h: 55px !important;
+  --source-text-width: 309px;
+  --source-line-ratio: 1.06;
+  --source-text-stroke: 0.85px #4e4e4e;
+  font-size: 43px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .logo-cutlery {
+  left: 54px !important;
+  top: 43px !important;
+  width: 66px !important;
+  height: 57px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"])
+  :is([data-key="p17.label.508"], [data-key="p17.label.514"]) {
+  --x: 349px !important;
+  --y: 82px !important;
+  --w: 96px !important;
+  --source-line-ratio: 1.05;
+  font-size: 13px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"])
+  :is(
+    [data-key="p17.label.509"],
+    [data-key="p17.label.510"],
+    [data-key="p17.label.515"],
+    [data-key="p17.label.516"]
+  ) {
+  --x: 156px !important;
+  --w: 296px !important;
+  --source-text-width: 253px;
+  --source-line-ratio: 1.06;
+  text-align: left;
+  font-size: 15px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"])
+  :is([data-key="p17.label.509"], [data-key="p17.label.515"]) {
+  --y: 97px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"])
+  :is([data-key="p17.label.510"], [data-key="p17.label.516"]) {
+  --y: 111px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .sugandha .fill {
+  --y: 105px !important;
+  --w: 118px !important;
+  --h: 43px !important;
+  --source-text-width: 94px;
+  --source-line-ratio: 1.01;
+  font-size: 42px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .sugandha .box {
+  --x: 289px !important;
+  --y: 128px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .source-date-cell {
+  top: 128px !important;
+  width: 49.667px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) [data-field$=".date0"] {
+  left: 351px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) [data-field$=".date1"] {
+  left: 400.667px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) [data-field$=".date2"] {
+  left: 450.333px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .canvas > .rule {
+  background: none !important;
+  border-top: 1px dotted #666;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .canvas > .rule[style*="top:200px"] {
+  top: 193px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .canvas > .rule[style*="top:204px"] {
+  top: 197px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .canvas > .rule[style*="top:220px"] {
+  top: 210px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .canvas > .rule[style*="top:224px"] {
+  top: 214px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .source-thanks-banner {
+  --source-text-width: 166px;
+  --source-line-ratio: 1.03;
+  border: 0;
+  font-size: 15px !important;
+  font-weight: 400;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"])
+  :is([data-key="p17.label.549"], [data-key="p17.label.550"]) {
+  --y: 630px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"])
+  :is([data-key="p17.label.581"], [data-key="p17.label.582"]) {
+  --y: 633px !important;
+}
+
+/* Timber: original title effect and the stacked, multi-color letterhead. */
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.583"] {
+  --x: 300px !important;
+  --w: 154px !important;
+  --source-text-width: 109px;
+  --source-line-ratio: 1.13;
+  font-size: 13px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) .timber .headline {
+  --x: 70px !important;
+  --y: 32px !important;
+  --w: 384px !important;
+  --h: 53px !important;
+  --source-text-width: 328px;
+  --source-line-ratio: 1.04;
+  --source-text-stroke: 1.2px #d1d8e6;
+  --source-text-shadow: 1.3px 1px 0 #253567;
+  font-size: 43px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) .logo-timber {
+  left: 48px !important;
+  top: 38px !important;
+  width: 42px !important;
+  height: 55px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) .logo-timber .native-logo {
+  object-fit: fill;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.585"] {
+  --x: 32px !important;
+  --y: 83px !important;
+  --w: 462px !important;
+  --h: 25px !important;
+  --source-text-width: 299px;
+  --source-line-ratio: 1.05;
+  font-family: "Arial Black", Arial, sans-serif !important;
+  font-size: 24px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.586"] {
+  --x: 11px !important;
+  --y: 109px !important;
+  --source-text-width: 105px;
+  --source-line-ratio: 1.06;
+  font-size: 19px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.587"] {
+  --x: 11px !important;
+  --y: 127px !important;
+  --h: 31px !important;
+  --source-text-width: 158px;
+  --source-line-ratio: 1.07;
+  font-family: "Segoe Script", "Brush Script MT", cursive !important;
+  font-style: italic;
+  font-size: 24px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.588"] {
+  --x: 11px !important;
+  --y: 151px !important;
+  --source-text-width: 120px;
+  --source-line-ratio: 1.08;
+  font-size: 18px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.589"] {
+  --x: 11px !important;
+  --y: 173px !important;
+  --source-text-width: 208px;
+  --source-line-ratio: 1.07;
+  font-size: 21px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) .timber > .rule {
+  top: 201px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"])
+  :is([data-key="p18.label.590"], [data-key="p18.label.591"]) {
+  top: 303px !important;
+  font-size: 16px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.590"] {
+  --x: 83px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.591"] {
+  --x: 666px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-field="p18.copy0.date"] {
+  left: 730px !important;
+  top: 304px !important;
+  width: 156px !important;
+  height: 21px !important;
+  border-bottom: 1px dotted var(--ink);
+}
+
+/* Ma: wide heavy title, tightly aligned contact and return guides. */
+.voucher-native:is(#page-19, [data-template-page="page-19"]) .ma .headline {
+  --y: 47px !important;
+  --h: 53px !important;
+  --source-text-width: 466px;
+  --source-line-ratio: 1.04;
+  --source-text-stroke: 0.65px #171717;
+  color: #171717 !important;
+  font-size: 48px !important;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"])
+  :is([data-key="p19.label.595"], [data-key="p19.label.596"], [data-key="p19.label.597"]) {
+  --source-line-ratio: 1.09;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) [data-key="p19.label.595"] {
+  --source-text-width: 391px;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) [data-key="p19.label.596"] {
+  --source-text-width: 251px;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) [data-key="p19.label.597"] {
+  --y: 146px !important;
+  --source-text-width: 203px;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) [data-key="p19.label.598"] {
+  --source-line-ratio: 1.02;
+  font-family: Arial, Kalpurush, sans-serif !important;
+  font-size: 16px !important;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) [data-field="p19.copy0.words"] {
+  border-bottom: 1px dotted var(--ink);
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) .signature {
+  border-top: 0;
+}
+
+/* Majeda's published physical size is unchanged by local text calibration. */
+.voucher-native:is(#page-20, [data-template-page="page-20"]) .model .headline {
+  --x: 58px !important;
+  --y: 35px !important;
+  --h: 48px !important;
+  --source-text-width: 430px;
+  --source-line-ratio: 1.02;
+  --source-text-stroke: 0.7px #2f886e;
+  font-size: 41px !important;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) .model [data-key="p20.label.616"] {
+  --x: 119px !important;
+  --y: 82px !important;
+  --w: 350px !important;
+  --h: 25px !important;
+  --source-line-ratio: 1.05;
+  font-size: 17.5px !important;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"])
+  .model
+  [data-key="p20.label.616"]:has(.source-owner-prefix) {
+  background: linear-gradient(90deg, #378c6f 0 94px, #fff 94px) !important;
+  text-align: left;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) .source-owner-prefix {
+  display: inline-block;
+  width: 88px;
+  padding-inline: 1px;
+  text-align: center;
+  color: #fff;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"])
+  :is([data-key="p20.label.617"], [data-key="p20.label.618"], [data-key="p20.label.619"]) {
+  --source-text-width: 522px;
+  --source-line-ratio: 1.05;
+  font-size: 13.5px !important;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) [data-key="p20.label.617"] {
+  --y: 116px !important;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) [data-key="p20.label.618"] {
+  --y: 133px !important;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) [data-key="p20.label.619"] {
+  --y: 150px !important;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) [data-key="p20.label.620"] {
+  --y: 171px !important;
+  --source-text-width: 234px;
+  --source-line-ratio: 1.06;
+  font-size: 22px !important;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) .canvas > .rule {
+  background: none;
+  border-top: 1px dotted var(--ink);
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) [data-field="p20.copy0.date"] {
+  border-bottom: 1px dotted var(--ink);
+}

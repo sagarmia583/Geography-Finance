@@ -149,6 +149,12 @@ export default function correctReference11To20(markup, page) {
   }
 
   if (page === 20) {
+    const owner = takeKey(markup, "p20.label.616").element;
+    // Keep one editable value while restoring the original reversed label.
+    markup = markup.replace(
+      owner,
+      owner.replace(/>(প্রোপ্রাইটর:)\s+/, '><span class="source-owner-prefix">$1</span> '),
+    );
     const wordsLabel = takeKey(markup, "p20.label.646");
     const wordsInput = takeKey(wordsLabel.markup, "p20.copy0.words");
     markup = wordsInput.markup;

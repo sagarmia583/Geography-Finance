@@ -2,7 +2,7 @@
    unchanged; text fitting runs after Kalpurush and original logos are ready. */
 .voucher-native,
 .voucher-native * {
-  letter-spacing: normal !important;
+  letter-spacing: var(--source-letter-spacing, normal) !important;
   word-spacing: normal !important;
 }
 .voucher-native .fieldline > .field {
@@ -37,9 +37,14 @@
   font-size: var(--text-font-size) !important;
   line-height: var(--text-line-ratio) !important;
   text-align: inherit;
-  transform: none !important;
+  transform: var(--text-transform, none) !important;
+  -webkit-text-stroke: var(--source-text-stroke, 0) !important;
+  text-shadow: var(--source-text-shadow, none) !important;
+  filter: var(--source-text-filter, none);
+  paint-order: stroke fill;
 }
-.voucher-native .native-text-content.fit-text {
+.voucher-native .native-text-content.fit-text,
+.voucher-native .native-text-content.native-source-text {
   width: max-content;
   max-width: none;
   white-space: nowrap;

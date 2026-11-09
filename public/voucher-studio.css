@@ -47,18 +47,12 @@ select {
   max-height: calc(100vh - 32px);
   overflow: auto;
 }
-.back-link,
-.source-link {
+.back-link {
   color: #096c61;
   text-decoration: none;
   font-size: 14px;
 }
-.source-link {
-  display: block;
-  margin-top: 16px;
-}
-.back-link:hover,
-.source-link:hover {
+.back-link:hover {
   text-decoration: underline;
 }
 h1 {
@@ -297,6 +291,12 @@ legend {
   gap: 24px;
   min-width: calc(210mm * var(--preview-scale, 1));
 }
+.preview-loading {
+  margin: 0;
+  padding: 20px 0;
+  color: #314957;
+}
+
 .preview-page {
   position: relative;
   width: calc(210mm * var(--preview-scale, 1));

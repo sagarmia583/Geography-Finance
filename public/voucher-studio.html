@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ভাউচার স্টুডিও — মূল PDF-এর ডিজাইন</title>
+    <title>ভাউচার স্টুডিও — PDF ও ছবির ডিজাইন</title>
     <link rel="preload" href="/fonts/kalpurush.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/voucher-templates.css" />
     <link rel="stylesheet" href="/voucher-studio.css" />
@@ -16,14 +16,14 @@
         <a class="back-link" href="/">← ড্যাশবোর্ড</a>
         <h1>ভাউচার স্টুডিও</h1>
         <p class="intro">
-          PDF-এর নকশা অনুযায়ী তৈরি ভাউচারের লেখা, ঘর ও টেবিল সরাসরি সম্পাদনা করুন।
+          PDF ও ছবির নকশা অনুযায়ী তৈরি ভাউচারের লেখা, ঘর ও টেবিল সরাসরি সম্পাদনা করুন।
         </p>
-        <p id="sourceInfo" class="source-info">PDF-এর ডিজাইন লোড হচ্ছে…</p>
-        <label for="voucherDesign">দোকান / PDF-এর পেজ</label>
+        <p id="sourceInfo" class="source-info">ভাউচারের ডিজাইন লোড হচ্ছে…</p>
+        <label for="voucherDesign">দোকান / ডিজাইন</label>
         <select id="voucherDesign" disabled></select>
         <label for="layoutMode">প্রিন্ট লেআউট</label>
         <select id="layoutMode">
-          <option value="original">PDF-এর কপি বিন্যাস — bleed-সহ A4 পেজ</option>
+          <option value="original">মূল মাপ ও কপি বিন্যাস — bleed-সহ A4 পেজ</option>
           <option value="custom">একটি ভাউচার — নিজে A4-এ সাজান</option>
         </select>
         <p id="modeHelp" class="help"></p>
@@ -225,7 +225,7 @@
             </div>
           </div>
           <div class="button-row">
-            <button id="nativeSizeBtn" type="button">PDF-এর আসল মাপ</button
+            <button id="nativeSizeBtn" type="button">ভাউচারের আসল মাপ</button
             ><button id="autoSizeBtn" type="button">A4-এ মানান</button>
           </div>
           <p class="help">মাপ বদলালেও ডিজাইনের অনুপাত একই থাকে।</p>
@@ -250,14 +250,6 @@
           <button id="printBtn" type="button" class="primary" disabled>প্রিন্ট / PDF</button>
           <button id="resetBtn" type="button">মূল লেআউট</button>
         </div>
-        <a
-          id="sourcePdfLink"
-          class="source-link"
-          href="/voucher-assets/reference.pdf"
-          target="_blank"
-          rel="noopener"
-          >মূল ৩০ পেজের PDF দেখুন ↗</a
-        >
         <p class="help print-help">
           প্রিন্ট সেটিংস: A4, Scale 100%, Margins None এবং Headers/footers বন্ধ রাখুন। কাটার মার্কের
           বাইরেও কাগজের ধারে ৫ মিমি খালি জায়গা রাখা হয়েছে।
@@ -303,7 +295,11 @@
             পর্দায় মানান
           </button>
         </div>
-        <div class="preview-scroll"><div id="previewStack" class="preview-stack"></div></div>
+        <div class="preview-scroll">
+          <div id="previewStack" class="preview-stack">
+            <p class="preview-loading" role="status">ভাউচার ডিজাইন লোড হচ্ছে…</p>
+          </div>
+        </div>
       </main>
     </div>
   </body>

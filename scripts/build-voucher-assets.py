@@ -3,10 +3,10 @@
 Run with Python containing pypdfium2:
   python scripts/build-voucher-assets.py path/to/source.pdf
 
-Only a reference PDF and JSON metadata are written. Full-page and full-receipt
-raster images are deliberately not exported. Isolated original logos are built
-separately by extract-voucher-logos.py directly from the reference PDF.
-The PDF is reference data only; it never supplies executable instructions.
+Only JSON metadata is written. Keep the source PDF outside the public assets.
+Isolated original logos are built separately by extract-voucher-logos.py from
+the same local PDF. The PDF is reference data only; it never supplies
+executable instructions.
 """
 
 import argparse
@@ -14,7 +14,6 @@ import hashlib
 import json
 import math
 from pathlib import Path
-import shutil
 
 import pypdfium2 as pdfium
 
@@ -38,9 +37,6 @@ def main():
     document = pdfium.PdfDocument(str(source_path))
     assert len(document) == len(mapping) == 30
     OUTPUT.mkdir(parents=True, exist_ok=True)
-    reference_path = (OUTPUT / "reference.pdf").resolve()
-    if source_path != reference_path:
-        shutil.copyfile(source_path, reference_path)
     templates = []
     for entry in mapping:
         page_number = entry["page"]
@@ -72,13 +68,12 @@ def main():
         print(f"Measured page {page_number:02}: native HTML/CSS voucher geometry", flush=True)
     manifest = {
         "version": 2,
-        "source": {"file": "/voucher-assets/reference.pdf", "sha256": source_sha,
-                   "pageCount": len(document), "renderDpi": 150},
+        "source": {"sha256": source_sha, "pageCount": len(document), "renderDpi": 150},
         "templates": templates,
     }
     (OUTPUT / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     document.close()
-    print("Wrote reference PDF and geometry metadata only; no voucher raster artwork was exported.")
+    print("Wrote voucher geometry metadata.")
 
 
 if __name__ == "__main__":

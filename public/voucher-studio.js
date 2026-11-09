@@ -11,6 +11,7 @@ import { bleedBackgrounds } from "./voucher-studio-bleed.js";
 import { printedDefaultMatches } from "./voucher-studio-content.js";
 import { fitVoucherElement, fitVoucherText } from "./voucher-studio-text.js";
 import { createDesignEditor } from "./voucher-studio-design.js";
+import { applyPrintSizes } from "./voucher-studio-sizes.js";
 
 const $ = (id) => document.getElementById(id);
 const controls = ["voucherWidth", "voucherHeight", "voucherCount", "pageMargin", "gapX", "gapY"];
@@ -405,13 +406,17 @@ async function readyImages() {
 function buildPreview() {
   const template = selected();
   if (!template) return;
+  const imageReference = template.source?.kind === "image";
+  const specifiedSize = imageReference || Boolean(template.printSize);
   const generation = ++renderId;
   $("printBtn").disabled = true;
   const original = mode() === "original";
   const cutting = true;
   $("customControls").hidden = original;
   $("modeHelp").textContent = original
-    ? `PDF-এর ${template.copies}টি সম্পাদনাযোগ্য কপি bleed-সহ A4-এ সাজানো আছে।`
+    ? specifiedSize
+      ? `মূল মাপের ${template.copies}টি সম্পাদনাযোগ্য ভাউচার bleed-সহ A4-এ সাজানো আছে।`
+      : `PDF-এর ${template.copies}টি সম্পাদনাযোগ্য কপি bleed-সহ A4-এ সাজানো আছে।`
     : "একটি সম্পাদনাযোগ্য ভাউচার। মাপ, সংখ্যা ও rotation বদলাতে পারবেন।";
   if (cutting)
     $("modeHelp").textContent +=
@@ -432,7 +437,8 @@ function buildPreview() {
   currentPlan = plan;
   $("previewStack").replaceChildren();
   message(plan.error || plan.warning || "", !plan.valid);
-  $("summary").textContent = `PDF পৃষ্ঠা ${template.page} • ${template.name} • ${template.variant}`;
+  $("summary").textContent =
+    `${imageReference ? "ছবি থেকে তৈরি" : `PDF পৃষ্ঠা ${template.page}`} • ${template.name} • ${template.variant}`;
   if (!plan.valid) return;
   const pageDefinition = nativePages.get(template.id);
   const nativeLayout = nativeLayouts.get(pageDefinition.templateId);
@@ -564,7 +570,7 @@ function buildPreview() {
     }
     const caption = document.createElement("div");
     caption.className = "sheet-caption";
-    caption.textContent = `পেজ ${page + 1} / ${plan.pageCount} · ${original ? "PDF-এর মতো লেআউট" : `${plan.perPage}টি ভাউচার`} · ${plan.width.toFixed(2)} × ${plan.height.toFixed(2)} mm`;
+    caption.textContent = `পেজ ${page + 1} / ${plan.pageCount} · ${original ? (specifiedSize ? `${template.voucher.widthMm} × ${template.voucher.heightMm} mm ভাউচার` : "PDF-এর মতো লেআউট") : `${plan.perPage}টি ভাউচার`} · ${plan.width.toFixed(2)} × ${plan.height.toFixed(2)} mm`;
     wrapper.append(sheet, caption);
     $("previewStack").appendChild(wrapper);
   }
@@ -649,21 +655,27 @@ try {
     "./voucher-native-pages.json",
     "./voucher-assets/logos/manifest.json",
     "./voucher-templates.html",
+    "./voucher-additional-designs.json",
   ];
   const responses = await Promise.all(urls.map((url) => fetch(new URL(url, import.meta.url))));
   if (responses.some((response) => !response.ok)) throw new Error("ভাউচারের ডিজাইন লোড হয়নি।");
-  const [manifest, layouts, pages, logos, libraryMarkup] = await Promise.all(
+  const [manifest, layouts, pages, logos, libraryMarkup, additional] = await Promise.all(
     responses.map((response, index) => (index === 4 ? response.text() : response.json())),
   );
   nativeLayouts = new Map(layouts.map((layout) => [layout.id, layout]));
-  nativePages = new Map(pages.pages.map((page) => [page.id, page]));
-  logoAssets = logos.assets;
+  const sized = applyPrintSizes(
+    [...manifest.templates, ...additional.templates],
+    [...pages.pages, ...additional.pages],
+    additional.printSizes,
+  );
+  nativePages = new Map(sized.pages.map((page) => [page.id, page]));
+  logoAssets = [...logos.assets, ...additional.logos];
+  templates = sized.templates;
   templateLibrary = new DOMParser()
     .parseFromString(libraryMarkup, "text/html")
     .getElementById("template-library");
-  if (!templateLibrary || nativePages.size !== manifest.templates.length)
+  if (!templateLibrary || nativePages.size !== templates.length)
     throw new Error("ভাউচারের টেমপ্লেট সঠিক নয়।");
-  templates = manifest.templates;
   source = manifest.source;
   if (!Array.isArray(templates) || !templates.length || !source?.sha256)
     throw new Error("ডিজাইনের তথ্য সঠিক নয়।");
@@ -765,10 +777,10 @@ try {
   });
   $("voucherDesign").disabled = false;
   $("sourceInfo").textContent =
-    `${source.pageCount}টি ডিজাইন • সম্পাদনাযোগ্য লেখা, ঘর ও টেবিল • PDF-এর আসল লোগো`;
-  $("sourcePdfLink").href = source.file;
+    `${templates.length}টি ডিজাইন • সম্পাদনাযোগ্য লেখা, ঘর ও টেবিল • আসল লোগো`;
   nativeSize();
   buildPreview();
 } catch (error) {
+  $("previewStack").replaceChildren();
   message(error instanceof Error ? error.message : "স্টুডিও লোড হয়নি।", true);
 }

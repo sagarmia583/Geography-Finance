@@ -370,7 +370,7 @@
    unchanged; text fitting runs after Kalpurush and original logos are ready. */
 .voucher-native,
 .voucher-native * {
-  letter-spacing: normal !important;
+  letter-spacing: var(--source-letter-spacing, normal) !important;
   word-spacing: normal !important;
 }
 .voucher-native .fieldline > .field {
@@ -405,9 +405,14 @@
   font-size: var(--text-font-size) !important;
   line-height: var(--text-line-ratio) !important;
   text-align: inherit;
-  transform: none !important;
+  transform: var(--text-transform, none) !important;
+  -webkit-text-stroke: var(--source-text-stroke, 0) !important;
+  text-shadow: var(--source-text-shadow, none) !important;
+  filter: var(--source-text-filter, none);
+  paint-order: stroke fill;
 }
-.voucher-native .native-text-content.fit-text {
+.voucher-native .native-text-content.fit-text,
+.voucher-native .native-text-content.native-source-text {
   width: max-content;
   max-width: none;
   white-space: nowrap;
@@ -429,12 +434,497 @@
 
 
 /* Source-verified visual details from the first ten PDF pages. */
-.voucher-native:is(#page-08, [data-template-page="page-08"]) .barek > .latin {
-  /* Compact numeric leading preserves the source's paired phone lines while
-     Bengali labels retain their normal Kalpurush line spacing. */
-  --source-line-ratio: 0.9;
+/* Printed wordmarks are measured on the upright PDF grid, then converted to
+   the local header scale. The text stays editable in Kalpurush. */
+.voucher-native:is(#page-01, [data-template-page="page-01"]) .afida .headline {
+  left: 5px;
+  top: 28px;
+  height: 38px;
+  font-size: 36px !important;
+  --source-line-ratio: 1.05;
+  --source-text-width: 459px;
+  --source-text-stroke: 2px #e3ebfa;
+  --source-text-shadow: 1px 1.5px #7d96c6, 1.8px 2.8px #a8b9d6;
+}
+.voucher-native:is(#page-01, [data-template-page="page-01"]) .afida [data-key="p1.label.3"] {
+  left: 142px;
+  top: 66px;
+  width: 226px;
+  height: 26px;
+  font-size: 21px;
+  --source-line-ratio: 1.18;
+  --source-text-width: 210px;
+}
+.voucher-native:is(#page-01, [data-template-page="page-01"]) .afida [data-key="p1.label.4"] {
+  top: 92px;
+  height: 21px;
+  font-size: 15px;
+  --source-text-width: 382px;
+}
+.voucher-native:is(#page-01, [data-template-page="page-01"]) .afida [data-key="p1.label.5"] {
+  top: 111px;
+  height: 22px;
+  font-size: 18px;
+  --source-line-ratio: 1.1;
+  --source-text-width: 235px;
+}
+
+.voucher-native:is(#page-02, [data-template-page="page-02"]) .angarupa .headline {
+  left: 143px;
+  top: 7px;
+  height: 43px;
+  font-size: 44px !important;
+  --source-line-ratio: 0.97;
+  --source-text-width: 161px;
+  --source-text-stroke: 1.1px #f5f5fb;
+  --source-text-shadow: 0.8px 1.5px #8d8dae;
+}
+.voucher-native:is(#page-02, [data-template-page="page-02"]) .angarupa [data-key="p2.label.19"] {
+  left: 153px;
+  top: 50px;
+  height: 21px;
+  font-size: 20px;
+  --source-line-ratio: 1.04;
+  --source-text-width: 148px;
+}
+.voucher-native:is(#page-02, [data-template-page="page-02"]) .angarupa [data-key="p2.label.20"] {
+  left: 340px;
+  width: 134px;
+  --source-text-width: 122px;
+}
+.voucher-native:is(#page-02, [data-template-page="page-02"]) .angarupa [data-key="p2.label.21"] {
+  top: 79px;
+  --source-text-width: 432px;
+}
+.voucher-native:is(#page-02, [data-template-page="page-02"]) .angarupa [data-key="p2.label.22"] {
+  top: 96px;
+  --source-text-width: 314px;
+}
+
+.voucher-native:is(#page-03, [data-template-page="page-03"]) .babul .headline {
+  left: 5px;
+  top: 45px;
+  height: 52px;
+  font-size: 50px !important;
+  --source-line-ratio: 1.03;
+  --source-text-width: 437px;
+}
+.voucher-native:is(#page-03, [data-template-page="page-03"]) .babul [data-key="p3.label.25"] {
+  left: 8px;
+  top: 3px;
+  width: 484px;
+  font-size: 12px;
+  --source-line-ratio: 1.1;
+}
+.voucher-native:is(#page-03, [data-template-page="page-03"])
+  .babul
+  .source-separated-text:has(> .source-segment) {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+.voucher-native:is(#page-03, [data-template-page="page-03"])
+  .babul
+  .source-separated-text
+  > .source-segment:first-child {
+  justify-self: start;
+}
+.voucher-native:is(#page-03, [data-template-page="page-03"])
+  .babul
+  .source-separated-text
+  > .source-segment:last-child {
+  justify-self: end;
+}
+.voucher-native:is(#page-03, [data-template-page="page-03"]) .babul [data-key="p3.label.26"] {
+  left: 206px;
+  width: 88px;
+}
+.voucher-native:is(#page-03, [data-template-page="page-03"]) .babul [data-key="p3.label.28"] {
+  left: 136px;
+  top: 97px;
+  width: 232px;
+  height: 30px;
+  --source-text-width: 210px;
+}
+.voucher-native:is(#page-03, [data-template-page="page-03"]) .babul [data-key="p3.label.29"] {
+  top: 131px;
+  --source-text-width: 490px;
+}
+.voucher-native:is(#page-03, [data-template-page="page-03"]) .babul [data-key="p3.label.30"] {
+  top: 153px;
+  --source-text-width: 193px;
+}
+.voucher-native:is(#page-03, [data-template-page="page-03"]) .babul [data-key="p3.label.31"] {
+  top: 175px;
+  --source-text-width: 255px;
+}
+
+.voucher-native:is(#page-04, [data-template-page="page-04"]) .mr > .piece.latin.heavy {
+  left: 146px;
+  top: 18px;
+  height: 32px;
+  font-size: 24px;
+  --source-text-width: 196px;
+}
+.voucher-native:is(#page-04, [data-template-page="page-04"]) .mr .mr-cash {
+  left: 214px;
+  top: 2px;
+  width: 69px;
+}
+.voucher-native:is(#page-04, [data-template-page="page-04"]) .mr .mr-contact {
+  left: 67px;
+  top: 43px;
+  width: 355px;
+  height: 17px;
+  font-size: 10px;
+  --source-text-width: 337px;
+}
+.voucher-native:is(#page-04, [data-template-page="page-04"]) .mr .mr-detail {
+  top: 59px;
+  height: 15px;
+  font-size: 9.5px;
+  --source-text-width: 346px;
+}
+
+.voucher-native:is(#page-05, [data-template-page="page-05"]) .gift .headline {
+  top: 32px;
+  height: 54px;
+  font-size: 57px !important;
+  color: #241e20;
+  --source-line-ratio: 0.94;
+  --source-text-width: 472px;
+  --source-text-stroke: 3.8px #fff;
+  --source-text-filter: drop-shadow(0 0 0.85px #595359) drop-shadow(0 0 0.55px #595359);
+}
+.voucher-native:is(#page-05, [data-template-page="page-05"]) .gift [data-key="p5.label.115"] {
+  left: 207px;
+  top: 5px;
+  width: 84px;
+  height: 22px;
+  font-size: 16px;
+  --source-text-width: 73px;
+}
+.voucher-native:is(#page-05, [data-template-page="page-05"]) .gift [data-key="p5.label.117"] {
+  top: 86px;
+  height: 24px;
+  font-size: 24px;
+  --source-line-ratio: 1;
+  --source-text-width: 342px;
+}
+.voucher-native:is(#page-05, [data-template-page="page-05"]) .gift [data-key="p5.label.118"] {
+  top: 110px;
+  font-size: 17px;
+  --source-line-ratio: 1.18;
+  --source-text-width: 405px;
+}
+.voucher-native:is(#page-05, [data-template-page="page-05"]) .gift [data-key="p5.label.119"] {
+  top: 133px;
+  font-size: 16px;
+  --source-line-ratio: 1.17;
+  --source-text-width: 396px;
+}
+.voucher-native:is(#page-05, [data-template-page="page-05"]) .gift [data-key="p5.label.120"] {
+  top: 154px;
+  font-size: 17px;
+  --source-line-ratio: 1.1;
+  --source-text-width: 276px;
+}
+.voucher-native:is(#page-05, [data-template-page="page-05"]) .gift [data-key="p5.label.121"] {
+  font-size: 19px;
+  --source-line-ratio: 1.08;
+  --source-text-width: 347px;
+}
+.voucher-native:is(#page-05, [data-template-page="page-05"]) .gift [data-key="p5.label.122"] {
+  font-size: 19px;
+  --source-line-ratio: 1.02;
+  --source-text-width: 253px;
+}
+.voucher-native:is(#page-05, [data-template-page="page-05"]) .gift [data-key="p5.label.123"] {
+  font-size: 16px;
+  --source-line-ratio: 1.02;
+  --source-text-width: 319px;
+}
+
+.voucher-native:is(#page-06, [data-template-page="page-06"]) .national .headline {
+  left: 80px;
+  top: 55px;
+  width: 370px;
+  height: 58px;
+  font-size: 59px !important;
+  --source-line-ratio: 0.98;
+  --source-text-width: 352px;
+}
+.voucher-native:is(#page-06, [data-template-page="page-06"]) .national .pill:not(.line) {
+  left: 110px;
+  top: 107px;
+  width: 292px;
+  height: 43px;
+  font-size: 39px !important;
+  color: #07814a !important;
+  --source-line-ratio: 1.05;
+  --source-text-width: 268px;
+  --source-text-stroke: 3px #fff;
+}
+.voucher-native:is(#page-06, [data-template-page="page-06"]) .national > [data-key="p6.label.140"] {
+  top: 151px;
+  --source-text-width: 255px;
+}
+.voucher-native:is(#page-06, [data-template-page="page-06"]) .national > [data-key="p6.label.141"] {
+  top: 177px;
+  --source-text-width: 412px;
+}
+.voucher-native:is(#page-06, [data-template-page="page-06"]) .national > [data-key="p6.label.142"] {
+  left: 14px;
+  top: 205px;
+  --source-text-width: 249px;
+}
+
+.voucher-native:is(#page-07, [data-template-page="page-07"]) .library .headline {
+  left: 78px;
+  top: 62px;
+  width: 421px;
+  height: 47px;
+  font-size: 49px !important;
+  --source-line-ratio: 0.95;
+  --source-text-width: 409px;
+}
+.voucher-native:is(#page-07, [data-template-page="page-07"]) .library .logo-library {
+  left: 8px !important;
+  top: 47px !important;
+  width: 64px !important;
+  height: 70px !important;
+}
+.voucher-native:is(#page-07, [data-template-page="page-07"]) .library [data-key="p7.label.144"] {
+  left: 120px;
+  top: 5px;
+  font-size: 16px;
+  --source-line-ratio: 1.08;
+  --source-text-width: 142px;
+}
+.voucher-native:is(#page-07, [data-template-page="page-07"]) .library [data-key="p7.label.145"] {
+  left: 323px;
+  top: 8px;
+  width: 177px;
+  height: 53px;
+  font-size: 22px;
+  --source-line-ratio: 1.05;
+  --source-text-width: 169px;
   padding: 0 !important;
 }
+.voucher-native:is(#page-07, [data-template-page="page-07"]) .library [data-key="p7.label.146"] {
+  left: 222px;
+  top: 31px;
+  width: 64px;
+  height: 24px;
+  font-size: 16px;
+  --source-text-width: 51px;
+}
+.voucher-native:is(#page-07, [data-template-page="page-07"]) .library [data-key="p7.label.148"] {
+  left: 173px;
+  top: 117px;
+  width: 155px;
+  height: 27px;
+  font-size: 17px;
+  --source-text-width: 128px;
+}
+.voucher-native:is(#page-07, [data-template-page="page-07"]) .library [data-key="p7.label.149"] {
+  left: 7px;
+  top: 146px;
+  height: 18px;
+  font-size: 15px;
+  --source-line-ratio: 1.14;
+  --source-text-width: 292px;
+}
+.voucher-native:is(#page-07, [data-template-page="page-07"]) .library [data-key="p7.label.150"] {
+  left: 7px;
+  top: 165px;
+  height: 18px;
+  font-size: 15px;
+  --source-line-ratio: 1.14;
+  --source-text-width: 275px;
+}
+.voucher-native:is(#page-07, [data-template-page="page-07"]) .library [data-key="p7.label.151"] {
+  left: 155px;
+  top: 185px;
+  width: 153px;
+  height: 23px;
+  font-size: 18px;
+  --source-line-ratio: 1.14;
+  --source-text-width: 139px;
+}
+.voucher-native:is(#page-07, [data-template-page="page-07"])
+  .fieldline:has(> [data-key="p7.copy0.date"]) {
+  top: 205px !important;
+  height: 24px !important;
+  --tag: 57px !important;
+}
+
+.voucher-native:is(#page-08, [data-template-page="page-08"]) .barek .headline {
+  left: 81px;
+  top: 49px;
+  width: 402px;
+  height: 52px;
+  font-size: 55px !important;
+  --source-line-ratio: 0.94;
+  --source-text-width: 341px;
+  --source-text-stroke: 1.8px #fff1fc;
+  --source-text-shadow: 1.4px 1.8px #c9a4e1, 2px 2.8px #e8c3ee;
+}
+.voucher-native.native-monochrome:is(#page-08, [data-template-page="page-08"]) .barek .headline {
+  --source-text-stroke: 1.8px #f5f5f5;
+  --source-text-shadow: 1.4px 1.8px #c1c1c1, 2px 2.8px #ddd;
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"]) .barek .source-phone-icon {
+  left: 324px !important;
+  top: 10px !important;
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"])
+  .barek
+  > :is([data-key="p8.label.166"], [data-key="p8.label.173"]) {
+  left: 193px;
+  width: 118px;
+  --source-text-width: 111px;
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"])
+  .barek
+  > :is([data-key="p8.label.167"], [data-key="p8.label.174"]) {
+  left: 210px;
+  top: 24px;
+  width: 87px;
+  height: 22px;
+  border-radius: 2px;
+  font-size: 16px;
+  --source-text-width: 73px;
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"]) .barek > .latin {
+  left: 352px;
+  top: 10px;
+  width: 146px;
+  height: 39px;
+  --source-line-ratio: 0.9;
+  --source-text-width: 145px;
+  padding: 0 !important;
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"])
+  .barek
+  > :is([data-key="p8.label.170"], [data-key="p8.label.177"]) {
+  left: 139px;
+  top: 103px;
+  width: 263px;
+  height: 29px;
+  font-size: 25px;
+  --source-line-ratio: 1.12;
+  --source-text-width: 243px;
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"])
+  .barek
+  > :is([data-key="p8.label.171"], [data-key="p8.label.178"]) {
+  left: 6px;
+  top: 134px;
+  --source-text-width: 365px;
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"])
+  .barek
+  > :is([data-key="p8.label.172"], [data-key="p8.label.179"]) {
+  left: 5px;
+  top: 157px;
+  --source-text-width: 385px;
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"])
+  :is([data-key="p8.label.182"], [data-key="p8.label.196"]) {
+  width: 33px;
+  height: 23px;
+  background: var(--ink);
+  color: #fff !important;
+  text-align: center;
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"]) [data-key="p8.copy0.serial"] {
+  left: 60px !important;
+}
+.voucher-native:is(#page-08, [data-template-page="page-08"]) [data-key="p8.copy1.serial"] {
+  left: 591px !important;
+}
+
+.voucher-native:is(#page-09, [data-template-page="page-09"]) .mesbah .headline {
+  left: 50px;
+  top: 10px;
+  width: 430px;
+  height: 46px;
+  font-size: 38px !important;
+  --source-line-ratio: 1.18;
+  --source-text-width: 417px;
+}
+.voucher-native:is(#page-09, [data-template-page="page-09"])
+  .mesbah
+  > :is([data-key="p9.label.208"], [data-key="p9.label.213"]) {
+  left: 211px;
+  top: -4px;
+  width: 280px;
+  height: 18px;
+  font-size: 14px;
+  --source-line-ratio: 1.1;
+}
+.voucher-native:is(#page-09, [data-template-page="page-09"])
+  .mesbah
+  .source-separated-text:has(> .source-segment) {
+  display: flex;
+  justify-content: space-between;
+}
+.voucher-native:is(#page-09, [data-template-page="page-09"]) .mesbah > .times {
+  left: 50px;
+  top: 43px;
+  width: 414px;
+  height: 29px;
+  font-size: 29px;
+  --source-line-ratio: 1;
+  --source-text-width: 391px;
+}
+.voucher-native:is(#page-09, [data-template-page="page-09"]) .mesbah > .pill {
+  left: 79px;
+  top: 74px;
+  width: 368px;
+  font-size: 16px;
+  --source-text-width: 348px;
+}
+.voucher-native:is(#page-09, [data-template-page="page-09"]) .mesbah > .serif {
+  left: 16px;
+  top: 102px;
+  --source-text-width: 194px;
+}
+
+/* The small paired Nirala print and the large single print share the same
+   native canvas. Match the letterforms to both at their own scale. */
+.voucher-native:is(#page-11, [data-template-page="page-11"]) .nirala .headline {
+  left: 62px;
+  top: 7px;
+  width: 423px;
+  height: 73px;
+  font-size: 54px !important;
+  --source-text-width: 398px;
+  --source-text-stroke: 3px #f9f8ff;
+  --source-text-filter: drop-shadow(0 0 0.85px #535399) drop-shadow(0.6px 0.7px 0.4px #9c9bbd);
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) .nirala [data-key="p11.label.277"] {
+  top: 68px;
+  height: 22px;
+  font-size: 16px;
+  --source-text-width: 447px;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) .nirala [data-key="p11.label.278"] {
+  top: 93px;
+  --source-text-width: 386px;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) .nirala [data-key="p11.label.279"] {
+  top: 119px;
+  --source-text-width: 193px;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) .nirala [data-key="p11.label.280"] {
+  left: 226px;
+  top: 149px;
+  width: 68px;
+  height: 31px;
+  border-radius: 50%;
+}
+
 .voucher-native:is(#page-03, [data-template-page="page-03"]) [data-key="p3.label.75"] {
   background: #fff !important;
   color: var(--ink) !important;
@@ -466,13 +956,23 @@
   pointer-events: none;
 }
 .voucher-native:is(#page-08, [data-template-page="page-08"]) .fieldline {
-  background: linear-gradient(0deg, #f3d8ed, #fff 52%, #f3d8ed) !important;
+  background: linear-gradient(0deg, #f2d5f0, #fff 49%, #f5d9f3) !important;
 }
 .voucher-native:is(#page-08, [data-template-page="page-08"]) .table-block {
-  --voucher-column-gradient: linear-gradient(90deg, #edc1df, #fff 52%, #edc1df);
+  --voucher-column-gradient: linear-gradient(
+    90deg,
+    #edb9eb,
+    #f8dff8 13%,
+    #fff 48%,
+    #fdf7fd 65%,
+    #efbee9
+  );
 }
 .voucher-native.native-monochrome:is(#page-08, [data-template-page="page-08"]) .table-block {
   --voucher-column-gradient: linear-gradient(90deg, #d7d7d7, #fff 52%, #d7d7d7);
+}
+.voucher-native.native-monochrome:is(#page-08, [data-template-page="page-08"]) .fieldline {
+  background: linear-gradient(0deg, #dedede, #fff 49%, #dedede) !important;
 }
 .voucher-native:is(#page-08, [data-template-page="page-08"])
   .table-block
@@ -1124,4 +1624,1405 @@
   top: 92px !important;
   height: 25px !important;
 }
+/* The two-copy National Electric scan has a lower, narrower masthead. */
+.voucher-native[data-source-page="22"] .national {
+  left: 82px !important;
+  top: 193px !important;
+  transform: scale(1.46) !important;
+}
+
+.voucher-native[data-source-page="22"] .national .headline {
+  left: 70px !important;
+}
+
+.voucher-native[data-source-page="22"] .national .logo-national {
+  top: 51px !important;
+  width: 63px !important;
+}
+
+.voucher-native[data-source-page="22"] [data-key="p6.label.143"] {
+  left: 534px;
+  top: 535px;
+  width: 278px;
+}
+
+.voucher-native[data-source-page="22"] [data-field="p6.copy0.date"] {
+  left: 639px !important;
+  top: 540px !important;
+  width: 169px !important;
+  height: 38px !important;
+}
+
+/* Nirala's name, address and date guides use the same blue dotted rule. */
+.voucher-native[data-template-page="page-11"]
+  .canvas
+  > .rule:is([style*="top:272px"], [style*="top:312px"]) {
+  height: 0 !important;
+  background: none !important;
+  border-top: 1.5px dotted var(--ink);
+}
+
+.voucher-native[data-template-page="page-11"] [data-field="p11.date"] {
+  border-bottom: 1.5px dotted var(--ink);
+}
+
+
+/* Print lettering calibrated against upright 500px-wide crops of the PDF.
+   Widths below are local to each header; the original canvas scaling remains. */
+
+/* Nirala: secondary print, form guides and footer in both placements. */
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.277"] {
+  --x: 9px !important;
+  --y: 69px !important;
+  --source-text-width: 447px;
+  --source-line-ratio: 1.15;
+  font-size: 15px !important;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.278"] {
+  --x: 7px !important;
+  --y: 91px !important;
+  --source-text-width: 384px;
+  --source-line-ratio: 1.12;
+  font-size: 19px !important;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.279"] {
+  --x: 8px !important;
+  --y: 121px !important;
+  --source-text-width: 194px;
+  --source-line-ratio: 1.08;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.280"] {
+  --x: 226px !important;
+  --y: 149px !important;
+  --w: 70px !important;
+  --h: 34px !important;
+  --source-line-ratio: 1.08;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.281"] {
+  --x: 319px !important;
+  --y: 156px !important;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-field="p11.date"] {
+  left: 373px !important;
+  top: 156px !important;
+  width: 126px !important;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) .canvas > .rule[style*="top:272px"] {
+  left: 267px !important;
+  top: 267px !important;
+  width: 526px !important;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) .canvas > .rule[style*="top:312px"] {
+  top: 302px !important;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.337"] {
+  --x: 225px !important;
+  --y: 1276px !important;
+  --w: 504px !important;
+  --h: 70px !important;
+  --source-line-ratio: 1.08;
+  font-size: 23px !important;
+}
+.voucher-native:is(#page-11, [data-template-page="page-11"]) [data-key="p11.label.338"] {
+  --y: 1324px !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 22px !important;
+}
+
+/* Glass House: outlined display title and the compact letterhead register. */
+.voucher-native:is(#page-12, [data-template-page="page-12"]) .glass .headline {
+  --y: 10px !important;
+  --h: 55px !important;
+  --source-text-width: 450px;
+  --source-line-ratio: 1.02;
+  --source-text-stroke: 2px #ecf0f8;
+  --source-text-filter: drop-shadow(0 0 0.8px #29436d);
+  color: #2d4d81 !important;
+  font-size: 46px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"])
+  :is([data-key="p12.label.340"], [data-key="p12.label.341"], [data-key="p12.label.343"]) {
+  --source-text-width: 435px;
+  --source-line-ratio: 1.06;
+  font-size: 13px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-key="p12.label.342"] {
+  --source-text-width: 251px;
+  --source-line-ratio: 1.06;
+  font-size: 14px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-key="p12.label.343"] {
+  --y: 105px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-key="p12.label.344"] {
+  --y: 120px !important;
+  --h: 18px !important;
+  --source-text-width: 188px;
+  --source-line-ratio: 1.04;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) .glass > .rule {
+  top: 140px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"])
+  :is([data-key="p12.label.345"], [data-key="p12.label.346"]) {
+  --y: 235px !important;
+  --h: 22px !important;
+  font-size: 15px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-key="p12.label.345"] {
+  --x: 53px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-key="p12.label.346"] {
+  --x: 430px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-field="p12.copy0.date"] {
+  left: 484px !important;
+  top: 228px !important;
+  width: 161px !important;
+  height: 20px !important;
+}
+.voucher-native:is(#page-12, [data-template-page="page-12"]) [data-key="p12.label.347"] {
+  --x: 80px !important;
+  --source-text-width: 298px;
+  --source-line-ratio: 1.1;
+  font-size: 19px !important;
+}
+
+/* Chefat: double outline, tight register, date divisions and menu leaders. */
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .shefat .headline {
+  --y: 24px !important;
+  --h: 65px !important;
+  --source-text-width: 416px;
+  --source-line-ratio: 1.01;
+  --source-text-stroke: 2.4px #fff4f3;
+  --source-text-filter: drop-shadow(0 0 0.8px #873e41);
+  color: #873e41 !important;
+  font-size: 57px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .shefat .box {
+  --x: 72px !important;
+  --y: 88px !important;
+  --w: 352px !important;
+  --source-text-width: 332px;
+  --source-line-ratio: 1.06;
+  background: #f1dde3;
+  border: 1.5px solid #8f4148;
+  color: #873e41 !important;
+  font-size: 23px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"])
+  :is([data-key="p13.label.351"], [data-key="p13.label.356"]) {
+  --y: 117px !important;
+  --h: 24px !important;
+  --source-text-width: 338px;
+  --source-line-ratio: 1.08;
+  font-size: 20px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"])
+  :is([data-key="p13.label.352"], [data-key="p13.label.357"]) {
+  --y: 141px !important;
+  --source-text-width: 367px;
+  --source-line-ratio: 1.08;
+  font-size: 22px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"])
+  :is([data-key="p13.label.353"], [data-key="p13.label.358"]) {
+  --y: 166px !important;
+  --h: 23px !important;
+  --source-text-width: 393px;
+  --source-line-ratio: 1.06;
+  font-size: 21px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"])
+  .fieldline:has(> [data-field$=".date"]) {
+  --tag: 36px !important;
+  width: 122px !important;
+  height: 23px !important;
+  background:
+    linear-gradient(
+        90deg,
+        transparent 32.5%,
+        #a55a6c 33% 34%,
+        transparent 34.5% 65.5%,
+        #a55a6c 66% 67%,
+        transparent 67.5%
+      )
+      right top / calc(100% - var(--tag)) 100% no-repeat,
+    #f2dfe5;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"])
+  .fieldline:has(> [data-field="p13.copy0.date"]) {
+  left: 242px !important;
+  top: 213px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"])
+  .fieldline:has(> [data-field="p13.copy1.date"]) {
+  left: 728px !important;
+  top: 204px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .fieldline [data-field$=".date"] {
+  background-image: none;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) [data-key="p13.label.359"] {
+  --y: 218px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) [data-key="p13.label.401"] {
+  --y: 209px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .table-block .brand-pink {
+  height: calc(100% - 19px) !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .table-block .cell-label {
+  height: 11.5px !important;
+  --source-line-ratio: 1.03;
+  font-size: 9.1px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .table-block .cell-label::after {
+  content: "-";
+  position: absolute;
+  right: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) [data-field$=".words"] {
+  border-bottom: 1px dotted var(--ink);
+  height: 22px !important;
+}
+.voucher-native:is(#page-13, [data-template-page="page-13"]) .signature {
+  border-top: 0;
+}
+
+/* Sotota: bilingual wordmark, blue bands and the printed writing rules. */
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .computer .fill {
+  --h: 31px !important;
+  background: #172d79 !important;
+  color: #fff !important;
+  --source-line-ratio: 1.03;
+  font-size: 13px !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .computer .headline {
+  --x: 104px !important;
+  --y: 41px !important;
+  --w: 287px !important;
+  --h: 43px !important;
+  --source-text-width: 274px;
+  --source-line-ratio: 1.01;
+  font-size: 42px !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .computer .headline::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(96%, 274px);
+  height: 1.5px;
+  background: currentColor;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"])
+  :is([data-key="p14.label.445"], [data-key="p14.label.455"]) {
+  --x: 101px !important;
+  --y: 84px !important;
+  --w: 292px !important;
+  --h: 29px !important;
+  --source-text-width: 276px;
+  --source-line-ratio: 1.05;
+  font-family: "Trebuchet MS", Arial, sans-serif !important;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 25px !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .computer .gradient {
+  --source-text-width: 205px;
+  --source-line-ratio: 1.08;
+  background: linear-gradient(90deg, #fff, #152b78 30% 72%, #fff) !important;
+  color: #fff !important;
+  font-size: 16px !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"])
+  :is([data-key="p14.label.447"], [data-key="p14.label.457"]) {
+  --x: 14px !important;
+  --w: 419px !important;
+  --source-text-width: 383px;
+  --source-line-ratio: 1.05;
+  font-size: 14px !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .computer .logo-sc {
+  top: 30px !important;
+  height: 78px !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"])
+  .computer
+  > .rule:is([style*="top:221px"], [style*="top:246px"]) {
+  background: none !important;
+  border-top: 1px dotted #1f2d7f;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .table-block .th {
+  --source-line-ratio: 1.03;
+  font-family: "Times New Roman", serif !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) .source-signature-split {
+  --w: 450px !important;
+  padding-inline: 34px !important;
+  background: #172d79 !important;
+  color: #fff !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) [data-key="p14.label.474"] {
+  --x: 25px !important;
+}
+.voucher-native:is(#page-14, [data-template-page="page-14"]) [data-key="p14.label.486"] {
+  --x: 524px !important;
+}
+
+/* City: one master serves PDF pages 15, 16 and 28. */
+.voucher-native:is(#page-16, [data-template-page="page-16"]) .city .pill {
+  --x: 197px !important;
+  --y: 5px !important;
+  --w: 106px !important;
+  --source-line-ratio: 1.04;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) .city .headline {
+  --y: 26px !important;
+  --h: 40px !important;
+  --source-text-width: 452px;
+  --source-line-ratio: 1.02;
+  font-size: 36px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.489"] {
+  --y: 54px !important;
+  --h: 30px !important;
+  --source-text-width: 448px;
+  --source-line-ratio: 1.04;
+  font-family: "Times New Roman", serif !important;
+  font-size: 28px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.490"] {
+  --y: 80px !important;
+  --source-text-width: 457px;
+  --source-line-ratio: 1.08;
+  font-size: 16px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.491"] {
+  --y: 99px !important;
+  --source-text-width: 364px;
+  --source-line-ratio: 1.08;
+  font-size: 16px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.492"] {
+  --y: 116px !important;
+  --source-text-width: 445px;
+  --source-line-ratio: 1.05;
+  font-size: 14px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.495"] {
+  --y: 254px !important;
+  width: 91px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"])
+  .fieldline:has(> [data-field="p16.copy0.date"]) {
+  top: 254px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"])
+  .fieldline:has(> [data-field="p16.copy0.name"]) {
+  top: 303px !important;
+  --tag: 60px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"])
+  .fieldline:has(> [data-field="p16.copy0.address"]) {
+  top: 345px !important;
+  --tag: 80px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) .table-block {
+  top: 390px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) .source-column-shade {
+  background: linear-gradient(90deg, #ebebeb, #fafafa 49% 66%, #ededed) !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.503"] {
+  --y: 1138px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-field="p16.copy0.words"] {
+  top: 1136px !important;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) .signature {
+  --y: 1200px !important;
+  border-top: 0;
+}
+.voucher-native:is(#page-16, [data-template-page="page-16"]) [data-key="p16.label.506"] {
+  --y: 1190px !important;
+  --h: 25px !important;
+  --source-text-width: 270px;
+  --source-line-ratio: 1.06;
+  font-size: 21px !important;
+}
+
+/* Sugandha: keep the leading blank space and let the logo lead the wordmark. */
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .sugandha .headline {
+  --x: 64px !important;
+  --y: 44px !important;
+  --w: 426px !important;
+  --h: 55px !important;
+  --source-text-width: 309px;
+  --source-line-ratio: 1.06;
+  --source-text-stroke: 0.85px #4e4e4e;
+  font-size: 43px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .logo-cutlery {
+  left: 54px !important;
+  top: 43px !important;
+  width: 66px !important;
+  height: 57px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"])
+  :is([data-key="p17.label.508"], [data-key="p17.label.514"]) {
+  --x: 349px !important;
+  --y: 82px !important;
+  --w: 96px !important;
+  --source-line-ratio: 1.05;
+  font-size: 13px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"])
+  :is(
+    [data-key="p17.label.509"],
+    [data-key="p17.label.510"],
+    [data-key="p17.label.515"],
+    [data-key="p17.label.516"]
+  ) {
+  --x: 156px !important;
+  --w: 296px !important;
+  --source-text-width: 253px;
+  --source-line-ratio: 1.06;
+  text-align: left;
+  font-size: 15px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"])
+  :is([data-key="p17.label.509"], [data-key="p17.label.515"]) {
+  --y: 97px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"])
+  :is([data-key="p17.label.510"], [data-key="p17.label.516"]) {
+  --y: 111px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .sugandha .fill {
+  --y: 105px !important;
+  --w: 118px !important;
+  --h: 43px !important;
+  --source-text-width: 94px;
+  --source-line-ratio: 1.01;
+  font-size: 42px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .sugandha .box {
+  --x: 289px !important;
+  --y: 128px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .source-date-cell {
+  top: 128px !important;
+  width: 49.667px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) [data-field$=".date0"] {
+  left: 351px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) [data-field$=".date1"] {
+  left: 400.667px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) [data-field$=".date2"] {
+  left: 450.333px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .canvas > .rule {
+  background: none !important;
+  border-top: 1px dotted #666;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .canvas > .rule[style*="top:200px"] {
+  top: 193px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .canvas > .rule[style*="top:204px"] {
+  top: 197px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .canvas > .rule[style*="top:220px"] {
+  top: 210px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .canvas > .rule[style*="top:224px"] {
+  top: 214px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"]) .source-thanks-banner {
+  --source-text-width: 166px;
+  --source-line-ratio: 1.03;
+  border: 0;
+  font-size: 15px !important;
+  font-weight: 400;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"])
+  :is([data-key="p17.label.549"], [data-key="p17.label.550"]) {
+  --y: 630px !important;
+}
+.voucher-native:is(#page-17, [data-template-page="page-17"])
+  :is([data-key="p17.label.581"], [data-key="p17.label.582"]) {
+  --y: 633px !important;
+}
+
+/* Timber: original title effect and the stacked, multi-color letterhead. */
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.583"] {
+  --x: 300px !important;
+  --w: 154px !important;
+  --source-text-width: 109px;
+  --source-line-ratio: 1.13;
+  font-size: 13px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) .timber .headline {
+  --x: 70px !important;
+  --y: 32px !important;
+  --w: 384px !important;
+  --h: 53px !important;
+  --source-text-width: 328px;
+  --source-line-ratio: 1.04;
+  --source-text-stroke: 1.2px #d1d8e6;
+  --source-text-shadow: 1.3px 1px 0 #253567;
+  font-size: 43px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) .logo-timber {
+  left: 48px !important;
+  top: 38px !important;
+  width: 42px !important;
+  height: 55px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) .logo-timber .native-logo {
+  object-fit: fill;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.585"] {
+  --x: 32px !important;
+  --y: 83px !important;
+  --w: 462px !important;
+  --h: 25px !important;
+  --source-text-width: 299px;
+  --source-line-ratio: 1.05;
+  font-family: "Arial Black", Arial, sans-serif !important;
+  font-size: 24px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.586"] {
+  --x: 11px !important;
+  --y: 109px !important;
+  --source-text-width: 105px;
+  --source-line-ratio: 1.06;
+  font-size: 19px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.587"] {
+  --x: 11px !important;
+  --y: 127px !important;
+  --h: 31px !important;
+  --source-text-width: 158px;
+  --source-line-ratio: 1.07;
+  font-family: "Segoe Script", "Brush Script MT", cursive !important;
+  font-style: italic;
+  font-size: 24px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.588"] {
+  --x: 11px !important;
+  --y: 151px !important;
+  --source-text-width: 120px;
+  --source-line-ratio: 1.08;
+  font-size: 18px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.589"] {
+  --x: 11px !important;
+  --y: 173px !important;
+  --source-text-width: 208px;
+  --source-line-ratio: 1.07;
+  font-size: 21px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) .timber > .rule {
+  top: 201px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"])
+  :is([data-key="p18.label.590"], [data-key="p18.label.591"]) {
+  top: 303px !important;
+  font-size: 16px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.590"] {
+  --x: 83px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-key="p18.label.591"] {
+  --x: 666px !important;
+}
+.voucher-native:is(#page-18, [data-template-page="page-18"]) [data-field="p18.copy0.date"] {
+  left: 730px !important;
+  top: 304px !important;
+  width: 156px !important;
+  height: 21px !important;
+  border-bottom: 1px dotted var(--ink);
+}
+
+/* Ma: wide heavy title, tightly aligned contact and return guides. */
+.voucher-native:is(#page-19, [data-template-page="page-19"]) .ma .headline {
+  --y: 47px !important;
+  --h: 53px !important;
+  --source-text-width: 466px;
+  --source-line-ratio: 1.04;
+  --source-text-stroke: 0.65px #171717;
+  color: #171717 !important;
+  font-size: 48px !important;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"])
+  :is([data-key="p19.label.595"], [data-key="p19.label.596"], [data-key="p19.label.597"]) {
+  --source-line-ratio: 1.09;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) [data-key="p19.label.595"] {
+  --source-text-width: 391px;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) [data-key="p19.label.596"] {
+  --source-text-width: 251px;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) [data-key="p19.label.597"] {
+  --y: 146px !important;
+  --source-text-width: 203px;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) [data-key="p19.label.598"] {
+  --source-line-ratio: 1.02;
+  font-family: Arial, Kalpurush, sans-serif !important;
+  font-size: 16px !important;
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) [data-field="p19.copy0.words"] {
+  border-bottom: 1px dotted var(--ink);
+}
+.voucher-native:is(#page-19, [data-template-page="page-19"]) .signature {
+  border-top: 0;
+}
+
+/* Majeda's published physical size is unchanged by local text calibration. */
+.voucher-native:is(#page-20, [data-template-page="page-20"]) .model .headline {
+  --x: 58px !important;
+  --y: 35px !important;
+  --h: 48px !important;
+  --source-text-width: 430px;
+  --source-line-ratio: 1.02;
+  --source-text-stroke: 0.7px #2f886e;
+  font-size: 41px !important;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) .model [data-key="p20.label.616"] {
+  --x: 119px !important;
+  --y: 82px !important;
+  --w: 350px !important;
+  --h: 25px !important;
+  --source-line-ratio: 1.05;
+  font-size: 17.5px !important;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"])
+  .model
+  [data-key="p20.label.616"]:has(.source-owner-prefix) {
+  background: linear-gradient(90deg, #378c6f 0 94px, #fff 94px) !important;
+  text-align: left;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) .source-owner-prefix {
+  display: inline-block;
+  width: 88px;
+  padding-inline: 1px;
+  text-align: center;
+  color: #fff;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"])
+  :is([data-key="p20.label.617"], [data-key="p20.label.618"], [data-key="p20.label.619"]) {
+  --source-text-width: 522px;
+  --source-line-ratio: 1.05;
+  font-size: 13.5px !important;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) [data-key="p20.label.617"] {
+  --y: 116px !important;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) [data-key="p20.label.618"] {
+  --y: 133px !important;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) [data-key="p20.label.619"] {
+  --y: 150px !important;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) [data-key="p20.label.620"] {
+  --y: 171px !important;
+  --source-text-width: 234px;
+  --source-line-ratio: 1.06;
+  font-size: 22px !important;
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) .canvas > .rule {
+  background: none;
+  border-top: 1px dotted var(--ink);
+}
+.voucher-native:is(#page-20, [data-template-page="page-20"]) [data-field="p20.copy0.date"] {
+  border-bottom: 1px dotted var(--ink);
+}
+
+
+/* Dimensions measured from the upright PDF copy at the native artwork scale.
+   Wordmark effects are painted on editable Kalpurush text. */
+
+/* 21 — Rihad Fish Supply */
+.voucher-native:is(#page-21, [data-template-page="page-21"]) .fish .headline {
+  left: 65px;
+  top: 12px;
+  width: 366px;
+  height: 50px;
+  font-size: 35px !important;
+  color: #24593a !important;
+  --source-line-ratio: 1.16;
+  --source-text-width: 310px;
+  --source-text-stroke: 1px #f9fcf8;
+  --source-text-shadow: 1.5px 1.5px #9db19d;
+}
+
+.voucher-native:is(#page-21, [data-template-page="page-21"]) .fish .pill.line {
+  left: 150px !important;
+  top: 57px;
+  width: 191px !important;
+  height: 25px;
+  border: 2px solid #306143;
+  background: #e7efe4 !important;
+  color: #285537 !important;
+  font-size: 20px;
+  --source-line-ratio: 1.08;
+  --source-text-width: 172px;
+}
+
+.voucher-native[data-template-page="page-21"] [data-key="p21.label.652"] {
+  top: 83px;
+  height: 23px;
+  font-size: 17px;
+  --source-line-ratio: 1.12;
+  --source-text-width: 258px;
+}
+
+.voucher-native[data-template-page="page-21"] .fish .css-portrait:first-child {
+  left: 5px !important;
+  width: 69px !important;
+  height: 84px !important;
+}
+
+.voucher-native[data-template-page="page-21"] .fish .css-portrait:nth-child(2) {
+  left: 421px !important;
+  top: 2px !important;
+  width: 70px !important;
+  height: 94px !important;
+}
+
+.voucher-native:is(#page-21, [data-template-page="page-21"]) .table-block.light-head .th {
+  color: #28573c !important;
+  font-size: 17px !important;
+  --source-line-ratio: 1.15;
+}
+
+.voucher-native[data-template-page="page-21"] .table-block .cell-label {
+  --source-line-ratio: 1.17;
+}
+
+.voucher-native:is(#page-21, [data-template-page="page-21"]) .table-block .rule {
+  background: #3b754f !important;
+}
+
+.voucher-native[data-template-page="page-21"] [data-key="p21.label.656"] {
+  left: 444px;
+}
+
+.voucher-native[data-template-page="page-21"] [data-key="p21.copy0.date"] {
+  left: 515px !important;
+  width: 143px !important;
+}
+
+.voucher-native:is(#page-21, [data-template-page="page-21"]) [data-key="p21.label.653"] + .rule,
+.voucher-native:is(#page-21, [data-template-page="page-21"]) [data-key="p21.label.654"] + .rule {
+  top: var(--fish-line-y) !important;
+  left: var(--fish-line-x) !important;
+  width: calc(658px - var(--fish-line-x)) !important;
+  height: 0 !important;
+  background: none !important;
+  border-top: 1px dotted #3c7450;
+}
+
+.voucher-native[data-template-page="page-21"] [data-key="p21.label.653"] + .rule {
+  --fish-line-x: 69px;
+  --fish-line-y: 196px;
+}
+
+.voucher-native[data-template-page="page-21"] [data-key="p21.label.654"] + .rule {
+  --fish-line-x: 87px;
+  --fish-line-y: 226px;
+}
+
+.voucher-native[data-template-page="page-21"] [data-key="p21.copy0.name"] {
+  left: 69px !important;
+  top: 177px !important;
+  width: 589px !important;
+  height: 19px !important;
+}
+
+.voucher-native[data-template-page="page-21"] [data-key="p21.copy0.address"] {
+  left: 87px !important;
+  top: 207px !important;
+  width: 571px !important;
+  height: 19px !important;
+}
+
+/* 23/25 — Shafikul, in rose and in black. */
+.voucher-native[data-template-page="page-23"] .poultry,
+.voucher-native[data-template-page="page-23"] .canvas {
+  --ink: #d62d73 !important;
+}
+
+.voucher-native[data-template-page="page-23"].native-monochrome .poultry,
+.voucher-native[data-template-page="page-23"].native-monochrome .canvas {
+  --ink: #121212 !important;
+}
+
+.voucher-native[data-template-page="page-23"] .poultry > .piece:first-child {
+  top: 9px;
+  height: 20px;
+  --source-text-width: 143px;
+}
+
+.voucher-native[data-template-page="page-23"] .poultry .headline {
+  top: 30px;
+  height: 55px;
+  font-size: 43px !important;
+  --source-line-ratio: 1.11;
+  --source-text-width: 392px;
+  --source-text-stroke: 1px #fff8fb;
+  --source-text-shadow: 1.5px 1.4px #edaccc;
+}
+
+.voucher-native[data-template-page="page-23"].native-monochrome .poultry .headline {
+  --source-text-shadow: 1.5px 1.4px #b8b8b8;
+}
+
+.voucher-native[data-template-page="page-23"] .poultry .pill {
+  left: 157px;
+  top: 85px;
+  width: 186px;
+  height: 27px;
+  font-size: 20px;
+  --source-line-ratio: 1.08;
+  --source-text-width: 168px;
+}
+
+.voucher-native[data-template-page="page-23"] .poultry > .logo:nth-child(3) {
+  left: -4px !important;
+}
+
+.voucher-native[data-template-page="page-23"] .poultry > .logo {
+  top: 78px !important;
+  width: 105px !important;
+  height: 76px !important;
+}
+
+.voucher-native[data-template-page="page-23"] .poultry > .logo + .logo {
+  left: 390px !important;
+}
+
+.voucher-native[data-template-page="page-23"]
+  :is([data-key="p23.label.723"], [data-key="p23.label.729"]) {
+  top: 115px;
+  height: 26px;
+  font-size: 22px;
+  --source-line-ratio: 1.12;
+  --source-text-width: 199px;
+}
+
+.voucher-native[data-template-page="page-23"]
+  :is([data-key="p23.label.724"], [data-key="p23.label.730"]) {
+  top: 141px;
+  height: 22px;
+  font-size: 17px;
+  --source-line-ratio: 1.11;
+  --source-text-width: 316px;
+}
+
+.voucher-native[data-template-page="page-23"]
+  :is([data-key="p23.label.725"], [data-key="p23.label.731"]) {
+  top: 164px;
+  height: 22px !important;
+  font-size: 15px;
+  --source-line-ratio: 1.1;
+  --source-text-width: 459px;
+}
+
+.voucher-native[data-template-page="page-23"] .fieldline {
+  background: linear-gradient(#f1b9d6, #fff 53%, #f3c0da);
+}
+
+.voucher-native[data-template-page="page-23"].native-monochrome .fieldline {
+  background: linear-gradient(#d8d8d8, #fff 53%, #ddd);
+}
+
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field$=".name"]) {
+  height: 23px !important;
+}
+
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field$=".address"]) {
+  height: 23px !important;
+}
+
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field="p23.copy0.name"]) {
+  top: 164px !important;
+}
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field="p23.copy1.name"]) {
+  top: 169px !important;
+}
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field="p23.copy0.address"]) {
+  top: 189px !important;
+}
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field="p23.copy1.address"]) {
+  top: 194px !important;
+}
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field="p23.copy0.date"]) {
+  top: 139px !important;
+  height: 23px !important;
+}
+.voucher-native[data-template-page="page-23"] .fieldline:has(> [data-field="p23.copy1.date"]) {
+  top: 144px !important;
+  height: 23px !important;
+}
+
+/* There is no printed serial caption to the left of the source date box. */
+.voucher-native[data-template-page="page-23"]
+  :is([data-key="p23.label.734"], [data-key="p23.label.767"]) {
+  display: none !important;
+}
+
+.voucher-native[data-template-page="page-23"] [data-key="p23.copy0.serial"] {
+  top: 140px !important;
+}
+.voucher-native[data-template-page="page-23"] [data-key="p23.copy1.serial"] {
+  top: 145px !important;
+}
+
+.voucher-native:is(#page-23, [data-template-page="page-23"]) .table-block .brand-chicken.pink {
+  background: linear-gradient(90deg, #ed91bd, #fff0f8 48%, #ed91bd);
+}
+
+/* 24 — Alif Art, white lettering across the green masthead. */
+.voucher-native:is(#page-24, [data-template-page="page-24"]) .green-frame {
+  background: #0e6b50;
+}
+
+.voucher-native:is(#page-24, [data-template-page="page-24"]) .alif [data-key="p24.label.799"] {
+  left: 101px !important;
+  top: 42px !important;
+  width: 510px !important;
+  height: 55px !important;
+  font-size: 45px !important;
+  --source-line-ratio: 1.12;
+  --source-text-width: 463px;
+}
+
+/* 26 — Suchi Decorator, outlined rose lettering and the two ink rules. */
+.voucher-native:is(#page-26, [data-template-page="page-26"]) .deco .soft-header {
+  height: 202px;
+  background: linear-gradient(100deg, #d5e8ef, #e7f3f8 52%, #d5e8f0) !important;
+}
+
+.voucher-native:is(#page-26, [data-template-page="page-26"]) .deco .headline {
+  left: 83px;
+  top: 32px;
+  width: 328px;
+  height: 51px;
+  font-size: 39px !important;
+  color: #c92061 !important;
+  --source-line-ratio: 1.1;
+  --source-text-width: 311px;
+  --source-text-stroke: 1.7px #fff8fb;
+}
+
+.voucher-native:is(#page-26, [data-template-page="page-26"]) .deco .piece:nth-child(2) {
+  left: 87px;
+  top: 12px;
+  height: 19px;
+  color: #252048 !important;
+  --source-text-width: 101px;
+}
+
+.voucher-native:is(#page-26, [data-template-page="page-26"]) .deco .piece.pill {
+  left: 128px;
+  top: 80px;
+  width: 240px;
+  height: 28px !important;
+  font-size: 20px !important;
+  --source-line-ratio: 1.1;
+  --source-text-width: 219px;
+}
+
+.voucher-native[data-template-page="page-26"] .deco .logo:nth-child(3) {
+  left: 19px !important;
+  width: 65px !important;
+}
+
+.voucher-native[data-template-page="page-26"] .deco .logo:nth-child(4) {
+  left: 406px !important;
+  width: 65px !important;
+}
+
+.voucher-native:is(#page-26, [data-template-page="page-26"])
+  .deco
+  :is([data-key="p26.label.825"], [data-key="p26.label.832"]) {
+  top: 112px;
+  height: 24px;
+  font-size: 15px;
+  --source-line-ratio: 1.15;
+  --source-text-width: 454px;
+}
+
+.voucher-native:is(#page-26, [data-template-page="page-26"])
+  .deco
+  :is([data-key="p26.label.826"], [data-key="p26.label.833"]) {
+  top: 133px;
+  height: 23px;
+  font-size: 15px;
+  --source-line-ratio: 1.15;
+  --source-text-width: 255px;
+}
+
+.voucher-native:is(#page-26, [data-template-page="page-26"])
+  .deco
+  :is([data-key="p26.label.828"], [data-key="p26.label.835"]) {
+  top: 176px;
+  height: 25px;
+  font-size: 17px;
+  --source-line-ratio: 1.1;
+  --source-text-width: 342px;
+}
+
+.voucher-native[data-template-page="page-26"] .deco > .rule {
+  top: 202px !important;
+  background: #c52262;
+  box-shadow: 0 2.5px #53adcb;
+}
+
+.voucher-native[data-template-page="page-26"]
+  :is(
+    [data-key="p26.label.836"],
+    [data-key="p26.label.837"],
+    [data-key="p26.label.838"],
+    [data-key="p26.label.839"]
+  ) {
+  top: 169px;
+  height: 22px;
+  font-size: 13px;
+  color: #287998;
+}
+
+.voucher-native[data-template-page="page-26"] [data-key="p26.label.836"] {
+  left: 21px;
+}
+.voucher-native[data-template-page="page-26"] [data-key="p26.label.837"] {
+  left: 312px;
+}
+.voucher-native[data-template-page="page-26"] [data-key="p26.label.838"] {
+  left: 551px;
+}
+.voucher-native[data-template-page="page-26"] [data-key="p26.label.839"] {
+  left: 842px;
+}
+
+.voucher-native[data-template-page="page-26"] :is([data-key$=".ref"], [data-key$=".date"]) {
+  top: 169px !important;
+  height: 21px !important;
+  color: #287998;
+}
+
+.voucher-native[data-template-page="page-26"] [data-key$=".date"] {
+  top: 166px !important;
+  height: 17px !important;
+  width: 106px !important;
+  border-bottom: 1px dotted #287998;
+}
+
+.voucher-native[data-template-page="page-26"] [data-key="p26.copy0.date"] {
+  left: 346px !important;
+}
+.voucher-native[data-template-page="page-26"] [data-key="p26.copy1.date"] {
+  left: 876px !important;
+}
+
+/* 27 — Rangdhanu Sign. Keep the banner, triangle and footer as CSS shapes. */
+.voucher-native:is(#page-27, [data-template-page="page-27"]) .rangdhanu .headline {
+  left: 66px;
+  top: 25px !important;
+  width: 182px;
+  height: 70px !important;
+  font-size: 65px !important;
+  --source-line-ratio: 1.04;
+  --source-text-width: 148px;
+  --source-text-stroke: 0.7px #fff;
+}
+
+.voucher-native:is(#page-27, [data-template-page="page-27"])
+  .rangdhanu
+  :is([data-key="p27.label.842"], [data-key="p27.label.852"]) {
+  left: 107px;
+  top: 92px !important;
+  height: 27px !important;
+  font-size: 26px;
+  --source-line-ratio: 1.04;
+  --source-text-width: 49px;
+}
+
+.voucher-native:is(#page-27, [data-template-page="page-27"])
+  .rangdhanu
+  :is([data-key="p27.label.843"], [data-key="p27.label.853"]) {
+  left: 94px;
+  top: 117px;
+  width: 159px;
+  font-size: 29px;
+  --source-line-ratio: 1.05;
+  --source-text-width: 133px;
+}
+
+.voucher-native:is(#page-27, [data-template-page="page-27"]) .rangdhanu .rainbow-accent {
+  left: -8px !important;
+  top: -2px !important;
+  height: 247px !important;
+  clip-path: polygon(0 0, 100% 0, 10% 100%, 0 100%);
+}
+
+.voucher-native:is(#page-27, [data-template-page="page-27"])
+  .rangdhanu
+  > .rainbow-panel:nth-child(2) {
+  left: -8px !important;
+  top: 22px !important;
+  width: 281px !important;
+  height: 96px !important;
+  background: linear-gradient(115deg, #0437b4, #102dc7 54%, #0031a9) !important;
+}
+
+.voucher-native:is(#page-27, [data-template-page="page-27"])
+  .rangdhanu
+  > .rainbow-panel:nth-child(3) {
+  left: -8px !important;
+  top: -2px !important;
+  height: 182px !important;
+}
+
+.voucher-native[data-template-page="page-27"]
+  .rangdhanu
+  :is([data-key="p27.label.846"], [data-key="p27.label.856"]) {
+  left: 314px;
+  top: 3px;
+  width: 194px;
+  height: 80px;
+  font-size: 10.5px;
+  font-weight: 400 !important;
+  --source-line-ratio: 1.22;
+  --source-text-width: 180px;
+}
+
+.voucher-native:is(#page-27, [data-template-page="page-27"])
+  .rangdhanu
+  :is([data-key="p27.label.847"], [data-key="p27.label.857"]) {
+  top: 84px !important;
+  width: 238px;
+  height: 55px !important;
+  text-align: left;
+  font-size: 10.5px;
+  --source-line-ratio: 1.25;
+  --source-text-width: 225px;
+}
+
+.voucher-native[data-template-page="page-27"]
+  .rangdhanu
+  :is([data-key="p27.label.848"], [data-key="p27.label.858"]) {
+  left: 249px;
+  top: 144px;
+  width: 251px;
+  height: 17px;
+  --source-line-ratio: 1.13;
+  --source-text-width: 246px;
+}
+
+.voucher-native[data-template-page="page-27"]
+  .rangdhanu
+  :is([data-key="p27.label.849"], [data-key="p27.label.859"]) {
+  left: 260px;
+  top: 161px;
+  width: 240px;
+  height: 20px;
+  --source-line-ratio: 1.15;
+  --source-text-width: 200px;
+}
+
+.voucher-native[data-template-page="page-27"] .table-block {
+  top: 209px !important;
+}
+
+.voucher-native:is(#page-27, [data-template-page="page-27"]) .table-block .rule {
+  background: #1656bf !important;
+}
+
+.voucher-native[data-template-page="page-27"] .table-block::before {
+  content: "";
+  position: absolute;
+  right: 1px;
+  bottom: 30px;
+  width: 35px;
+  height: 82px;
+  background: linear-gradient(100deg, #5cd5f1, #32b9e5);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+
+.voucher-native[data-template-page="page-27"] .source-rangdhanu-footer {
+  width: 80px;
+  margin-left: 15px;
+  clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.voucher-native[data-template-page="page-27"] .source-rangdhanu-footer::before {
+  left: 19px;
+  width: 54px;
+  height: 29px;
+}
+
+/* 30 — Champion. The quantity and amount tint extends through the total. */
+.voucher-native:is(#page-30, [data-template-page="page-30"]) .champion .headline {
+  left: 3.5px;
+  top: 25px;
+  height: 57px;
+  font-size: 49px !important;
+  color: #132d91 !important;
+  --source-line-ratio: 1.12;
+  --source-text-width: 404px;
+  --source-text-stroke: 1.5px #f6f8ff;
+  --source-text-shadow: 2px 2.2px #a5b4dc, 0.7px 0.7px #173788;
+}
+
+.voucher-native[data-template-page="page-30"] .champion > .piece:first-child {
+  top: 8px;
+  --source-line-ratio: 1.12;
+  --source-text-width: 84px;
+}
+
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(3) {
+  top: 76px;
+  height: 26px !important;
+  font-size: 24px !important;
+  --source-line-ratio: 1.06;
+  --source-text-width: 328px;
+}
+
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(4) {
+  --source-text-width: 434px;
+}
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(5) {
+  --source-text-width: 416px;
+}
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(6) {
+  --source-text-width: 205px;
+}
+
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(7) {
+  top: 157px;
+  height: 28px !important;
+  font-size: 24px !important;
+  --source-line-ratio: 1.12;
+  --source-text-width: 350px;
+}
+
+.voucher-native[data-template-page="page-30"] .champion > .piece:nth-child(8) {
+  top: 185px;
+  --source-text-width: 163px;
+}
+
+.voucher-native:is(#page-30, [data-template-page="page-30"])
+  :is(.fieldline, .table-block .table-shade) {
+  background: #dfe7f7 !important;
+}
+
+.voucher-native[data-template-page="page-30"] .table-block .table-shade {
+  height: calc(var(--h) + 31px);
+}
+
+.voucher-native:is(#page-30, [data-template-page="page-30"])
+  :is(.table-block.dark-head .th, .table-block > .piece.right.bold, .fieldline .tag) {
+  background: #172d88 !important;
+}
+
+.voucher-native[data-template-page="page-30"] .fieldline:has(> [data-field$=".date"]) {
+  top: 186px !important;
+  height: 31px !important;
+  --tag: 52px !important;
+}
+
+.voucher-native[data-template-page="page-30"] .fieldline:has(> [data-field="p30.copy0.date"]) {
+  left: 293px !important;
+  width: 165px !important;
+}
+.voucher-native[data-template-page="page-30"] .fieldline:has(> [data-field="p30.copy1.date"]) {
+  left: 813px !important;
+  width: 165px !important;
+}
+
+/* Two separate backgrounds keep both rules visible at fractional print scales. */
+.voucher-native:is([data-template-page="page-23"], [data-template-page="page-30"])
+  .fieldline
+  > .field[data-key$=".date"] {
+  background-image:
+    linear-gradient(var(--ink), var(--ink)), linear-gradient(var(--ink), var(--ink));
+  background-position:
+    33.333% 0,
+    66.666% 0;
+  background-repeat: no-repeat;
+  background-size: 1.4px 100%;
+}
+
+.voucher-native[data-template-page="page-30"] [data-key$=".words"] {
+  top: 1144px !important;
+  width: 398px !important;
+  height: 14px !important;
+  border-bottom: 1px dotted #274593;
+}
+
+.voucher-native[data-template-page="page-30"] [data-key="p30.copy0.words"] {
+  left: 60px !important;
+}
+.voucher-native[data-template-page="page-30"] [data-key="p30.copy1.words"] {
+  left: 580px !important;
+}
+
+.voucher-native[data-template-page="page-30"] .source-champion-return-note {
+  top: 1180px;
+  height: 23px;
+  font-size: 14px;
+  --source-line-ratio: 1.1;
+}
+
+
+
+/* Islam Computers: the requested trim is 5.6 by 8.5 inches. */
+.voucher-native:is(#page-31,[data-template-page="page-31"]){color:#153d87;--ink:#153d87;background:#fff}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .canvas{width:1000px;height:1517.857142857143px;overflow:hidden}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-header{color:#072c79}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-header-paint{border:0;background:linear-gradient(115deg,#8cbcf1 0%,#cee5fa 38%,#edf5fd 100%)}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-angle{border:0;pointer-events:none}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-angle-one{background:linear-gradient(135deg,#73a9ea88,#8abdf555);clip-path:polygon(0 0,30% 0,67% 100%,0 100%)}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-angle-two{background:#377bd047;clip-path:polygon(0 0,24% 0,86% 100%,69% 100%)}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-angle-three{background:#d4eaffb3;clip-path:polygon(0 0,12% 0,93% 100%,86% 100%)}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .logo-islam-computers .native-logo{display:block;width:100%;height:100%;object-fit:contain}
+/* The reference is an English invoice. Only its printed English labels use
+   Arial; blank customer/product fields retain the studio's Kalpurush font. */
+.voucher-native:is(#page-31,[data-template-page="page-31"]) :is(.islam-english,.islam-contact,.islam-invoice,.islam-table .th),
+.voucher-native:is(#page-31,[data-template-page="page-31"]) :is(.islam-english,.islam-contact,.islam-invoice,.islam-table .th) *{font-family:Arial,Helvetica,sans-serif!important;--source-line-ratio:1.15}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-brand,.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-brand *{font-family:'Arial Black',Arial,Helvetica,sans-serif!important;font-weight:900!important;letter-spacing:-1.9px!important;white-space:nowrap;--source-line-ratio:1.05}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-brand{--source-text-width:470px;color:#092970}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-invoice{border:0;border-radius:0 30px 30px 0;background:linear-gradient(90deg,#fff0,#d3dcf3 12%,#758fd0 72%,#496bb8);color:#11397f}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-frame{border:1.6px solid #153d87;background:transparent;pointer-events:none}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .rule{background:#153d87;pointer-events:none}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-table .th{border:0!important;background:transparent!important;color:#153d87;font-weight:400!important;line-height:1.1}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-table .field{z-index:1}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-watermark{position:absolute;left:211px;top:151px;width:254px;height:316px;background:#9cbdf0;opacity:.53;mask-image:url('/voucher-assets/logos/islam-computers.png');-webkit-mask-image:url('/voucher-assets/logos/islam-computers.png');mask-size:contain;-webkit-mask-size:contain;mask-position:center;-webkit-mask-position:center;mask-repeat:no-repeat;-webkit-mask-repeat:no-repeat;pointer-events:none;z-index:0}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-totals-frame{border-top:0}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-dotted{height:0!important;background:transparent;border-bottom:1.3px dotted #153d87}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-footer-paint{border:0;background:linear-gradient(90deg,#123e89,#14539e,#163c83)}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-footer{color:#fff}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-icon{position:absolute;width:31px;height:31px;border-radius:7px;background:#062e79;color:#fff;pointer-events:none}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-phone::before{content:'';position:absolute;left:10px;top:6px;width:13px;height:19px;border-left:3.5px solid white;border-bottom:3.5px solid white;border-radius:6px 0 7px 9px;transform:rotate(-26deg)}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-phone::after{content:'';position:absolute;left:8px;top:6px;width:5px;height:7px;border-radius:2px;background:white;transform:rotate(-25deg);box-shadow:5px 15px 0 white}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-email::before{content:'';position:absolute;left:6px;top:9px;width:19px;height:13px;border:1.6px solid white;border-radius:1px}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-email::after{content:'';position:absolute;left:10px;top:4px;width:11px;height:11px;border-right:1.6px solid white;border-bottom:1.6px solid white;transform:rotate(45deg)}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-facebook::before{content:'f';position:absolute;left:11px;top:0;font-family:Arial,sans-serif!important;font-size:30px;font-weight:700}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-globe::before{content:'';position:absolute;left:5px;top:5px;width:21px;height:21px;border:1.4px solid white;border-radius:50%;background:linear-gradient(transparent 45%,#fff 45% 51%,transparent 51%)}
+.voucher-native:is(#page-31,[data-template-page="page-31"]) .islam-globe::after{content:'';position:absolute;left:11px;top:5px;width:9px;height:21px;border:1.2px solid white;border-radius:50%}
 
