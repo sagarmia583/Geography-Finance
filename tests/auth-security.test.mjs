@@ -181,6 +181,22 @@ test("passwords use salted memory-hard hashes and fail closed for bad passwords 
   await assert.rejects(hashPassword("x".repeat(1025)));
 });
 
+for (const [kind, password] of [
+  ["numeric", "654321"],
+  ["mixed", "a1B2c3"],
+]) {
+  test(`password hashing accepts exactly six ${kind} characters`, async () => {
+    const encoded = await hashPassword(password);
+    assert.equal(validPasswordHash(encoded), true);
+    assert.equal(await verifyPassword(password, encoded), true);
+    assert.equal(await verifyPassword(password.slice(0, -1), encoded), false);
+  });
+}
+
+test("password hashing rejects five digits at the minimum-length boundary", async () => {
+  await assert.rejects(hashPassword("65432"));
+});
+
 test("missing, forged, and client-created sessions cannot authenticate", async () => {
   for (const options of [
     {},
@@ -311,6 +327,35 @@ test("web password change persists hash, revokes all old sessions and leaves env
   assert.equal((await restarted.authenticate(NEW_PASSWORD)).success, true);
   assert.equal((await restarted.sessionStatus()).authenticated, true);
 });
+
+for (const [kind, password] of [
+  ["numeric", "654321"],
+  ["mixed", "a1B2c3"],
+]) {
+  test(`web change accepts six ${kind} characters while retaining proof, confirmation and session revocation`, async () => {
+    const service = authService();
+    await service.authenticate(PASSWORD);
+    const oldSession = { ...service.session.data };
+    const next = { newPassword: password, confirmPassword: password };
+    for (const invalid of [
+      { ...next, currentPassword: "incorrect-current-password" },
+      { ...next, confirmPassword: `${password}x` },
+      { newPassword: password.slice(0, -1), confirmPassword: password.slice(0, -1) },
+    ]) {
+      assert.equal((await service.changeLoginPassword(passwordChange(invalid))).success, false);
+      assert.equal(service.passwordStore.saves.length, 0);
+      assert.equal((await service.sessionStatus()).authenticated, true);
+    }
+    assert.equal((await service.changeLoginPassword(passwordChange(next))).success, true);
+    assert.equal(service.passwordStore.saves.length, 1);
+    assert.equal(await verifyPassword(password, service.passwordStore.hash), true);
+    const otherDevice = authService({ data: oldSession, passwordStore: service.passwordStore });
+    assert.equal((await otherDevice.sessionStatus()).authenticated, false);
+    const restarted = authService({ passwordStore: service.passwordStore });
+    assert.equal((await restarted.authenticate(PASSWORD)).success, false);
+    assert.equal((await restarted.authenticate(password)).success, true);
+  });
+}
 
 test("password store outage cannot restore old env login or authenticated sessions; logout still works", async () => {
   const service = authService();
@@ -647,8 +692,55 @@ test("every private server function rejects unauthenticated calls before upstrea
       sheetName: "Teachers",
     }),
   );
+  await assert.rejects(service.getVoucherMasterData(SHEET_ID), /unauthorized/);
   assert.equal(calls, 0);
   assert.ok(service.methods.every((method) => method === "POST"));
+});
+
+test("dashboard metadata authorizes once and starts only the five allowed sheet reads", async () => {
+  let authCalls = 0;
+  let finishReads;
+  const reads = new Promise((resolve) => {
+    finishReads = resolve;
+  });
+  const calls = [];
+  const service = serverFunctions(
+    {
+      fetchSheetValues: async (spreadsheetId, range, name) => {
+        calls.push([spreadsheetId, range, name]);
+        await reads;
+        if (name === "Settings") throw new Error("optional sheet unavailable");
+        return [[name]];
+      },
+    },
+    { requireSession: async () => authCalls++, privateResponse() {} },
+  );
+
+  await assert.rejects(service.getVoucherMasterData("invalid/id"));
+  assert.equal(authCalls, 0);
+  assert.deepEqual(calls, []);
+
+  const result = service.getVoucherMasterData(SHEET_ID);
+  try {
+    await new Promise(setImmediate);
+    assert.equal(authCalls, 1);
+    assert.deepEqual(calls, [
+      [SHEET_ID, "Settings!A1:B50", "Settings"],
+      [SHEET_ID, "Rates!A:D", "Rates"],
+      [SHEET_ID, "Products!A:D", "Products"],
+      [SHEET_ID, "Percentages!A:C", "Percentages"],
+      [SHEET_ID, "Teachers!A:E", "Teachers"],
+    ]);
+  } finally {
+    finishReads();
+  }
+  assert.deepEqual(JSON.parse(JSON.stringify(await result)), {
+    settings: [],
+    rates: [["Rates"]],
+    products: [["Products"]],
+    percentages: [["Percentages"]],
+    teachers: [["Teachers"]],
+  });
 });
 
 test("authenticated wrappers choose fixed actions and discard caller-selected verification records", async () => {

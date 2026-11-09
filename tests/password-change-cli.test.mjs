@@ -83,9 +83,28 @@ test("password change preserves Google/session configuration and private GS arti
     );
 });
 
+for (const [kind, password] of [
+  ["numeric", "654321"],
+  ["mixed", "a1B2c3"],
+]) {
+  test(`password reset accepts exactly six ${kind} characters without rotating other credentials`, async (t) => {
+    const { directory } = await fixture(t);
+    const result = await run(directory, `${password}\n${password}\n`);
+    assert.equal(result.code, 0, result.output);
+    const updated = parseEnv(await readFile(join(directory, ".env.local"), "utf8"));
+    assert.equal(await verifyPassword(password, updated.APP_PASSWORD_HASH), true);
+    assert.equal(await verifyPassword(oldPassword, updated.APP_PASSWORD_HASH), false);
+    assert.deepEqual({ ...updated, APP_PASSWORD_HASH: previousHash }, originalConfig);
+    assert.deepEqual(await readdir(directory), [".env.local"]);
+    assert.equal(result.output.includes(password), false);
+    assert.equal(result.output.includes(updated.APP_PASSWORD_HASH), false);
+  });
+}
+
 for (const [name, input, config, flags] of [
   ["mismatched passwords", `${newPassword}\ndifferent-password\n`, originalConfig, []],
   ["short password", "short\nshort\n", originalConfig, []],
+  ["five-digit password", "65432\n65432\n", originalConfig, []],
   ["missing existing setup", `${newPassword}\n${newPassword}\n`, { OTHER_SETTING: "keep" }, []],
   [
     "invalid existing setup",

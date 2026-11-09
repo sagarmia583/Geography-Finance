@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, relative, resolve, sep } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
@@ -97,27 +97,29 @@ function originalCuttingFixtures() {
   const layouts = new Map(
     readPublicJson("voucher-native-layouts.json").map((layout) => [layout.id, layout]),
   );
-  return pages.map((page) => ({
-    page,
-    instances: page.copies.map((position, index) => {
-      const layout = layouts.get(page.templateId);
-      if (page.id !== 4) return { ...position, crop: { ...layout.crop } };
-      // Battery's second receipt includes the footer brands from the source.
-      const crop = index === 0 ? { ...layout.crop } : { x: 90, y: 686, w: 820, h: 738 };
-      const scale = Math.min(
-        page.pageWidthMm / layout.sourceWidth,
-        page.pageHeightMm / layout.sourceHeight,
-      );
-      return {
-        leftMm: crop.x * scale,
-        topMm: crop.y * scale,
-        widthMm: crop.w * scale,
-        heightMm: crop.h * scale,
-        rotation: 0,
-        crop,
-      };
-    }),
-  }));
+  return pages
+    .filter((page) => page.id <= 30)
+    .map((page) => ({
+      page,
+      instances: page.copies.map((position, index) => {
+        const layout = layouts.get(page.templateId);
+        if (page.id !== 4) return { ...position, crop: { ...layout.crop } };
+        // Battery's second receipt includes the footer brands from the source.
+        const crop = index === 0 ? { ...layout.crop } : { x: 90, y: 686, w: 820, h: 738 };
+        const scale = Math.min(
+          page.pageWidthMm / layout.sourceWidth,
+          page.pageHeightMm / layout.sourceHeight,
+        );
+        return {
+          leftMm: crop.x * scale,
+          topMm: crop.y * scale,
+          widthMm: crop.w * scale,
+          heightMm: crop.h * scale,
+          rotation: 0,
+          crop,
+        };
+      }),
+    }));
 }
 
 function assetBytes(src) {
@@ -903,7 +905,7 @@ test("artwork transform rejects invalid dimensions and unsupported rotations", (
   }
 });
 
-test("native manifest maps all 30 source pages once and retains the original PDF", () => {
+test("native manifest maps all 30 source pages without publishing the source PDF", () => {
   const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
   assert.equal(manifest.source.pageCount, 30);
   assert.equal(manifest.templates.length, 30);
@@ -912,9 +914,11 @@ test("native manifest maps all 30 source pages once and retains the original PDF
     Array.from({ length: 30 }, (_, index) => index + 1),
   );
   assert.equal(new Set(manifest.templates.map((template) => template.id)).size, 30);
-  const pdf = assetBytes(manifest.source.file);
-  assert.equal(pdf.toString("ascii", 0, 5), "%PDF-");
-  assert.equal(sha256(pdf), manifest.source.sha256);
+  assert.match(manifest.source.sha256, /^[a-f0-9]{64}$/);
+  assert.equal(manifest.source.file, undefined);
+  assert.equal(existsSync(resolve(publicRoot, "voucher-assets", "reference.pdf")), false);
+  const studio = readFileSync(resolve(publicRoot, "voucher-studio.html"), "utf8");
+  assert.doesNotMatch(studio, /sourcePdfLink|\/voucher-assets\/reference\.pdf/);
   for (const template of manifest.templates) {
     assert.ok(typeof template.name === "string" && template.name.trim());
     assert.ok(typeof template.variant === "string");
@@ -938,8 +942,8 @@ test("native manifest maps all 30 source pages once and retains the original PDF
 
 test("native page definitions map every source page to one of the 24 HTML designs", () => {
   const { templates } = readPublicJson("voucher-assets/manifest.json");
-  const { pages } = readPublicJson("voucher-native-pages.json");
-  const layouts = readPublicJson("voucher-native-layouts.json");
+  const pages = readPublicJson("voucher-native-pages.json").pages.filter((page) => page.id <= 30);
+  const layouts = readPublicJson("voucher-native-layouts.json").filter((layout) => layout.id <= 30);
   assert.equal(layouts.length, 24);
   const byId = new Map(layouts.map((layout) => [layout.id, layout]));
   assert.equal(byId.size, 24);
@@ -1000,12 +1004,16 @@ test("native voucher artwork contains editable HTML structure and local Kalpurus
   const css = readFileSync(resolve(publicRoot, "voucher-templates.css"), "utf8");
   const layouts = readPublicJson("voucher-native-layouts.json");
   const sections = [...html.matchAll(/<section\b[^>]*>[\s\S]*?<\/section>/gi)];
-  assert.equal(sections.length, 24);
-  assert.doesNotMatch(html, /<(?:img|svg|canvas|iframe|script)\b/i);
+  const pdfSections = sections.filter((section) =>
+    /\bdata-page="(?:[1-9]|[12]\d|30)"/.test(section[0]),
+  );
+  assert.equal(pdfSections.length, 24);
+  const pdfHtml = pdfSections.map((section) => section[0]).join("");
+  assert.doesNotMatch(pdfHtml, /<(?:img|svg|canvas|iframe|script)\b/i);
   assert.doesNotMatch(html, /data:image|background-image|\.webp\b/i);
   assert.doesNotMatch(css, /background(?:-image)?\s*:[^;}]*url\(/i);
   const editableKeys = [...html.matchAll(/data-key="([^\"]+)"/g)].map((match) => match[1]);
-  assert.equal(editableKeys.length, 3238);
+  assert.equal([...pdfHtml.matchAll(/data-key="([^\"]+)"/g)].length, 3238);
   assert.equal(new Set(editableKeys).size, editableKeys.length);
   assert.equal([...html.matchAll(/contenteditable="plaintext-only"/g)].length, editableKeys.length);
   assert.ok(html.includes("মাজেদা স্টেশনারী এন্ড পেপার হাউজ"));
@@ -1117,7 +1125,7 @@ test("only isolated PDF logos and graphics are stored as raster artwork", () => 
   const manifest = readPublicJson("voucher-assets/logos/manifest.json");
   const source = readPublicJson("voucher-assets/manifest.json").source;
   assert.equal(manifest.source.sha256, source.sha256);
-  assert.equal(manifest.source.file, source.file);
+  assert.equal(manifest.source.file, undefined);
   assert.equal(manifest.assets.length, 38);
   const ids = new Set();
   const sources = new Set();

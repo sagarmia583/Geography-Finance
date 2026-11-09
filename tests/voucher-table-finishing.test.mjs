@@ -81,11 +81,13 @@ function rectangle(node) {
 
 const nodes = [...descendants(parseElements(artwork))];
 const sections = nodes.filter((node) => node.tag === "section");
-const tables = sections.flatMap((section) =>
-  [...descendants(section)]
-    .filter((node) => hasClass(node, "table-block"))
-    .map((table, copy) => ({ page: section.attributes.id, copy, table })),
-);
+const tables = sections
+  .filter((section) => Number(section.attributes["data-page"]) <= 30)
+  .flatMap((section) =>
+    [...descendants(section)]
+      .filter((node) => hasClass(node, "table-block"))
+      .map((table, copy) => ({ page: section.attributes.id, copy, table })),
+  );
 const page08 = tables.filter(({ page }) => page === "page-08");
 const shadeClasses = [
   "table-shade",
