@@ -2,14 +2,16 @@ import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { useAtom } from "jotai";
 import {
-  importSheetValues,
+  getVoucherMasterData,
   getVouchersFromServer,
   deleteVoucherFromServer,
 } from "@/lib/sheets.functions";
 import { getSheetId, getScriptUrl } from "@/lib/config";
 import { notifyFeedback } from "@/lib/feedback";
-import { getSessionStatus, logout } from "@/lib/auth.functions";
+import { logout } from "@/lib/auth.functions";
 import { ChangePasswordDialog } from "@/components/ChangePasswordDialog";
+import { SessionGate } from "@/components/SessionGate";
+import { PageLoading } from "@/components/PageLoading";
 import {
   parseSavedVouchersResponse,
   VoucherListRequests,
@@ -53,47 +55,32 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  return (
+    <SessionGate>
+      <Dashboard />
+    </SessionGate>
+  );
+}
+
+function Dashboard() {
   const navigate = useNavigate();
   const [orgInfo] = useAtom(orgInfoAtom);
   const [wizardVoucher, setWizardVoucher] = useState<VoucherConfig | null>(null);
   const [wizardClass, setWizardClass] = useState("");
-  const [isAuth, setIsAuth] = useState<boolean | null>(null);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
-
-  useEffect(() => {
-    let cancelled = false;
-    const checkSession = async () => {
-      try {
-        const session = await getSessionStatus();
-        if (cancelled) return;
-        setIsAuth(session.authenticated);
-        if (!session.authenticated) navigate({ to: "/login", replace: true });
-      } catch {
-        if (cancelled) return;
-        setIsAuth(false);
-        navigate({ to: "/login", replace: true });
-      }
-    };
-    void checkSession();
-    return () => {
-      cancelled = true;
-    };
-  }, [navigate]);
 
   const handleLogout = async () => {
     setIsLoggingOut(true);
     try {
       await logout();
-      setIsAuth(false);
-      navigate({ to: "/login", replace: true });
+      await navigate({ to: "/login", replace: true });
     } catch {
       notifyFeedback.error("লগআউট করা যায়নি", "সংযোগ ঠিক হলে আবার চেষ্টা করুন।", "logout");
-    } finally {
       setIsLoggingOut(false);
     }
   };
 
-  if (isAuth !== true) return null;
+  if (isLoggingOut) return <PageLoading message="লগআউট হচ্ছে…" />;
 
   return (
     <main className="min-h-screen bg-background">
@@ -314,30 +301,16 @@ function SyncDBButton() {
       }
 
       try {
-        // 0. Settings / Organization Info (Department, College, Mobile, Email, Web)
-        try {
-          const rSettings = await importSheetValues({
-            spreadsheetId: targetSheetId,
-            range: "Settings!A1:B50",
-            sheetName: "Settings",
-          });
-          const parsedOrg = parseOrgSettings(rSettings.values);
-          if (Object.keys(parsedOrg).length > 0) {
-            setOrgInfo((prev) => ({ ...prev, ...parsedOrg }));
-          }
-        } catch (err) {
-          console.warn("Settings fetch notice:", err);
+        const { settings, rates, products, percentages, teachers } =
+          await getVoucherMasterData(targetSheetId);
+        const parsedOrg = parseOrgSettings(settings);
+        if (Object.keys(parsedOrg).length > 0) {
+          setOrgInfo((prev) => ({ ...prev, ...parsedOrg }));
         }
 
         const newDb: MasterDB = { rates: [], products: [], percentages: [], teachers: [] };
 
-        // 1. Rates
-        const rRates = await importSheetValues({
-          spreadsheetId: targetSheetId,
-          range: "Rates!A:D",
-          sheetName: "Rates",
-        });
-        newDb.rates = rRates.values
+        newDb.rates = rates
           .slice(1)
           .map((r) => ({
             examType: String(r[0] || "")
@@ -349,13 +322,7 @@ function SyncDBButton() {
           }))
           .filter((r) => r.examType);
 
-        // 2. Products
-        const rProds = await importSheetValues({
-          spreadsheetId: targetSheetId,
-          range: "Products!A:D",
-          sheetName: "Products",
-        });
-        newDb.products = rProds.values
+        newDb.products = products
           .slice(1)
           .map((r) => ({
             name: String(r[0] || "").trim(),
@@ -365,13 +332,7 @@ function SyncDBButton() {
           }))
           .filter((r) => r.name);
 
-        // 3. Percentages
-        const rPercs = await importSheetValues({
-          spreadsheetId: targetSheetId,
-          range: "Percentages!A:C",
-          sheetName: "Percentages",
-        });
-        newDb.percentages = rPercs.values
+        newDb.percentages = percentages
           .slice(1)
           .map((r) => ({
             designation: String(r[0] || "").trim(),
@@ -380,13 +341,7 @@ function SyncDBButton() {
           }))
           .filter((r) => r.designation);
 
-        // 4. Teachers
-        const rTeachers = await importSheetValues({
-          spreadsheetId: targetSheetId,
-          range: "Teachers!A:E",
-          sheetName: "Teachers",
-        });
-        newDb.teachers = rTeachers.values
+        newDb.teachers = teachers
           .slice(1)
           .map((r) => ({
             name: String(r[0] || "").trim(),

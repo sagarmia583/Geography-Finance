@@ -1,4 +1,3 @@
-@import "https://fonts.maateen.me/solaiman-lipi/font.css";
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -171,8 +170,7 @@
   font-weight: 100 900;
   src:
     local("SolaimanLipi"),
-    local("Solaiman Lipi"),
-    url("https://fonts.maateen.me/solaiman-lipi/SolaimanLipi.woff2") format("woff2");
+    local("Solaiman Lipi");
 }
 
 @font-face {
@@ -183,8 +181,7 @@
   src:
     local("Kalpurush"),
     url("/fonts/kalpurush.woff2") format("woff2"),
-    url("/fonts/kalpurush.ttf") format("truetype"),
-    url("https://fonts.maateen.me/kalpurush/Kalpurush-v0.258.woff2") format("woff2");
+    url("/fonts/kalpurush.ttf") format("truetype");
 }
 
 @layer base {

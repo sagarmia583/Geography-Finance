@@ -21,8 +21,11 @@ import {
   type OrgInfo,
 } from "@/lib/config";
 import { notifyFeedback } from "@/lib/feedback";
-import { getSessionStatus } from "@/lib/auth.functions";
+import { SessionGate } from "@/components/SessionGate";
+import { PageLoading } from "@/components/PageLoading";
 import { purgeVoucherCaches } from "@/lib/voucher-cache";
+import { moveExpenseRow } from "@/lib/expense-order";
+import { ReorderableRowList } from "@/components/ReorderableRowList";
 import {
   calculateVoucherTotals,
   nonNegativeNumber,
@@ -2002,7 +2005,7 @@ export function PrintApplicationLetter({
         <table className="voucher-table text-[14px]">
           <thead>
             <tr>
-              <th className="py-2 px-2 text-center w-14 font-bold text-[14px]">
+              <th className="py-2 px-2 text-center w-16 whitespace-nowrap font-bold text-[14px]">
                 ক্র. নং
               </th>
               <th className="py-2 px-3 text-center font-bold text-[14px]">
@@ -2035,7 +2038,7 @@ export function PrintApplicationLetter({
                 const tax = item.taxRate > 0 ? Math.round(item.amount * item.taxRate) : 0;
                 return (
                   <tr key={item.id || idx}>
-                    <td className="py-2 px-2 text-center num text-[14px]">
+                    <td className="py-2 px-2 text-center whitespace-nowrap tabular-nums text-[14px]">
                       {toBn(idx + 1)}
                     </td>
                     <td className="py-2 px-3 text-left text-[14px]">
@@ -2707,34 +2710,19 @@ export const Route = createFileRoute("/voucher/$slug")({
 });
 
 function VoucherPage() {
+  return (
+    <SessionGate>
+      <VoucherEditor />
+    </SessionGate>
+  );
+}
+
+function VoucherEditor() {
   const [isSaving, setIsSaving] = useState(false);
   const [hasSavedOnce, setHasSavedOnce] = useState(false);
   const hasNotifiedOpen = useRef(false);
 
   const navigate = Route.useNavigate();
-  const [isAuth, setIsAuth] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    const checkSession = async () => {
-      try {
-        const session = await getSessionStatus();
-        if (cancelled) return;
-        setIsAuth(session.authenticated);
-        if (!session.authenticated) {
-          navigate({ to: "/login", replace: true });
-        }
-      } catch {
-        if (cancelled) return;
-        setIsAuth(false);
-        navigate({ to: "/login", replace: true });
-      }
-    };
-    void checkSession();
-    return () => {
-      cancelled = true;
-    };
-  }, [navigate]);
 
   const searchParams = Route.useSearch() as Record<string, unknown>;
   const classLevel = searchParams["classLevel"] as string | undefined;
@@ -2805,7 +2793,7 @@ function VoucherPage() {
 
     try {
       const expenseVoucherNos = data.expenses
-        .map((e, idx) => e.voucherNo || `${idx + 1}`)
+        .map((e, idx) => (slug === "abedon" ? toBn(idx + 1) : e.voucherNo || `${idx + 1}`))
         .join(", ");
 
       const response = await saveVoucherToServer({
@@ -2893,8 +2881,7 @@ function VoucherPage() {
     })),
   ];
 
-  if (!loaded) return <div className="p-10 text-center text-muted-foreground">লোড হচ্ছে…</div>;
-  if (isAuth !== true) return null;
+  if (!loaded) return <PageLoading message="ভাউচার লোড হচ্ছে…" />;
 
   return (
     <main className="min-h-screen bg-background">
@@ -2938,7 +2925,11 @@ function VoucherPage() {
             <button
               className="btn-ghost text-xs text-muted-foreground hover:text-foreground cursor-pointer"
               onClick={() => {
-                if (window.confirm("নতুন খালি ভাউচার তৈরি করতে চান? বর্তমান পেজের পরিবর্তনগুলো রিসেট হয়ে যাবে।")) {
+                if (
+                  window.confirm(
+                    "নতুন খালি ভাউচার তৈরি করতে চান? বর্তমান পেজের পরিবর্তনগুলো রিসেট হয়ে যাবে।",
+                  )
+                ) {
                   newDraft();
                   setHasSavedOnce(false);
                   notifyFeedback.newDraft(config.name);
@@ -2958,7 +2949,11 @@ function VoucherPage() {
               className="btn-ghost text-xs cursor-pointer font-medium border border-border hover:bg-primary/10 transition-colors"
               onClick={handleSaveToSheet}
               disabled={isSaving}
-              title={isExistingVoucher ? "গুগল শীটে পরিবর্তনসমূহ আপডেট করুন" : "গুগল শীটে নতুন ভাউচার হিসেবে সেভ করুন"}
+              title={
+                isExistingVoucher
+                  ? "গুগল শীটে পরিবর্তনসমূহ আপডেট করুন"
+                  : "গুগল শীটে নতুন ভাউচার হিসেবে সেভ করুন"
+              }
             >
               {isSaving
                 ? "⏳ সংরক্ষণ হচ্ছে..."
@@ -2969,7 +2964,11 @@ function VoucherPage() {
             <button
               className="btn-primary text-xs cursor-pointer flex items-center gap-1"
               onClick={() => {
-                notifyFeedback.info("প্রিন্ট মোড প্রস্তুত", "প্রিন্ট বা PDF হিসেবে সংরক্ষণ করতে পারেন।", "print-action");
+                notifyFeedback.info(
+                  "প্রিন্ট মোড প্রস্তুত",
+                  "প্রিন্ট বা PDF হিসেবে সংরক্ষণ করতে পারেন।",
+                  "print-action",
+                );
                 window.print();
               }}
             >
@@ -3015,9 +3014,16 @@ function VoucherPage() {
                   `সকল বর্ষ ও সেশনের মোট শিক্ষার্থী ফি: ${money(calc.income)}/-`
                 ) : (
                   <>
-                    ছাত্র ফি: <span className="font-semibold num">{money(calc.studentIncome)}/-</span>
+                    ছাত্র ফি:{" "}
+                    <span className="font-semibold num">{money(calc.studentIncome)}/-</span>
                     {data.earnings.length > 0 && (
-                      <> + অন্যান্য: <span className="font-semibold num">{money(sum(data.earnings.map((e) => e.amount)))}/-</span></>
+                      <>
+                        {" "}
+                        + অন্যান্য:{" "}
+                        <span className="font-semibold num">
+                          {money(sum(data.earnings.map((e) => e.amount)))}/-
+                        </span>
+                      </>
                     )}
                   </>
                 )}
@@ -3028,7 +3034,15 @@ function VoucherPage() {
             <div className="rounded-xl border border-blue-200/90 bg-blue-50/70 p-4 shadow-sm dark:border-blue-900/60 dark:bg-blue-950/20">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold text-blue-800 dark:text-blue-300">
-                  মোট ব্যয় {["babosthapona-fee", "bhorti-babosthapona-fee", "kendro-fee", "term-paper"].includes(slug) ? "/ বন্টন" : ""}
+                  মোট ব্যয়{" "}
+                  {[
+                    "babosthapona-fee",
+                    "bhorti-babosthapona-fee",
+                    "kendro-fee",
+                    "term-paper",
+                  ].includes(slug)
+                    ? "/ বন্টন"
+                    : ""}
                 </span>
                 <span className="text-xl">💸</span>
               </div>
@@ -3039,10 +3053,15 @@ function VoucherPage() {
                 {slug === "abedon"
                   ? "উত্তোলনের মোট ব্যয়"
                   : slug === "shikkha-sofor"
-                  ? "শিক্ষা সফর পরিচালনা সংক্রান্ত যাবতীয় ব্যয়"
-                  : ["babosthapona-fee", "bhorti-babosthapona-fee", "kendro-fee", "term-paper"].includes(slug)
-                  ? "শতকরা হারে মোট বন্টনকৃত অর্থ"
-                  : "পরীক্ষা সংশ্লিষ্ট মোট যাবতীয় ব্যয়"}
+                    ? "শিক্ষা সফর পরিচালনা সংক্রান্ত যাবতীয় ব্যয়"
+                    : [
+                          "babosthapona-fee",
+                          "bhorti-babosthapona-fee",
+                          "kendro-fee",
+                          "term-paper",
+                        ].includes(slug)
+                      ? "শতকরা হারে মোট বন্টনকৃত অর্থ"
+                      : "পরীক্ষা সংশ্লিষ্ট মোট যাবতীয় ব্যয়"}
               </div>
             </div>
 
@@ -3082,8 +3101,8 @@ function VoucherPage() {
                   slug === "abedon"
                     ? "তহবিল / বিষয়ের নাম"
                     : slug === "shikkha-sofor"
-                    ? "শিরোনাম"
-                    : "পরীক্ষার নাম"
+                      ? "শিরোনাম"
+                      : "পরীক্ষার নাম"
                 }
               >
                 <input
@@ -3094,8 +3113,8 @@ function VoucherPage() {
                     slug === "abedon"
                       ? "যেমন: সেমিনার তহবিল"
                       : slug === "shikkha-sofor"
-                      ? "যেমন: শিক্ষা সফর-২০২৬"
-                      : "যেমন: নির্বাচনী পরীক্ষা"
+                        ? "যেমন: শিক্ষা সফর-২০২৬"
+                        : "যেমন: নির্বাচনী পরীক্ষা"
                   }
                 />
               </Field>
@@ -3163,7 +3182,11 @@ function VoucherPage() {
           {/* আয়ের হিসাব */}
           {config.sections.incomeStatement && (
             <Card
-              title={slug === "shikkha-sofor" ? "আয়ের হিসাব (বর্ষভিত্তিক শিক্ষার্থী ফি)" : "আয়ের হিসাব (অন্যান্য ফি)"}
+              title={
+                slug === "shikkha-sofor"
+                  ? "আয়ের হিসাব (বর্ষভিত্তিক শিক্ষার্থী ফি)"
+                  : "আয়ের হিসাব (অন্যান্য ফি)"
+              }
               action={
                 <button
                   className="btn-ghost"
@@ -3172,7 +3195,14 @@ function VoucherPage() {
                       earnings: [
                         ...data.earnings,
                         slug === "shikkha-sofor"
-                          ? { id: uid(), voucherNo: toBn(data.earnings.length + 1), desc: "", studentCount: 0, rate: 0, amount: 0 }
+                          ? {
+                              id: uid(),
+                              voucherNo: toBn(data.earnings.length + 1),
+                              desc: "",
+                              studentCount: 0,
+                              rate: 0,
+                              amount: 0,
+                            }
                           : { id: uid(), voucherNo: "", desc: "", amount: 0 },
                       ],
                     })
@@ -3271,8 +3301,8 @@ function VoucherPage() {
                 slug === "abedon"
                   ? "ব্যয়ের বিবরণী (যেসব খাতে টাকা উত্তোলন করা হবে)"
                   : slug === "shikkha-sofor"
-                  ? "ব্যয়ের হিসাব (শিক্ষা সফর পরিচালনা ব্যয়)"
-                  : "অন্যান্য ব্যয় (খাতা, কলম, আপ্যায়ন)"
+                    ? "ব্যয়ের হিসাব (শিক্ষা সফর পরিচালনা ব্যয়)"
+                    : "অন্যান্য ব্যয় (খাতা, কলম, আপ্যায়ন)"
               }
               action={
                 <div className="flex items-center gap-2">
@@ -3282,7 +3312,10 @@ function VoucherPage() {
                       onClick={() => {
                         if (window.confirm("সব খরচের খাত মুছে ফেলতে চান?")) {
                           patch({ expenses: [] });
-                          notifyFeedback.info("খরচের হিসাব রিসেট হয়েছে", "সব খরচের খাত মুছে ফেলা হয়েছে।");
+                          notifyFeedback.info(
+                            "খরচের হিসাব রিসেট হয়েছে",
+                            "সব খরচের খাত মুছে ফেলা হয়েছে।",
+                          );
                         }
                       }}
                       title="সব খরচের খাত মুছুন"
@@ -3331,18 +3364,41 @@ function VoucherPage() {
               </datalist>
               <RowList
                 rows={data.expenses}
-                onRemove={(id) => patch({ expenses: data.expenses.filter((r) => r.id !== id) })}
+                onMove={
+                  slug === "abedon"
+                    ? (id, targetIndex) =>
+                        setData((current) => ({
+                          ...current,
+                          expenses: moveExpenseRow(current.expenses, id, targetIndex),
+                        }))
+                    : undefined
+                }
+                onRemove={(id) =>
+                  setData((current) => ({
+                    ...current,
+                    expenses: current.expenses
+                      .filter((r) => r.id !== id)
+                      .map((row, index) =>
+                        slug === "abedon" ? { ...row, voucherNo: toBn(index + 1) } : row,
+                      ),
+                  }))
+                }
                 onUpdate={(id, p) =>
-                  patch({ expenses: data.expenses.map((r) => (r.id === id ? { ...r, ...p } : r)) })
+                  setData((current) => ({
+                    ...current,
+                    expenses: current.expenses.map((r) => (r.id === id ? { ...r, ...p } : r)),
+                  }))
                 }
                 render={(row, update) => (
                   <>
-                    <input
-                      className="input w-28"
-                      placeholder="ভাউচার নং"
-                      value={row.voucherNo}
-                      onChange={(e) => update({ voucherNo: e.target.value })}
-                    />
+                    {slug !== "abedon" ? (
+                      <input
+                        className="input w-28"
+                        placeholder="ভাউচার নং"
+                        value={row.voucherNo}
+                        onChange={(e) => update({ voucherNo: e.target.value })}
+                      />
+                    ) : null}
                     <input
                       list="sheet-products-list"
                       className="input flex-1"
@@ -3790,253 +3846,261 @@ function VoucherPage() {
               : "hidden print:block print:bg-transparent print:py-0"
           }
         >
-        {/* Income & Expense (combined in 1 page) */}
-        {!["babosthapona-fee", "bhorti-babosthapona-fee", "kendro-fee", "term-paper"].includes(
-          config.slug,
-        ) && (
-          <PrintPage
-            examName={fullExam}
-            title="আয়-ব্যয়ের হিসাব বিবরণী :"
-            voucherId={data.id}
-            date={data.date}
-            bothSignatures
-            slug={slug}
-            vatCode={data.challans?.vat?.fullCode}
-            tax5Code={data.challans?.tax5?.fullCode}
-            tax10Code={data.challans?.tax10?.fullCode}
-          >
-            <EarnTable rows={earnRows} />
+          {/* Income & Expense (combined in 1 page) */}
+          {!["babosthapona-fee", "bhorti-babosthapona-fee", "kendro-fee", "term-paper"].includes(
+            config.slug,
+          ) && (
+            <PrintPage
+              examName={fullExam}
+              title="আয়-ব্যয়ের হিসাব বিবরণী :"
+              voucherId={data.id}
+              date={data.date}
+              bothSignatures
+              slug={slug}
+              vatCode={data.challans?.vat?.fullCode}
+              tax5Code={data.challans?.tax5?.fullCode}
+              tax10Code={data.challans?.tax10?.fullCode}
+            >
+              <EarnTable rows={earnRows} />
 
-            {config.sections.expenses ? (
-              <>
-                <CostTable
-                  rows={[
-                    ...(config.sections.adminDuty && calc.pool35 > 0
-                      ? [
-                          {
-                            id: "admin-expense",
-                            voucherNo: "",
-                            productName: "কলেজ প্রশাসন ও কমিটি এবং অফিস",
-                            desc: "কলেজ প্রশাসন ও কমিটি এবং অফিস",
-                            amount: calc.pool35,
-                            vatRate: 0,
-                            taxRate: sum(calc.adminRows.map((r) => r.tax)) / calc.pool35,
-                          },
-                        ]
-                      : []),
-                    ...(config.sections.qs && calc.qsTotal > 0
-                      ? [
-                          {
-                            id: "qs-expense",
-                            voucherNo: "",
-                            productName: "প্রশ্নপত্র প্রণয়ন ও উত্তরপত্র মূল্যায়ন বিল",
-                            desc: "প্রশ্নপত্র প্রণয়ন ও উত্তরপত্র মূল্যায়ন",
-                            amount: calc.qsTotal,
-                            vatRate: 0,
-                            taxRate: sum(calc.qsRows.map((r) => r.tax)) / calc.qsTotal,
-                          },
-                        ]
-                      : []),
-                    ...(config.sections.invigilatorDuty && calc.pool63 > 0
-                      ? [
-                          {
-                            id: "duty-expense",
-                            voucherNo: "",
-                            productName: "কক্ষ প্রত্যবেক্ষক ও পিয়ন",
-                            desc: "কক্ষ প্রত্যবেক্ষক ও পিয়ন",
-                            amount: calc.pool63,
-                            vatRate: 0,
-                            taxRate: sum(calc.dutyRows.map((r) => r.tax)) / calc.pool63,
-                          },
-                        ]
-                      : []),
-                    ...(config.sections.adminDuty && calc.pool2 > 0
-                      ? [
-                          {
-                            id: "council-expense",
-                            voucherNo: "",
-                            productName: data.councilName
-                              ? `${data.councilName} (শিক্ষক পরিষদ)`
-                              : "শিক্ষক পরিষদ",
-                            desc: "শিক্ষক পরিষদ",
-                            amount: calc.pool2,
-                            vatRate: 0,
-                            taxRate: calc.councilRow.tax / calc.pool2,
-                          },
-                        ]
-                      : []),
-                    ...data.expenses,
-                  ]}
-                />
+              {config.sections.expenses ? (
+                <>
+                  <CostTable
+                    rows={[
+                      ...(config.sections.adminDuty && calc.pool35 > 0
+                        ? [
+                            {
+                              id: "admin-expense",
+                              voucherNo: "",
+                              productName: "কলেজ প্রশাসন ও কমিটি এবং অফিস",
+                              desc: "কলেজ প্রশাসন ও কমিটি এবং অফিস",
+                              amount: calc.pool35,
+                              vatRate: 0,
+                              taxRate: sum(calc.adminRows.map((r) => r.tax)) / calc.pool35,
+                            },
+                          ]
+                        : []),
+                      ...(config.sections.qs && calc.qsTotal > 0
+                        ? [
+                            {
+                              id: "qs-expense",
+                              voucherNo: "",
+                              productName: "প্রশ্নপত্র প্রণয়ন ও উত্তরপত্র মূল্যায়ন বিল",
+                              desc: "প্রশ্নপত্র প্রণয়ন ও উত্তরপত্র মূল্যায়ন",
+                              amount: calc.qsTotal,
+                              vatRate: 0,
+                              taxRate: sum(calc.qsRows.map((r) => r.tax)) / calc.qsTotal,
+                            },
+                          ]
+                        : []),
+                      ...(config.sections.invigilatorDuty && calc.pool63 > 0
+                        ? [
+                            {
+                              id: "duty-expense",
+                              voucherNo: "",
+                              productName: "কক্ষ প্রত্যবেক্ষক ও পিয়ন",
+                              desc: "কক্ষ প্রত্যবেক্ষক ও পিয়ন",
+                              amount: calc.pool63,
+                              vatRate: 0,
+                              taxRate: sum(calc.dutyRows.map((r) => r.tax)) / calc.pool63,
+                            },
+                          ]
+                        : []),
+                      ...(config.sections.adminDuty && calc.pool2 > 0
+                        ? [
+                            {
+                              id: "council-expense",
+                              voucherNo: "",
+                              productName: data.councilName
+                                ? `${data.councilName} (শিক্ষক পরিষদ)`
+                                : "শিক্ষক পরিষদ",
+                              desc: "শিক্ষক পরিষদ",
+                              amount: calc.pool2,
+                              vatRate: 0,
+                              taxRate: calc.councilRow.tax / calc.pool2,
+                            },
+                          ]
+                        : []),
+                      ...data.expenses,
+                    ]}
+                  />
+                  <div className="mt-8 flex justify-center text-sm font-semibold">
+                    <table className="w-64">
+                      <tbody>
+                        <tr>
+                          <td className="py-1">মোট আয়</td>
+                          <td className="text-center">=</td>
+                          <td className="text-right">{money(calc.income)}/-</td>
+                        </tr>
+                        <tr>
+                          <td className="py-1 border-b border-foreground">মোট ব্যয়</td>
+                          <td className="text-center border-b border-foreground">=</td>
+                          <td className="text-right border-b border-foreground">
+                            {money(
+                              calc.expenseTotal +
+                                (config.sections.qs ? calc.qsTotal : 0) +
+                                (config.sections.adminDuty ? calc.pool35 : 0) +
+                                (config.sections.invigilatorDuty ? calc.pool63 : 0) +
+                                (config.sections.adminDuty ? calc.pool2 : 0),
+                            )}
+                            /-
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="py-1 text-center font-bold">উদ্বৃত্ত</td>
+                          <td className="text-center font-bold">=</td>
+                          <td className="text-right font-bold">
+                            {(() => {
+                              const finalExpense =
+                                calc.expenseTotal +
+                                (config.sections.qs ? calc.qsTotal : 0) +
+                                (config.sections.adminDuty ? calc.pool35 : 0) +
+                                (config.sections.invigilatorDuty ? calc.pool63 : 0) +
+                                (config.sections.adminDuty ? calc.pool2 : 0);
+                              const surplus = calc.income - finalExpense;
+                              return surplus > 0.5 ? `${money(surplus)}/-` : "নাই";
+                            })()}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </>
+              ) : null}
+            </PrintPage>
+          )}
+
+          {config.sections.adminDuty && !["bebaharik", "mowkhik"].includes(config.slug) ? (
+            <PrintPage
+              hideDeptHeadSignature={config.slug === "nirbachoni" || config.slug === "incourse"}
+              examName={fullExam}
+              title="কলেজ প্রশাসন ও কমিটি এবং অফিস"
+              voucherId={data.id}
+              date={data.date}
+              slug={slug}
+              vatCode={data.challans?.vat?.fullCode}
+              tax5Code={data.challans?.tax5?.fullCode}
+              tax10Code={data.challans?.tax10?.fullCode}
+            >
+              <PayTable rows={calc.adminRows} />
+            </PrintPage>
+          ) : null}
+
+          {config.sections.qs && !["bebaharik", "mowkhik"].includes(config.slug) ? (
+            <PrintPage
+              hideDeptHeadSignature={config.slug === "nirbachoni" || config.slug === "incourse"}
+              examName={fullExam}
+              title="প্রশ্নপত্র প্রণয়ন এবং উত্তরপত্র মূল্যায়ণ"
+              subtitle={`প্রশ্নপত্র ${money(data.questionRate)}/- , উত্তরপত্র ${money(data.scriptRate)}/-`}
+              voucherId={data.id}
+              date={data.date}
+              slug={slug}
+              vatCode={data.challans?.vat?.fullCode}
+              tax5Code={data.challans?.tax5?.fullCode}
+              tax10Code={data.challans?.tax10?.fullCode}
+            >
+              <PayTable rows={calc.qsRows} withQs />
+            </PrintPage>
+          ) : null}
+
+          {config.sections.invigilatorDuty && !["bebaharik", "mowkhik"].includes(config.slug) ? (
+            <PrintPage
+              hideDeptHeadSignature={config.slug === "nirbachoni" || config.slug === "incourse"}
+              examName={fullExam}
+              title="কক্ষ প্রত্যবেক্ষক ও পিয়ন"
+              voucherId={data.id}
+              date={data.date}
+              slug={slug}
+              vatCode={data.challans?.vat?.fullCode}
+              tax5Code={data.challans?.tax5?.fullCode}
+              tax10Code={data.challans?.tax10?.fullCode}
+            >
+              <PayTable rows={calc.dutyRows} />
+            </PrintPage>
+          ) : null}
+
+          {config.sections.percentRows && !["bebaharik", "mowkhik"].includes(config.slug) ? (
+            <PrintPage
+              hideDeptHeadSignature={config.slug === "nirbachoni" || config.slug === "incourse"}
+              examName={
+                ["babosthapona-fee", "term-paper", "kendro-fee"].includes(config.slug)
+                  ? fullExam.replace(/ব্যবস্থাপনা ফী|টার্ম পেপার|কেন্দ্র ফী/g, "পরীক্ষা")
+                  : config.slug === "bhorti-babosthapona-fee"
+                    ? fullExam.replace(/ভর্তি ব্যবস্থাপনা ফী/g, "ভর্তি")
+                    : fullExam
+              }
+              title={
+                [
+                  "babosthapona-fee",
+                  "bhorti-babosthapona-fee",
+                  "kendro-fee",
+                  "term-paper",
+                ].includes(config.slug)
+                  ? `${config.name} আয় ব্যয়ের হিসাব বিবরণী`
+                  : `${config.name} — বন্টন`
+              }
+              subtitle={
+                [
+                  "babosthapona-fee",
+                  "bhorti-babosthapona-fee",
+                  "kendro-fee",
+                  "term-paper",
+                ].includes(config.slug)
+                  ? `আয় : ${
+                      ["babosthapona-fee", "term-paper", "kendro-fee"].includes(config.slug)
+                        ? fullExam.replace(/ব্যবস্থাপনা ফী|টার্ম পেপার|কেন্দ্র ফী/g, "পরীক্ষা")
+                        : config.slug === "bhorti-babosthapona-fee"
+                          ? fullExam.replace(/ভর্তি ব্যবস্থাপনা ফী/g, "ভর্তি")
+                          : fullExam
+                    } এর ভূগোল বিষয়ের ${toBn(data.studentCount)} জন পরীক্ষার্থীর ${toBn(data.perStudent)} হারে ${config.name.replace("ফী", "ফি")} বাবদ আয় (${toBn(data.studentCount)}×${toBn(data.perStudent)}) = ${toBn(calc.distributable)}/-`
+                  : undefined
+              }
+              voucherId={data.id}
+              date={data.date}
+              bothSignatures={true}
+              slug={slug}
+              vatCode={data.challans?.vat?.fullCode}
+              tax5Code={data.challans?.tax5?.fullCode}
+              tax10Code={data.challans?.tax10?.fullCode}
+            >
+              <PayTable rows={calc.percentRows} isBonton />
+
+              {["babosthapona-fee", "bhorti-babosthapona-fee", "kendro-fee", "term-paper"].includes(
+                config.slug,
+              ) && (
                 <div className="mt-8 flex justify-center text-sm font-semibold">
-                  <table className="w-64">
+                  <table className="w-64 border-collapse">
                     <tbody>
                       <tr>
-                        <td className="py-1">মোট আয়</td>
-                        <td className="text-center">=</td>
-                        <td className="text-right">{money(calc.income)}/-</td>
+                        <td className="py-1 text-left">মোট আয়</td>
+                        <td className="text-center w-8">=</td>
+                        <td className="text-right num">{money(calc.income)}/-</td>
                       </tr>
                       <tr>
-                        <td className="py-1 border-b border-foreground">মোট ব্যয়</td>
-                        <td className="text-center border-b border-foreground">=</td>
-                        <td className="text-right border-b border-foreground">
-                          {money(
-                            calc.expenseTotal +
-                              (config.sections.qs ? calc.qsTotal : 0) +
-                              (config.sections.adminDuty ? calc.pool35 : 0) +
-                              (config.sections.invigilatorDuty ? calc.pool63 : 0) +
-                              (config.sections.adminDuty ? calc.pool2 : 0),
-                          )}
-                          /-
+                        <td className="py-1 text-left border-b border-foreground">
+                          মোট ব্যয় / বন্টন
+                        </td>
+                        <td className="text-center border-b border-foreground w-8">=</td>
+                        <td className="text-right border-b border-foreground num">
+                          {money(calc.distributable + calc.expenseTotal)}/-
                         </td>
                       </tr>
                       <tr>
-                        <td className="py-1 text-center font-bold">উদ্বৃত্ত</td>
-                        <td className="text-center font-bold">=</td>
-                        <td className="text-right font-bold">
-                          {(() => {
-                            const finalExpense =
-                              calc.expenseTotal +
-                              (config.sections.qs ? calc.qsTotal : 0) +
-                              (config.sections.adminDuty ? calc.pool35 : 0) +
-                              (config.sections.invigilatorDuty ? calc.pool63 : 0) +
-                              (config.sections.adminDuty ? calc.pool2 : 0);
-                            const surplus = calc.income - finalExpense;
-                            return surplus > 0.5 ? `${money(surplus)}/-` : "নাই";
-                          })()}
+                        <td className="py-1 text-left font-bold">উদ্বৃত্ত / অবশিষ্ট</td>
+                        <td className="text-center font-bold w-8">=</td>
+                        <td className="text-right font-bold num">
+                          {calc.income - (calc.distributable + calc.expenseTotal) > 0.5
+                            ? `${money(calc.income - (calc.distributable + calc.expenseTotal))}/-`
+                            : "নাই"}
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-              </>
-            ) : null}
-          </PrintPage>
-        )}
-
-        {config.sections.adminDuty && !["bebaharik", "mowkhik"].includes(config.slug) ? (
-          <PrintPage
-            hideDeptHeadSignature={config.slug === "nirbachoni" || config.slug === "incourse"}
-            examName={fullExam}
-            title="কলেজ প্রশাসন ও কমিটি এবং অফিস"
-            voucherId={data.id}
-            date={data.date}
-            slug={slug}
-            vatCode={data.challans?.vat?.fullCode}
-            tax5Code={data.challans?.tax5?.fullCode}
-            tax10Code={data.challans?.tax10?.fullCode}
-          >
-            <PayTable rows={calc.adminRows} />
-          </PrintPage>
-        ) : null}
-
-        {config.sections.qs && !["bebaharik", "mowkhik"].includes(config.slug) ? (
-          <PrintPage
-            hideDeptHeadSignature={config.slug === "nirbachoni" || config.slug === "incourse"}
-            examName={fullExam}
-            title="প্রশ্নপত্র প্রণয়ন এবং উত্তরপত্র মূল্যায়ণ"
-            subtitle={`প্রশ্নপত্র ${money(data.questionRate)}/- , উত্তরপত্র ${money(data.scriptRate)}/-`}
-            voucherId={data.id}
-            date={data.date}
-            slug={slug}
-            vatCode={data.challans?.vat?.fullCode}
-            tax5Code={data.challans?.tax5?.fullCode}
-            tax10Code={data.challans?.tax10?.fullCode}
-          >
-            <PayTable rows={calc.qsRows} withQs />
-          </PrintPage>
-        ) : null}
-
-        {config.sections.invigilatorDuty && !["bebaharik", "mowkhik"].includes(config.slug) ? (
-          <PrintPage
-            hideDeptHeadSignature={config.slug === "nirbachoni" || config.slug === "incourse"}
-            examName={fullExam}
-            title="কক্ষ প্রত্যবেক্ষক ও পিয়ন"
-            voucherId={data.id}
-            date={data.date}
-            slug={slug}
-            vatCode={data.challans?.vat?.fullCode}
-            tax5Code={data.challans?.tax5?.fullCode}
-            tax10Code={data.challans?.tax10?.fullCode}
-          >
-            <PayTable rows={calc.dutyRows} />
-          </PrintPage>
-        ) : null}
-
-        {config.sections.percentRows && !["bebaharik", "mowkhik"].includes(config.slug) ? (
-          <PrintPage
-            hideDeptHeadSignature={config.slug === "nirbachoni" || config.slug === "incourse"}
-            examName={
-              ["babosthapona-fee", "term-paper", "kendro-fee"].includes(config.slug)
-                ? fullExam.replace(/ব্যবস্থাপনা ফী|টার্ম পেপার|কেন্দ্র ফী/g, "পরীক্ষা")
-                : config.slug === "bhorti-babosthapona-fee"
-                  ? fullExam.replace(/ভর্তি ব্যবস্থাপনা ফী/g, "ভর্তি")
-                  : fullExam
-            }
-            title={
-              ["babosthapona-fee", "bhorti-babosthapona-fee", "kendro-fee", "term-paper"].includes(
-                config.slug,
-              )
-                ? `${config.name} আয় ব্যয়ের হিসাব বিবরণী`
-                : `${config.name} — বন্টন`
-            }
-            subtitle={
-              ["babosthapona-fee", "bhorti-babosthapona-fee", "kendro-fee", "term-paper"].includes(
-                config.slug,
-              )
-                ? `আয় : ${
-                    ["babosthapona-fee", "term-paper", "kendro-fee"].includes(config.slug)
-                      ? fullExam.replace(/ব্যবস্থাপনা ফী|টার্ম পেপার|কেন্দ্র ফী/g, "পরীক্ষা")
-                      : config.slug === "bhorti-babosthapona-fee"
-                        ? fullExam.replace(/ভর্তি ব্যবস্থাপনা ফী/g, "ভর্তি")
-                        : fullExam
-                  } এর ভূগোল বিষয়ের ${toBn(data.studentCount)} জন পরীক্ষার্থীর ${toBn(data.perStudent)} হারে ${config.name.replace("ফী", "ফি")} বাবদ আয় (${toBn(data.studentCount)}×${toBn(data.perStudent)}) = ${toBn(calc.distributable)}/-`
-                : undefined
-            }
-            voucherId={data.id}
-            date={data.date}
-            bothSignatures={true}
-            slug={slug}
-            vatCode={data.challans?.vat?.fullCode}
-            tax5Code={data.challans?.tax5?.fullCode}
-            tax10Code={data.challans?.tax10?.fullCode}
-          >
-            <PayTable rows={calc.percentRows} isBonton />
-
-            {["babosthapona-fee", "bhorti-babosthapona-fee", "kendro-fee", "term-paper"].includes(
-              config.slug,
-            ) && (
-              <div className="mt-8 flex justify-center text-sm font-semibold">
-                <table className="w-64 border-collapse">
-                  <tbody>
-                    <tr>
-                      <td className="py-1 text-left">মোট আয়</td>
-                      <td className="text-center w-8">=</td>
-                      <td className="text-right num">{money(calc.income)}/-</td>
-                    </tr>
-                    <tr>
-                      <td className="py-1 text-left border-b border-foreground">মোট ব্যয় / বন্টন</td>
-                      <td className="text-center border-b border-foreground w-8">=</td>
-                      <td className="text-right border-b border-foreground num">
-                        {money(calc.distributable + calc.expenseTotal)}/-
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-1 text-left font-bold">উদ্বৃত্ত / অবশিষ্ট</td>
-                      <td className="text-center font-bold w-8">=</td>
-                      <td className="text-right font-bold num">
-                        {calc.income - (calc.distributable + calc.expenseTotal) > 0.5
-                          ? `${money(calc.income - (calc.distributable + calc.expenseTotal))}/-`
-                          : "নাই"}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </PrintPage>
-        ) : null}
-      </div>
+              )}
+            </PrintPage>
+          ) : null}
+        </div>
       ) : null}
     </main>
   );
@@ -4172,12 +4236,24 @@ function RowList<T extends { id: string }>({
   render,
   onUpdate,
   onRemove,
+  onMove,
 }: {
   rows: T[];
   render: (row: T, update: (p: Partial<T>) => void) => ReactNode;
   onUpdate: (id: string, p: Partial<T>) => void;
   onRemove: (id: string) => void;
+  onMove?: ((id: string, targetIndex: number) => void) | undefined;
 }) {
+  if (onMove)
+    return (
+      <ReorderableRowList
+        rows={rows}
+        render={render}
+        onUpdate={onUpdate}
+        onRemove={onRemove}
+        onMove={onMove}
+      />
+    );
   if (rows.length === 0) return <p className="text-sm text-muted-foreground">কোনো সারি নেই।</p>;
   return (
     <div className="space-y-2">

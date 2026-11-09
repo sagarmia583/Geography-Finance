@@ -94,20 +94,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@300;400;500;600;700;800;900&display=swap",
-      },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.maateen.me/kalpurush/font.css",
-      },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.maateen.me/solaiman-lipi/font.css",
-      },
       { rel: "icon", href: "/logo.jpg", type: "image/jpeg" },
     ],
   }),
@@ -120,7 +106,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="bn">
       <head>
         <HeadContent />
       </head>

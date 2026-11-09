@@ -1,13 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useAtom } from "jotai";
-import { orgInfoAtom } from "./voucher.$slug";
+import { orgInfoAtom } from "@/lib/config";
 
 type StudioTemplate = {
   id: number;
   name: string;
   variant: string;
   page: number;
+  source?: { kind: string };
 };
 
 type StudioWindow = Window & { printStudio?: () => Promise<void> };
@@ -19,7 +20,7 @@ export const Route = createFileRoute("/studio")({
       {
         name: "description",
         content:
-          "মূল PDF-এর ৩০ পৃষ্ঠার ক্যাশ মেমো, ইনভয়েস ও রসিদের ডিজাইন, লেখা ও মাপসহ প্রিন্ট স্টুডিও।",
+          "PDF ও ছবির নকশা অনুযায়ী সম্পাদনাযোগ্য ক্যাশ মেমো, ইনভয়েস ও রসিদের প্রিন্ট স্টুডিও।",
       },
     ],
   }),
@@ -76,15 +77,21 @@ function StudioPage() {
     const controller = new AbortController();
     const loadManifest = async () => {
       try {
-        const response = await fetch("/voucher-assets/manifest.json", {
-          signal: controller.signal,
-        });
-        if (!response.ok) throw new Error("Manifest unavailable");
-        const manifest = await response.json();
+        const responses = await Promise.all(
+          ["/voucher-assets/manifest.json", "/voucher-additional-designs.json"].map((url) =>
+            fetch(url, { signal: controller.signal }),
+          ),
+        );
+        if (responses.some((response) => !response.ok)) throw new Error("Manifest unavailable");
+        const [manifest, additional] = await Promise.all(
+          responses.map((response) => response.json()),
+        );
+        if (!Array.isArray(manifest.templates) || !Array.isArray(additional.templates))
+          throw new Error("Invalid manifest");
+        const templates = [...manifest.templates, ...additional.templates];
         if (
-          !Array.isArray(manifest.templates) ||
-          manifest.templates.length === 0 ||
-          !manifest.templates.every(
+          templates.length === 0 ||
+          !templates.every(
             (template: StudioTemplate) =>
               Number.isInteger(template?.id) &&
               typeof template.name === "string" &&
@@ -94,10 +101,10 @@ function StudioPage() {
         ) {
           throw new Error("Invalid manifest");
         }
-        if (!controller.signal.aborted) setShops(manifest.templates);
+        if (!controller.signal.aborted) setShops(templates);
       } catch {
         if (!controller.signal.aborted) {
-          setManifestError("PDF-এর ডিজাইনের তালিকা লোড হয়নি। পেজটি রিলোড করুন।");
+          setManifestError("ভাউচারের ডিজাইনের তালিকা লোড হয়নি। পেজটি রিলোড করুন।");
         }
       } finally {
         if (!controller.signal.aborted) setManifestLoading(false);
@@ -170,8 +177,7 @@ function StudioPage() {
                 ক্যাশ মেমো ও ভেন্ডর ভাউচার স্টুডিও
               </h1>
               <span className="hidden md:inline-flex items-center rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 px-2.5 py-0.5 text-[11px] font-semibold border border-emerald-300/40">
-                {shops.length > 0 ? `${shops.length}টি PDF পৃষ্ঠা` : "মূল PDF-এর ডিজাইন"} • A4
-                বিল্ডার
+                {shops.length > 0 ? `${shops.length}টি ডিজাইন` : "ভাউচারের ডিজাইন"} • A4 বিল্ডার
               </span>
             </div>
             <p className="text-[11px] text-muted-foreground hidden sm:block">
@@ -185,7 +191,7 @@ function StudioPage() {
           <button
             onClick={() => setShowShopList(true)}
             className="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-border bg-secondary/80 text-foreground text-xs font-medium hover:bg-secondary transition-colors"
-            title="মূল PDF-এর সব ডিজাইন দেখুন"
+            title="সব ভাউচার ডিজাইন দেখুন"
           >
             <span>🏪</span>
             <span className="hidden sm:inline">
@@ -261,7 +267,7 @@ function StudioPage() {
                 <span className="text-2xl">🏪</span>
                 <div>
                   <h3 className="font-bold text-base text-foreground">
-                    মূল PDF-এর ভাউচার ডিজাইন{shops.length > 0 ? ` (${shops.length}টি)` : ""}
+                    ভাউচার ডিজাইন{shops.length > 0 ? ` (${shops.length}টি)` : ""}
                   </h3>
                   <p className="text-xs text-muted-foreground">
                     স্টুডিওর বাম পাশের ড্রপডাউন থেকে যেকোনো দোকান নির্বাচন করে প্রিন্ট করতে পারেন
@@ -314,7 +320,9 @@ function StudioPage() {
                     <div>
                       <h4 className="font-bold text-sm text-foreground">{shop.name}</h4>
                       <p className="text-xs text-muted-foreground">
-                        PDF পৃষ্ঠা {shop.page}
+                        {shop.source?.kind === "image"
+                          ? "ছবি থেকে তৈরি"
+                          : `PDF পৃষ্ঠা ${shop.page}`}
                         {shop.variant && (
                           <>
                             {" "}

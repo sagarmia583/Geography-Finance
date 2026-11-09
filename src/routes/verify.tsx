@@ -21,6 +21,8 @@ import {
 import { openDraftChallan, openVerifyChallan } from "@/components/ChallanManager";
 
 export const Route = createFileRoute("/verify")({
+  // Serve the loading shell while the browser requests verification from Sheets.
+  ssr: false,
   validateSearch: (search: Record<string, unknown>) => ({
     id: typeof search["id"] === "string" ? search["id"] : "",
   }),

@@ -28,6 +28,31 @@ export const importSheetValues = (data: {
   sheetName?: string;
 }) => readSheetRequest({ data });
 
+const masterDataRequest = createServerFn({ method: "POST" })
+  .validator(
+    z.object({
+      spreadsheetId: z
+        .string()
+        .min(1)
+        .max(200)
+        .regex(/^[\w-]+$/),
+    }),
+  )
+  .handler(async ({ data: { spreadsheetId } }) => {
+    await requireSession();
+    const [settings, rates, products, percentages, teachers] = await Promise.all([
+      fetchSheetValues(spreadsheetId, "Settings!A1:B50", "Settings").catch(() => []),
+      fetchSheetValues(spreadsheetId, "Rates!A:D", "Rates"),
+      fetchSheetValues(spreadsheetId, "Products!A:D", "Products"),
+      fetchSheetValues(spreadsheetId, "Percentages!A:C", "Percentages"),
+      fetchSheetValues(spreadsheetId, "Teachers!A:E", "Teachers"),
+    ]);
+    return { settings, rates, products, percentages, teachers };
+  });
+
+export const getVoucherMasterData = (spreadsheetId: string) =>
+  masterDataRequest({ data: { spreadsheetId } });
+
 // Compatibility inputs cannot select the URL or action used by the server.
 const voucherInput = z.object({ scriptUrl: z.string().max(500), payload: z.record(z.unknown()) });
 type VoucherInput = z.infer<typeof voucherInput>;
